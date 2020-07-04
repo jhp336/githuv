@@ -16,4 +16,5 @@ int main() {
     if (c[i]==1)
     cout<<i+1<<endl;
     
+    return 0;
 }

@@ -31,4 +31,6 @@ int main() {
     cout<<"B"<<endl;
     else 
     cout<<"D"<<endl;
+    
+    return 0;
 }
