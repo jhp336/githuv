@@ -9,7 +9,7 @@ int main() {
     int num2[9]={ };
     copy(num,num+9,num2);
     int no,max;
-    num[0]=max;
+    max=num[0];
     for(int i=0;i<9;i++){
         if (max<num[i]){
         max=num[i];
