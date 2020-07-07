@@ -3,11 +3,12 @@
 using namespace std;
 
 int main() {
-    int n=5;
-    double m=21;
-    
-    int card[n]={5,6,7,8,9};
-    
+    int n;
+    double m;
+    cin>>n>>m;
+    int card[n];
+    for (int i=0;i<n;i++)
+    cin>>card[i];
     int sumof3,i,j,k;
     vector <int> a(n*n*n);
     a.clear();
@@ -17,8 +18,8 @@ int main() {
                 sumof3=card[i]+card[j]+card[k];
                 if(sumof3<=m)
                 a.push_back(sumof3);
-            }  
-        }
+            }
+    }
     double max;
     max=a.at(0);
     for(i=0;i<a.size();i++){
@@ -27,6 +28,6 @@ int main() {
     }
     cout<<max;
     return 0;
-    }
+}
 
 
