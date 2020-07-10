@@ -59,6 +59,40 @@
                 margin-left: 300px;
                 margin-bottom: 30px;
             }
+            @media(max-width:1258px){
+                .img{
+                    width:180px;
+                    height:240px;
+                }
+                .img2{
+                    width:400px;
+                    height:270px;
+                }
+            }
+            @media(max-width: 800px){
+                #grid{
+                    display:block;
+                }
+                #grid ol,h1,h2{
+                    border:none;
+                }
+                #grid2{
+                    display: grid;
+                    grid-template-columns: 60px 300px ;
+                }
+                .img2{
+                    width:280px;
+                    height: 180px;
+                }
+                iframe{
+                    margin-left:0;
+                }
+                #grid2 div{
+                    display: grid;
+                    grid-template-columns: 300px;
+                    text-align: center;
+                }
+            }
             </style>
     </head>
 
@@ -72,7 +106,7 @@
             </ol>
             <div>
                 <img src="pp.jpg" width="240" height="300" class="img">
-                <img src="dd.jpg" width="480" height="300" class="img">
+                <img src="dd.jpg" width="480" height="300" class="img img2">
             </div> 
         </div>
         <iframe width="640" height="360" src="https://www.youtube.com/embed/tHdum6nRTRA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
