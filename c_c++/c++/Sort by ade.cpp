@@ -18,9 +18,9 @@ int main() {
     for(int i=0;i<n;i++){
         cin>>v[i].age>>v[i].name;
     }
-   stable_sort(v.begin(),v.end(),cmp);
+    stable_sort(v.begin(),v.end(),cmp);
     for(int i=0;i<n;i++)
-    cout<<v[i].age<<' '<<v[i].name<<endl;
+    cout<<v[i].age<<' '<<v[i].name<<' /n';
     
     return 0;
 }
