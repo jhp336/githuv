@@ -11,7 +11,7 @@ int main() {
     }
     sort(a.begin(),a.end());
     int start=a[0].first;
-    for (int i=0;i<n;i++){
+    for (int i=1;i<n;i++){
         if(start<=a[i].second){
         start=a[i].first;
         cnt++;
