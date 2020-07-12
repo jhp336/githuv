@@ -3,11 +3,11 @@
 #include<string>
 using namespace std;
 int main() {
-    int t=0,sum=0;
-    vector <string> a{"20-70+50-90+100"};
-    int cnt=0;
+    int t=0,sum=0,cnt=0;
+    vector <string> a(1);
+    cin>>a.at(0);
     vector <string> s(50);
-    for(int i=0;i<15;i++){
+    for(int i=0;i<a.at(0).size();i++){
         if(a.at(0)[i]!='-'&&a.at(0)[i]!='+')
         s.at(cnt)=s.at(cnt)+a.at(0)[i];
         else {
@@ -33,8 +33,6 @@ int main() {
         sum=sum+stoi(s.at(i));
         
     }
-    for(int i=0;i<a.at(0).size();i++)
-    cout<<a.at(0)[i];
     cout<<sum;
-    
+    return 0;
 }
