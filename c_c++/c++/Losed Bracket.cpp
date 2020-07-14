@@ -16,7 +16,7 @@ int main() {
         cnt++;
         }
     }
-    int pm;
+    int pm=1;
     for(int i=0;i<s.size();i++){
         if(s.at(i)=="")
         break;
