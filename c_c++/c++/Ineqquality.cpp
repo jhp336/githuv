@@ -7,10 +7,12 @@ void swap(int *a,int *b){
     *b=tmp;
 }
 int main() {
-    int n=3;
-    vector <char> ieq={'<','>','<'};
-
-    
+    int n;
+    cin>>n;
+    vector <char> ieq(n);
+    for(int i=0;i<n;i++){
+        cin>>ieq[i];
+    }
     vector <int> max(n+1);
     vector <int> min(n+1);
     for (int i=0;i<n+1;i++){
@@ -18,7 +20,7 @@ int main() {
         max[i]=9-i;
     }
     for(int h=0;h<n;h++){
-        for(int i=0+h;i<n;i++){
+        for(int i=0;i<n;i++){
             if(ieq[i]=='>'){
                 if (min[i]<min[i+1])
                 swap(&min[i],&min[i+1]);
