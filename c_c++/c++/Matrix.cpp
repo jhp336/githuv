@@ -1,12 +1,22 @@
 #include<iostream>
 #include<vector>
-#include<string>
 using namespace std;
 int main() {
     int n,m,cnt=0;
-    n=3,m=4;
-    vector<vector<int>>va{{0,0,0,0},{0,0,1,0},{0,0,0,0}};
-    vector<vector<int>>vb{{1,0,0,1},{1,0,1,1},{1,0,0,1}};
+    cin>>n>>m;
+    vector<vector<int>>va(n,vector<int>(m));
+    vector<vector<int>>vb(n,vector<int>(m));
+    string s;
+    for(int i=0;i<n;i++){
+        cin>>s;
+        for(int j=0;j<m;j++)
+        va[i][j]=s[j];
+    }
+    for(int i=0;i<n;i++){
+        cin>>s;
+        for(int j=0;j<m;j++)
+        vb[i][j]=s[j];
+    }
     if (m<3||n<3){
         cnt=-1;
         for (int i=0;i<n;i++)
@@ -24,9 +34,10 @@ int main() {
                     else va[k][l]=0;
                 }
                 cnt++;
-                if (j==m-3)
+                if (j==m-3){
                 if (va[i][j+1]!=vb[i][j+1]||va[i][j+2]!=vb[i][j+2])
-                cnt=-1;
+                cout<<-1;
+                }
             }
         }
     }
