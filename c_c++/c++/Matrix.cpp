@@ -36,7 +36,7 @@ int main() {
                 cnt++;
                 if (j==m-3){
                 if (va[i][j+1]!=vb[i][j+1]||va[i][j+2]!=vb[i][j+2])
-                cout<<-1;
+                cnt=-1;
                 }
             }
         }
