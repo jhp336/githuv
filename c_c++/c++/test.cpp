@@ -5,8 +5,8 @@ using namespace std;
 int main() {
     int n,m,cnt=0;
     n=3,m=4;
-    vector<vector<int>>va{{0,0,0,0},{0,0,1,0},{0,0,0,0}};
-    vector<vector<int>>vb{{1,0,0,1},{1,0,1,1},{1,0,0,1}};
+    int va[n][m]{{0,0,0,0},{0,0,1,0},{0,0,0,0}};
+    int vb[n][m]{{1,0,0,1},{1,0,1,1},{1,0,0,1}};
     if (m<3||n<3){
         cnt=-1;
         for (int i=0;i<n;i++)
