@@ -2,12 +2,14 @@
 using namespace std;
 int main() {
     int a,b,c;
-    a=150,b=266,c=427;
+    cin>>a;
+    cin>>b;
+    cin>>c;
     double mul=a*b*c;
     int num[10]={0};
-    char tmp[9]={0};
+    char tmp[10]={0};
     sprintf(tmp,"%f",mul);
-    for (int i=0;i<9;i++){
+    for (int i=0;i<10;i++){
         if(tmp[i]==46)
         break;
         for(int j=0;j<10;j++){
@@ -20,5 +22,4 @@ int main() {
     for (int i=0;i<10;i++)
     cout<<num[i]<<'\n';
     return 0;
-    
 }

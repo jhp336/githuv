@@ -1,42 +1,16 @@
-#include<iostream>
+#include <iostream>
+#include <math.h>
 using namespace std;
 int main() {
-    int n,m,cnt=0;
-    cin>>n>>m;
-    char va[n][m];
-    char vb[n][m];
-    string s;
-    for(int i=0;i<n;i++){
-        cin>>s;
-        for(int j=0;j<m;j++)
-        va[i][j]=s[j];
-    }
-    for(int i=0;i<n;i++){
-        cin>>s;
-        for(int j=0;j<m;j++)
-        vb[i][j]=s[j];
-    }
-    for (int i=0;i<n-2;i++){
-        for (int j=0;j<m-2;j++){
-            if(va[i][j]!=vb[i][j]){
-                for(int k=i;k<i+3;k++){
-                    for(int l=j;l<j+3;l++){
-                        if (va[k][l]=='0')
-                        va[k][l]='1';
-                        else va[k][l]='0';
-                    }
-                }
-                cnt++;
-            }
-        }
-    }   
-    for (int i=0;i<n;i++){
-        for (int j=0;j<m;j++){
-            if (va[i][j]!=vb[i][j])
-            cnt=-1;
-        }
-    }
-    cout<<cnt;
+    int n,r,c;
+    n=2,r=3,c=1;
+    int ans=0;
+    if(r%2==0)
+    ans=pow(2,n+1)*(r/2);
+    else ans=pow(2,n+1)*(r-1/2)+2;
+    if (c%2)
+    ans=ans+2*c;
+    else ans=ans+2*(c-1)+1;
+    cout<<ans;
     return 0;
-
 }
