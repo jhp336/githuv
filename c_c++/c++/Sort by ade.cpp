@@ -20,7 +20,7 @@ int main() {
     }
     stable_sort(v.begin(),v.end(),cmp);
     for(int i=0;i<n;i++)
-    cout<<v[i].age<<' '<<v[i].name<<' /n';
+    cout<<v[i].age<<' '<<v[i].name<<'\n';
     
     return 0;
 }

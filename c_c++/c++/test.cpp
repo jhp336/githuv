@@ -1,24 +1,17 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 int main() {
-    int a,b,c;
-    a=150,b=266,c=427;
-    double mul=a*b*c;
-    int num[10]={0};
-    char tmp[9]={0};
-    sprintf(tmp,"%f",mul);
-    for (int i=0;i<9;i++){
-        if(tmp[i]==46)
-        break;
-        for(int j=0;j<10;j++){
-            if(num[j]>9)
-            num[j]=0;
-            if (tmp[i]-48==j)
-            num[j]++;
+    int ans;
+    vector <pair <int,int>> v{{0,4000},{0,4000},{0,4000}};
+    for(int i=2;i<v.size();i++){
+        if(v[v.size()-1].first==v[v.size()-i].first)
+        ans=v[v.size()-i+1].second;
+        else{
+            break;
+            ans=v[v.size()-1].second;
         }
     }
-    for (int i=0;i<10;i++)
-    cout<<num[i]<<'\n';
-    return 0;
-    
+    cout<<ans;
 }
