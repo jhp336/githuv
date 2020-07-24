@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 int main() {
-    int t=1;
-
+    int t;
+    cin>>t;
     for (int i=0;i<t;i++){
         int n,k;
-        n=3,k=1;
-    
+        cin>>k;
+        cin>>n;
         int h[k+1][n]{0};
         for(int j=0;j<n;j++){
             h[0][j]=j+1;

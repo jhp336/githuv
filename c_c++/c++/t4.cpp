@@ -1,42 +1,41 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
 int main() {
-    int n,m,cnt=0;
-    cin>>n>>m;
-    char va[n][m];
-    char vb[n][m];
+    int n,ans1=1,ans2=1;
+    n=4;
+    vector<string>v{"BRRG","GGBG","GRRR","BBRR"};
     string s;
+    
     for(int i=0;i<n;i++){
-        cin>>s;
-        for(int j=0;j<m;j++)
-        va[i][j]=s[j];
-    }
-    for(int i=0;i<n;i++){
-        cin>>s;
-        for(int j=0;j<m;j++)
-        vb[i][j]=s[j];
-    }
-    for (int i=0;i<n-2;i++){
-        for (int j=0;j<m-2;j++){
-            if(va[i][j]!=vb[i][j]){
-                for(int k=i;k<i+3;k++){
-                    for(int l=j;l<j+3;l++){
-                        if (va[k][l]=='0')
-                        va[k][l]='1';
-                        else va[k][l]='0';
-                    }
-                }
-                cnt++;
+        for(int j=0;j<n-1;j++){
+            if(v[i][j]!=v[i][j+1]){
+                ans1++;
+                ans2++;
+                if((v[i][j]=='G'&&v[i][j+1]=='R')||(v[i][j]=='R'&&v[i][j+1]=='G'))
+                ans2--;
             }
         }
-    }   
-    for (int i=0;i<n;i++){
-        for (int j=0;j<m;j++){
-            if (va[i][j]!=vb[i][j])
-            cnt=-1;
+        ans1++;
+        ans2++;
         }
+        ans1--;
+        ans2--;
+    for(int i=0;i<n-1;i++){
+        for (int j=1;j<n;j++){
+            if(v[i][j]==v[i+1][j]&&(v[i][j-1]!=v[i][j]||v[i+1][j-1]!=v[i+1][j])){
+                ans1--;
+                ans2--;
+            }
+            if(((v[i][j]=='G'&&v[i+1][j]=='R')||(v[i][j]=='R'&&v[i+1][j]=='G'))&&(v[i][j-1]=='B'||v[i+1][j-1]=='B'))
+                ans2--;
+        }
+        if(v[i][0]==v[i+1][0]){
+            ans1--;
+            ans2--;
+        }
+        if((v[i][0]=='G'&&v[i+1][0]=='R')||(v[i][0]=='R'&&v[i+1][0]=='G'))
+        ans2--;
     }
-    cout<<cnt;
-    return 0;
-
+    cout<<ans1<<' '<<ans2;
 }
