@@ -26,9 +26,8 @@ int main() {
             }
         }
     }
-    vector <int> dis(y);
+    vector <vector <int>> tmp3(y,vector<int>(x));
     for (int j=0;j<y;j++){
-        dis[j]=0;   
         for(int i=0;i<x;i++){
             int tmp=v[i].r-v2[j].r;
             if(tmp<0)
@@ -36,16 +35,19 @@ int main() {
             int tmp2=v[i].c-v2[j].c;
             if(tmp2<0)
             tmp2=tmp2*(-1);
-            vector <vector <int>> tmp3;
             tmp3[j][i]=tmp+tmp2;
-            dis[j]=dis[j]+tmp3[j][i];
         }
-        sum=sum+dis[j];
     }
-    sort(dis.begin(),dis.end());
-    sum=0;
-    for (int i=0;i<m;i++)
-    sum=sum+dis[i];
+    for(int j=0;j<x;j++){
+        int min;
+        min=tmp3[0][j];
+        for(int i=0;i<y;i++){
+            if(min>tmp3[i][j])
+            min=tmp3[i][j];
+        }
+        sum=sum+min;
+    }
+    
 
     cout<<sum;
     return 0;
