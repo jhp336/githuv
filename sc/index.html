@@ -10,13 +10,18 @@
 
     <body>
         <h1 class="header"><a href="https://starcraft.com/ko-kr/" target=" " title="Starcragt 공식 홈페이지" style="color:navy;" >STARCRAFT</a></h1>
-        <input type="button" value="night" style="margin-left: 20px" onclick="
-        document.querySelector('body').style.backgroundColor='black';
-        document.querySelector('body').style.color='white';
-        ">
-        <input type="button" value="day" onclick="
-        document.querySelector('body').style.backgroundColor='white';
-        document.querySelector('body').style.color='black';
+        <input id="night_day" type="button" value="night" onclick="
+        var target=document.querySelector('body');
+        if(this.value==='night'){
+            target.style.backgroundColor='black';
+            target.style.color='white';
+            this.value='day';
+        }
+        else{
+            target.style.backgroundColor='white';
+            target.style.color='black';
+            this.value='night';
+        }
         ">
         <div id="grid">
             <ol>
@@ -35,6 +40,18 @@
             <p>25세기 우주를 배경으로 인류의 후손인 테란, 외계 생명체인 저그, 프로토스 세 종족이 등장한다.</p>
             <br><br><br>
         </strong>
-
+        <input id="night_day" type="button" value="night" onclick="
+        var target=document.querySelector('body');
+        if(this.value==='night'){
+            target.style.backgroundColor='black';
+            target.style.color='white';
+            this.value='day';
+        }
+        else{
+            target.style.backgroundColor='white';
+            target.style.color='black';
+            this.value='night';
+        }
+        ">
     </body>
 </html>
