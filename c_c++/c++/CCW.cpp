@@ -9,9 +9,11 @@ int kc(int a,int b){
     else return 0;
 }
 int main() {
-    vector <pair<int,int>> v{{10000,10000},{-10000,0},{0,0}};        
+    vector <pair<int,int>> v(3);        
     double k[2];
-    
+    for(int i=0;i<3;i++){
+        cin>>v[i].first>>v[i].second;
+    }
     for(int i=0;i<2;i++){
         if((v[i].first==v[i+1].first)&&(v[i].second==v[i+1].second)){
             cout<<"0";
