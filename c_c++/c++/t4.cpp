@@ -2,40 +2,52 @@
 #include <vector>
 using namespace std;
 int main() {
-    int n,ans1=1,ans2=1;
-    n=4;
-    vector<string>v{"BRRG","GGBG","GRRR","BBRR"};
-    string s;
-    
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n-1;j++){
-            if(v[i][j]!=v[i][j+1]){
-                ans1++;
-                ans2++;
-                if((v[i][j]=='G'&&v[i][j+1]=='R')||(v[i][j]=='R'&&v[i][j+1]=='G'))
-                ans2--;
+    int t;
+    cin>>t;
+    for (int i=0;i<t;i++){
+        int m,n,k;
+        cin>>m>>n>>k;
+        vector <vector<int>> v(n,vector<int>(m,0));
+        for(int j=0;j<k;j++){
+            int a,b;
+            cin>>a>>b;
+            v[b][a]=1;
+        }
+        int cnt=0,ch=0;
+        for(int j=0;j<n;j++){
+            ch=0;
+            for(int l=0;l<m;l++){
+                if(j==0){
+                    if(ch==0&&v[j][l]==1){
+                        cnt++;
+                        ch=1;
+                    }
+                    else if(v[j][l]==0){
+                        if(l<m-1&&l>0){
+                        if(v[j+1][l-1]==1&&v[j+1][l]==1&&v[j+1][l+1]==1)
+                        ch=1;
+                        else ch=0;
+                        }
+                        else if(l==0)
+                    }
+                }
+                else {
+                    if(ch==0&&v[j][l]==1&&v[j-1][l]==0){
+                        cnt++;
+                        ch=1;
+                    }
+                    else if(v[j][l]==0){
+                        if(j<n-1&&l<m-1&&l>0){
+                        if(v[j+1][l-1]==1&&v[j+1][l]==1&&v[j+1][l+1]==1)
+                        ch=1;
+                        else ch=0;
+                        }
+                    }
+                    else ch=1;
+                }
             }
         }
-        ans1++;
-        ans2++;
-        }
-        ans1--;
-        ans2--;
-    for(int i=0;i<n-1;i++){
-        for (int j=1;j<n;j++){
-            if(v[i][j]==v[i+1][j]&&(v[i][j-1]!=v[i][j]||v[i+1][j-1]!=v[i+1][j])){
-                ans1--;
-                ans2--;
-            }
-            if(((v[i][j]=='G'&&v[i+1][j]=='R')||(v[i][j]=='R'&&v[i+1][j]=='G'))&&(v[i][j-1]=='B'||v[i+1][j-1]=='B'))
-                ans2--;
-        }
-        if(v[i][0]==v[i+1][0]){
-            ans1--;
-            ans2--;
-        }
-        if((v[i][0]=='G'&&v[i+1][0]=='R')||(v[i][0]=='R'&&v[i+1][0]=='G'))
-        ans2--;
+        cout<<cnt<<'\n';
     }
-    cout<<ans1<<' '<<ans2;
+    return 0;
 }

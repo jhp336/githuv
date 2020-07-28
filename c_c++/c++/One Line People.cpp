@@ -2,9 +2,13 @@
 #include<vector>
 using namespace std;
 int main() {
-    int n=6;
-    int left[n]={3,2,0,0,1,0};
+    int n;
+    cin>>n;
+    int left[n];
     vector <int> v;
+    for(int i=0;i<n;i++){
+        cin>>left[i];
+    }
     for(int i=n;i>0;i--){
         if(i==n)
         v.push_back(i);

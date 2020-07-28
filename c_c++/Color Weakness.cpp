@@ -1,48 +1,50 @@
 #include <iostream>
-#include <vector>
 using namespace std;
+char tmp;
+void pick(char s[102][102],int i,int j){
+    if(s[i][j]!=tmp)
+    return ;
+    s[i][j]='X';
+    pick(s,i,j-1);
+    pick(s,i+1,j);
+    pick(s,i,j+1);
+    pick(s,i-1,j);
+}
 int main() {
-    int n,ans1=1,ans2=1;
+    int n,cnt=0,cnt2=0;
     cin>>n;
-    vector<string>v;
-    string s;
-    for(int i=0;i<n;i++){
-        cin>>s;
-        v.push_back(s);
+    char s[102][102]={' ', };
+    char s2[102][102]={' ', };
+    for(int i=1;i<n+1;i++){
+        for(int j=1;j<n+1;j++){
+            char a;
+            cin>>a;
+            s[i][j]=a;
+            if(a=='G')
+            a='R';
+            s2[i][j]=a;
+        }
+        
     }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n-1;j++){
-            if(v[i][j]!=v[i][j+1]){
-                ans1++;
-                ans2++;
-                if((v[i][j]=='G'&&v[i][j+1]=='R')||(v[i][j]=='R'&&v[i][j+1]=='G'))
-                ans2--;
+    for(int i=1;i<n+1;i++){
+        for(int j=1;j<n+1;j++){
+            if(s[i][j]!='X'){
+                tmp=s[i][j];
+                pick(s,i,j);
+                cnt++;
             }
         }
-        ans1++;
-        ans2++;
-        }
-        ans1--;
-        ans2--;
-    for(int i=0;i<n-1;i++){
-        for (int j=1;j<n;j++){
-            if(v[i][j]==v[i+1][j]&&(v[i][j-1]!=v[i][j]||v[i+1][j-1]!=v[i+1][j])){
-                if(i>0&&v[i-1][j-1]==v[i][j]==v[i+1][j-1]){
-                ans1++;
-                ans2++;
-                }
-                ans1--;
-                ans2--;
-            }
-            if(((v[i][j]=='G'&&v[i+1][j]=='R')||(v[i][j]=='R'&&v[i+1][j]=='G'))&&(v[i][j-1]=='B'||v[i+1][j-1]=='B'))
-                ans2--;
-        }
-        if(v[i][0]==v[i+1][0]){
-            ans1--;
-            ans2--;
-        }
-        if((v[i][0]=='G'&&v[i+1][0]=='R')||(v[i][0]=='R'&&v[i+1][0]=='G'))
-        ans2--;
     }
-    cout<<ans1<<' '<<ans2;
+    for(int i=1;i<n+1;i++){
+        for(int j=1;j<n+1;j++){
+            if(s2[i][j]!='X'){
+                tmp=s2[i][j];
+                pick(s2,i,j);
+                cnt2++;
+            }
+        }
+    }
+    
+    cout<<cnt<<' '<<cnt2;
+    return 0;
 }
