@@ -39,5 +39,4 @@ int main() {
         cout<<ans[i]<<'\n';
     }
     return 0;
-    
 }

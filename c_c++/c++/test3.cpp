@@ -1,24 +1,30 @@
 #include <iostream>
-using namespace std;
-int main() {
-    int t=1;
+#include <queue>
 
-    for (int i=0;i<t;i++){
-        int n,k;
-        n=3,k=1;
-    
-        int h[k+1][n]{0};
-        for(int j=0;j<n;j++){
-            h[0][j]=j+1;
+using namespace std;
+
+void solution(int n) {
+    priority_queue <int> pq;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        if (x != 0) {
+            pq.push(x);
+            continue;
         }
-        for(int j=1;j<k+1;j++){
-             int sum=0;
-            for(int l=0;l<n;l++){
-                sum=sum+h[j-1][l];
-                h[j][l]=sum;
-            }
-        } 
-        cout<<h[k][n-1]<<'\n';
+        if (pq.size() == 0) {
+            cout << 0 << endl;
+        } else {
+            cout << pq.top() << endl;
+            pq.pop();
+        }
     }
-    return 0;
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    solution(n);
 }
