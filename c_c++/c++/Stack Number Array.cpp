@@ -6,13 +6,18 @@ int main() {
     cin.tie(NULL);
     ios_base::sync_with_stdio;
     int n,cnt=0;
-    n=5;
-    int arr[n]{1,2,5,4,3};
-    
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    cin>>arr[i];
     stack<int>s;
     queue<string>q;;
     int i=1;
     while(i<n+1){
+        if(s.empty()){
+            s.push(i);
+            q.push("+\n");
+        }
         if(s.top()==arr[cnt]){
             q.push("-\n");
             s.pop();

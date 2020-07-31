@@ -1,52 +1,47 @@
 #include <iostream>
+#include <queue>
+#include <map>
 using namespace std;
-char tmp;
-void pick(string s[102],int i,int j){
-    if(s[i][j]!=tmp)
-    return ;
-    s[i][j]='X';
-    pick(s,i,j-1);
-    pick(s,i+1,j);
-    pick(s,i,j+1);
-    pick(s,i-1,j);
-}
 int main() {
-    int n,cnt=0,cnt2=0;
-    n=5;
-    string s[102]={" "," RRRBB "," GGBBB "," BBBRR "," BBRRR "," RRRRR "," "};
-    string s2[102]={" "," "};
-    string s3[102]={"", };
-    for(int i=1;i<n+1;i++){
-        for (int j=1;j<n+1;j++)
-        s3[i][j]='t';
-    }
-    for(int i=0;i<n+2;i++){
-        s2[i].assign(s[i]);
-    }
-    for(int i=1;i<n+1;i++){
-        for(int j=1;j<n+1;j++){
-            if(s[i][j]!='X'){
-                tmp=s[i][j];
-                pick(s,i,j);
-                cnt++;
+    cin.tie(NULL);
+    ios_base::sync_with_stdio;
+    int n=;
+
+    queue<string>q;
+    map <int,int> arr{{1,4},{2,3},{3,6},{4,8},{5,7},{6,5},{7,2},{8,1},};
+    
+        int cnt,tmp;
+        for(int i=1;i<n+1;i++){
+            if(i!=arr.begin()->second){
+                q.push("+\n");
+                cnt=0;
+            } 
+            else{
+                arr.erase(arr.begin());
+                if(cnt==0){
+                    q.push("+\n-\n");
+                    cnt=1;
+                    tmp=i;
+                }
+                else    q.push("-\n");
+                if(tmp!=8&&tmp<arr.begin()->second)
+                i=tmp;
+                else if(tmp!=8&&tmp>arr.begin()->second)
+                i=i-2;
             }
         }
-    } 
-    for(int i=1;i<n+1;i++){
-        for(int j=1;j<n+1;j++){
-            if(s2[i][j]=='G')
-            s2[i][j]='R';
+        while(!arr.empty()){
+            q.push("-\n");
+            arr.erase(arr.begin());
+            else {
+            cout<<"NO";
+            return 0;
         }
-    }
-    for(int i=1;i<n+1;i++){
-        for(int j=1;j<n+1;j++){
-            if(s2[i][j]!='X'){
-                tmp=s2[i][j];
-                pick(s2,i,j);
-                cnt2++;
-            }
+        }    
+        int r=q.size();
+        for(int i=0;i<r;i++){
+            cout<<q.front();
+            q.pop();
         }
-    } 
-    cout<<cnt<<' '<<cnt2;
     return 0;
 }
