@@ -5,39 +5,32 @@ using namespace std;
 int main() {
     cin.tie(NULL);
     ios_base::sync_with_stdio;
-    int n,cnt=0;
+    int n;
     cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++)
-    cin>>arr[i];
-    stack<int>s;
-    queue<string>q;;
-    int i=1;
-    while(i<n+1){
-        if(s.empty()){
-            s.push(i);
-            q.push("+\n");
-        }
-        if(s.top()==arr[cnt]){
-            q.push("-\n");
-            s.pop();
-            cnt++;
-            if(i==n)
-            break;
-        }
-        else {
-            i++;
-            s.push(i);
-            q.push("+\n");
-        }
+    queue<int>arr;
+    for(int i=0;i<n;i++){
+        int a;
+        cin>>a;
+        arr.push(a);
     }
-    while(!s.empty()){
-        if(s.top()==arr[cnt]){
-            q.push("-\n");
-            s.pop();
-            cnt++;
+    stack<int>s;
+    queue<string>q;
+    int i=1;
+    while(!arr.empty()){
+        if(s.empty()||s.top()!=arr.front()){
+            s.push(i);
+            q.push("+\n");
         }
-        else {
+        if(s.top()==arr.front()){
+            q.push("-\n");
+            arr.pop();
+            s.pop();
+            if(s.empty()||s.top()!=arr.front())
+            i++;
+            
+        }
+        else i++;
+        if(i>n+1){
             cout<<"NO";
             return 0;
         }
@@ -47,4 +40,5 @@ int main() {
         cout<<q.front();
         q.pop();
     }
+    return 0;
 }
