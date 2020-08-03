@@ -1,34 +1,23 @@
-#include<vector>
+#include <set>
 #include <iostream>
 using namespace std;
-vector <int> v;
-int cnt=0;
-void pick(int a[27][27],int i,int j){
-    if(a[i][j]==0)
-    return ;
-    a[i][j]=0;
-    v[cnt-1]++;
-    pick(a,i-1,j);
-    pick(a,i,j-1);
-    pick(a,i+1,j);
-    pick(a,i,j+1);
-}
-int main() {
-    int n=3;
-    int a[27][27]{{0,0,0,0,0},{0,1,0,0,0},{0,0,1,1,0},{0,0,1,0,0},{0,0,0,0,0}};
-    
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            if(a[i+1][j+1]==1){
-                v.push_back(0);
-                cnt++;
-                pick(a,i+1,j+1);
-            }
-        }
-    }
-    cout<<cnt<<'\n';
-    for(int i=0;i<v.size();i++)
-    cout<<v[i]<<'\n';
 
+int main() {
+    cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    int n,x[4]{50,0,30,0};
+    n=4;
+    multiset<int>s;
+    multiset<int>::iterator it;
+    for(int i=0;i<n;i++){
+        if(x[i]>0)
+        s.insert(x[i]);
+        else if(!s.empty()){
+            it=s.end();
+            cout<<*--it<<'\n';
+            s.erase(it);
+        }
+        else cout<<'0'<<'\n';
+    }
     return 0;
 }
