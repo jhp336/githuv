@@ -35,8 +35,15 @@ void cut(int arr[64][64],int x,int y,int n){
 }
 int main() {
     int n;
-    n=8;
-    int arr[64][64]{{1,1,1,1,0,0,0,0},{1,1,1,1,0,0,0,0},{0,0,0,1,1,1,0,0},{0,0,0,1,1,1,0,0},{1,1,1,1,0,0,0,0},{1,1,1,1,0,0,0,0},{1,1,1,1,0,0,1,1},{1,1,1,1,0,0,1,1}};
+    cin>>n;
+    int arr[64][64];
+    for(int i=0;i<n;i++){
+        string s;
+        cin>>s;
+        for(int j=0;j<n;j++){
+            arr[i][j]=s[j]-48;
+        }
+    }
     cut(arr,0,0,n);
     while(!q.empty()){
         cout<<q.front();

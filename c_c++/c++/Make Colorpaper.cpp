@@ -17,12 +17,12 @@ void cut(vector <vector<int>>v,int x,int y,int tmp){
             break;
         }
         if(br==1){
-                if(chk==0)
-                cnt1++;
-                else 
-                cnt2++;
-                break;
-            }
+            if(chk==0)
+            cnt1++;
+            else 
+            cnt2++;
+            break;
+        }
         tmp=tmp/2;
         cut(v,x,y,tmp);
         cnt++;
