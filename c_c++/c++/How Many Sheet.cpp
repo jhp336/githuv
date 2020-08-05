@@ -2,7 +2,8 @@
 #include <vector>
 using namespace std;
 int cnt0=0,cnt1=0,cnt2=0;
-void cut(vector<vector<int>>arr,int x,int y,int n){
+vector<vector<int>> arr(2187,vector<int>(2187));
+void cut(int x,int y,int n){
     int chk=arr[y][x];
     int ch=1;
     while(n>0){
@@ -27,19 +28,22 @@ void cut(vector<vector<int>>arr,int x,int y,int n){
         n=n/3;
         for(int i=0;i<3;i++){
             for(int j=0;j<3;j++){
-                cut(arr,x+n*j,y+n*i,n);
+                cut(x+n*j,y+n*i,n);
             }
         }
         break;
     }
 }
 int main() {
+    cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
     int n;
-    n=9;
-    int m=2187;
-    vector<vector<int>> arr{{0,0,0,1,1,1,-1,-1,-1},{0,0,0,1,1,1,-1,-1,-1},{0,0,0,1,1,1,-1,-1,-1},{1,1,1,0,0,0,0,0,0},{1,1,1,0,0,0,0,0,0},{1,1,1,0,0,0,0,0,0},{0,1,-1,0,1,-1,0,1,-1},{0,-1,1,0,1,-1,0,1,-1},{0,1,-1,1,0,-1,0,1,-1}};
-    
-    cut(arr,0,0,n);
+    cin>>n;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++)
+        cin>>arr[i][j];
+    }
+    cut(0,0,n);
     cout<<cnt0<<'\n'<<cnt1<<'\n'<<cnt2;
     return 0;
 }
