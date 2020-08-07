@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>THREE BLOOD WAR</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <h1 class="header"><a href="https://starcraft.com/ko-kr/" target=" " title="Starcragt 공식 홈페이지" style="color:navy;" >STARCRAFT</a></h1>
+            <ol>
+                <li><a onclick="
+                        fetch('zerg').then(function(response){
+                            response.text().then(function(text){
+                                document.querySelector('article').innerHTML=text;
+                            })
+                        })
+                    ">Zerg(저그)</a></li>
+                <li><a href="terran.html"><img src="te.png">Terran(테란)</a></li>
+                <li><a href="protoss.html"><img src="pr.png">Protoss(프로토스)<a></li>
+            </ol>
+                <img src="ss.jpg" width="240"height="300">
+                <iframe width="420" height="300" src="https://www.youtube.com/embed/icvheC_XuBM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <article>
+
+        </article>
+    </body>
+</html>
