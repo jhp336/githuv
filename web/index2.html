@@ -38,7 +38,7 @@
         var tags="";
         for(i=0;i<item.length;i++){
           var it=item[i];
-          var tag='<li><a href="#!'+it+'"onclick="fetchpage(\''+it+'\')">'+it+'</a></li>'
+          var tag=`<a href="#!${it}"onclick="fetchpage('${it}')"><li>${it}</li></a>`
           tags=tags+tag;
         }
         document.querySelector('#nav').innerHTML=tags;

@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
     <body>
+        
         <input type="button"value="fetch"onclick="
+        /*
         fetch('1.html').then(function(response) {
             response.text().then(function(text){
-                alert(text);
+                document.querySelector('span').innerHTML=text;
+            })
+        })
+        */
+        
+        fetch('1.html').then(function(response) {
+            response.text().then(function(text){
+                document.querySelector('span').innerHTML=text;
             })
         })
         ">
+        <article>
+
+        </article>
+        <span>
+
+        </span>
     </body>
 </html>
