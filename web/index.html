@@ -45,13 +45,13 @@
     FB.login(function(res){
       console.log('login=>',res);
       checkLoginStatus(res);
-    })
+    });
   }
   else{ 
     FB.logout(function(res){
       console.log('logout=>',res);
       checkLoginStatus(res);
-    })
+    });
   }
   ">,<span id="name"></span>
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
