@@ -7,25 +7,28 @@
   <script src="colors.js"></script>
   <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
   <script>
-     window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1023818741381356',
-      cookie     : true,                     // Enable cookies to allow the server to access the session.
-      xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : 'v8.0'           // Use this Graph API version for this call.
-    });
-
-    var callback=function(response) {   
+    var checkLoginStatus=function(response) {   
       console.log(response);
       //statusChangeCallback(response);   
       if(response.status==='connected'){
         document.querySelector('#authBtn').value='Logout';
-        }
-        else{
-          document.querySelector('#authBtn').value='Login';
-        }
+        FB.api('/me',function(res){
+          document.querySelector('#name').innerHTML='Welcome! '+res.name;
+        });
+      }
+      else{
+        document.querySelector('#authBtn').value='Login';
+        document.querySelector('#name').innerHTML=' ';
+      }
     }     
-    FB.getLoginStatus(callback);
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1023818741381356',
+        cookie     : true,                     // Enable cookies to allow the server to access the session.
+        xfbml      : true,                     // Parse social plugins on this webpage.
+        version    : 'v8.0'           // Use this Graph API version for this call.
+      });
+      FB.getLoginStatus(checkLoginStatus);
   };
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -41,14 +44,16 @@
   if(this.value==='Login'){
     FB.login(function(res){
       console.log('login=>',res);
+      checkLoginStatus(res);
     })
   }
   else{ 
     FB.logout(function(res){
       console.log('logout=>',res);
+      checkLoginStatus(res);
     })
   }
-  ">
+  ">,<span id="name"></span>
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
