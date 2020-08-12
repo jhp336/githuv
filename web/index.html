@@ -6,9 +6,40 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="colors.js"></script>
   <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
+  <script>
+     window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1023818741381356',
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+      xfbml      : true,                     // Parse social plugins on this webpage.
+      version    : 'v8.0'           // Use this Graph API version for this call.
+    });
 
+    var callback=function(response) {   
+      console.log(response);
+      //statusChangeCallback(response);   
+      if(response.status==='connected'){
+        document.querySelector('#authBtn').value='Logout';
+        }
+        else{
+          document.querySelector('#authBtn').value='Login';
+        }
+    }     
+    FB.getLoginStatus(callback);
+  };
+    (function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(d.getElementById(id)) 
+      return ;
+      js=d.createElement(s);
+      js.id=id;
+      js.src="https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }(document,'script','facebook-jssdk'))
+  </script>
 </head>
 <body>
+  <input type="button" id="authBtn" value="checking...">
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
