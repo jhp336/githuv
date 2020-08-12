@@ -37,7 +37,18 @@
   </script>
 </head>
 <body>
-  <input type="button" id="authBtn" value="checking...">
+  <input type="button" id="authBtn" value="checking..." onclick="
+  if(this.value==='Login'){
+    FB.login(function(res){
+      console.log('login=>',res);
+    })
+  }
+  else{ 
+    FB.logout(function(res){
+      console.log('logout=>',res);
+    })
+  }
+  ">
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
