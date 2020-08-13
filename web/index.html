@@ -6,7 +6,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="colors.js"></script>
   <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id"
+  content="512868300234-gmlbsdhunt0rf4pdb25hggoikcnqdemi.apps.googleusercontent.com">
+
   <script>
+    //fblogin
     var checkLoginStatus=function(response) {   
       console.log(response);
       //statusChangeCallback(response);   
@@ -36,13 +41,19 @@
     js = d.createElement(s); js.id = id;
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  </script>
+  }(document, 'script', 'facebook-jssdk')); //fblogin
+  </script> 
+  
+  
   <meta name="google-site-verification" content="Po8wJ8KOWArozKFrp0L2NnW4DoPFJIHXDAV5Kqkzvfo" />  
 </head>
 <body>
-  <input type="button" id="authBtn" value="checking..." onclick="
-  if(this.value==='Login'){
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v8.0&appId=1023818741381356&autoLogAppEvents=1" 
+  nonce="0k8Rl4Cm"></script>
+  <div class="fb-login-button" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width="" onclick="
+    if(this.value==='Login'){
     FB.login(function(res){
       console.log('login=>',res);
       checkLoginStatus(res);
@@ -54,7 +65,8 @@
       checkLoginStatus(res);
     });
   }
-  "><span id="name"></span>
+  "></div><span id="name"></span>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
