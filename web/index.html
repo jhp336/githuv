@@ -1,13 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <style>
-    input{
-      padding:9px 43.5px 9px 43px;
-      box-shadow: 1px 1px 1px 0.8px rgb(239, 236, 236);
-      border: 0px outset rgb(249, 243, 243);
-    }
-  </style>
+  <link rel="stylesheet" href="inputstyle.css"/>
   <title>WEB1 - Welcome</title>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -50,8 +44,16 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk')); //fblogin
   </script> 
-  
   <meta name="google-site-verification" content="Po8wJ8KOWArozKFrp0L2NnW4DoPFJIHXDAV5Kqkzvfo" />  
+  <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); 
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail());
+    }
+  </script>
 </head>
 <body>
   <input type="button" id="authBtn" value="checking..." onclick="
