@@ -7,7 +7,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="colors.js"></script>
   <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
-  
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
   <script>
     //fblogin
     var checkLoginStatus=function(response) {   
@@ -42,11 +43,11 @@
   }(document, 'script', 'facebook-jssdk')); //fblogin
 
   function checkLoginStatus2(){
-    var gBtn=documnet.querySelector('#gBtn');
+    var gBtn=document.querySelector('#gBtn');
     if(gauth.isSignedIn.get()){
       console.log('Google Loginned');
       gBtn.value='Google Logout';
-      document.querySelector('#name2').innerHTML='  Welcome!'+googleUser.getBasicProfile().getName();
+      document.querySelector('#name2').innerHTML='  Welcome!'+gauth.currentUser.get();
     }
     else {
       console.log('Google Logouted');
@@ -61,10 +62,10 @@
         client_id:'512868300234-gmlbsdhunt0rf4pdb25hggoikcnqdemi.apps.googleusercontent.com'
       })
       gauth.then(function(){
-        console.log('auth2');
+        console.log('success');
         checkLoginStatus2();
       }, function(){
-
+        console.log('error');
       });
     });
   }
@@ -136,7 +137,6 @@
       })
     });  
     </script>
-    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
   
 </body>
