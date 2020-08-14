@@ -44,17 +44,17 @@
 
   function checkLoginStatus2(){
     var gBtn=document.querySelector('#gBtn');
-    var name=document.querySelector('#name2').innerHTML;
+    var name=document.querySelector('#name2');
     if(gauth.isSignedIn.get()){
       console.log('Google Loginned');
       gBtn.value='Google Logout';
       var prof=gauth.currentUser.get().getBasicProfile();
-      name='  Welcome!'+prof;
+      name.innerHTML='  Welcome!'+prof;
     }
     else {
       console.log('Google Logouted');
       gBtn.value='Google Login';
-      name=' ';
+      name.innerHTML=' ';
     }
   }
 
