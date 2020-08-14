@@ -7,23 +7,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="colors.js"></script>
   <script src="https://polyfill.io/v3/polyfill.js?features=fetch"></script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id"
-  content="512868300234-gmlbsdhunt0rf4pdb25hggoikcnqdemi.apps.googleusercontent.com">
-
+  
   <script>
     //fblogin
     var checkLoginStatus=function(response) {   
       console.log(response);
       //statusChangeCallback(response);   
       if(response.status==='connected'){
-        document.querySelector('#authBtn').value='Logout';
+        document.querySelector('#authBtn').value='Facebook Logout';
         FB.api('/me',function(res){
-          document.querySelector('#name').innerHTML='Welcome! '+res.name;
+          document.querySelector('#name').innerHTML='  Welcome! '+res.name;
         });
       }
       else{
-        document.querySelector('#authBtn').value='Login';
+        document.querySelector('#authBtn').value='Facebook Login';
         document.querySelector('#name').innerHTML=' ';
       }
     }     
@@ -43,21 +40,40 @@
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk')); //fblogin
-  </script> 
-  <meta name="google-site-verification" content="Po8wJ8KOWArozKFrp0L2NnW4DoPFJIHXDAV5Kqkzvfo" />  
-  <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); 
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail());
+
+  function checkLoginStatus2(){
+    var gBtn=documnet.querySelector('#gBtn');
+    if(gauth.isSignedIn.get()){
+      console.log('Google Loginned');
+      gBtn.value='Google Logout';
+      document.querySelector('#name2').innerHTML='  Welcome!'+googleUser.getBasicProfile().getName();
     }
-  </script>
+    else {
+      console.log('Google Logouted');
+      gBtn.value='Google Login';
+      document.querySelector('#name2').innerHTML=' ';
+    }
+  }
+
+  function init(){
+    gapi.load('auth2',function(){
+      window.gauth = gapi.auth2.init({
+        client_id:'512868300234-gmlbsdhunt0rf4pdb25hggoikcnqdemi.apps.googleusercontent.com'
+      })
+      gauth.then(function(){
+        console.log('auth2');
+        checkLoginStatus2();
+      }, function(){
+
+      });
+    });
+  }
+  </script> 
+  
 </head>
 <body>
-  <input type="button" id="authBtn" value="checking..." onclick="
-  if(this.value==='Login'){
+  <input class="btn" type="button" id="authBtn" value="checking..." onclick="
+  if(this.value==='Facebook Login'){
     FB.login(function(res){
       console.log('login=>',res);
       checkLoginStatus(res);
@@ -70,7 +86,18 @@
     });
   }
   "><span id="name"></span>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <input class="btn" type="button" id="gBtn" value="checking..." onclick="
+  if(this.value==='Google Login'){
+    gauth.signIn().then(function(){
+      checkLoginStatus2();
+    });
+  }
+  else{
+    gauth.signOut().then(function(){
+      checkLoginStatus2();
+    });
+  }
+  "><span id="name2"></span>
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
@@ -107,7 +134,10 @@
         }
         document.querySelector('#nav').innerHTML=tags;
       })
-    });
-  </script>
+    });  
+    </script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+  
 </body>
 </html>
