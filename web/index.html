@@ -49,7 +49,7 @@
       console.log('Google Loginned');
       gBtn.value='Google Logout';
       var prof=gauth.currentUser.get().getBasicProfile();
-      name.innerHTML='  Welcome!'+prof;
+      name.innerHTML='  Welcome!'+prof.getName();
     }
     else {
       console.log('Google Logouted');
