@@ -80,12 +80,14 @@
     FB.login(function(res){
       console.log('login=>',res);
       checkLoginStatus(res);
+      handlecheck();
     });
   }
   else{ 
     FB.logout(function(res){
       console.log('logout=>',res);
       checkLoginStatus(res);
+      handlecheck();
     });
   }
   "><span id="name"></span>
@@ -102,9 +104,10 @@
   }
   "><span id="name2"></span>
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
-  <input id="night_day" type="button" value="night" onclick="
+  <span id="nn"><input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
-  ">
+  "></span>
+  
   <ol id="nav">
     
   </ol>
@@ -113,13 +116,21 @@
 
   </article>
   <script>
+    var handlecheck=function(){
+      console.log('handlecheck');
+      FB.getLoginStatus(res);      
+      var mm='<link rel="stylesheet" href="loginstyle.css"/>'
+      if(res.status==='connected')
+        console.log('btn should be disappeared');
+        document.querySelector('#nn').innerHTML=mm;
+    };
     function fetchpage(name) {
       fetch(name).then(function(response) {
             response.text().then(function(text){
                 document.querySelector('article').innerHTML=text;
-            })
-      })
-    }
+            });
+      });
+    };
     if(location.hash){
       fetchpage(location.hash.substr(2));
     } else{
@@ -136,8 +147,9 @@
           tags=tags+tag;
         }
         document.querySelector('#nav').innerHTML=tags;
-      })
-    });  
+      });
+    });
+    
     </script>
 
   
