@@ -82,6 +82,9 @@
     FB.login(function(res){
       console.log('login=>',res);
       checkLoginStatus(res);
+      if(res.status==='connected'){
+      document.querySelector('#logincheck').innerHTML='<link rel=&quot;stylesheet href=&quot;loginstyle.css&quot;/>';
+      } 
     });
   }
   else{ 
@@ -90,12 +93,8 @@
       checkLoginStatus(res);
     });  
   }
-  FB.getLoginStatus(function(res){
-      console.log(res);
-      if(res.status==='connected'){
-      document.querySelector('#logincheck').innerHTML='<link rel=&quot;stylesheet href=&quot;loginstyle.css&quot;/>';
-      }
-    }); 
+ 
+      
   "><span id="name"></span>
   <input class="btn" type="button" id="gBtn" value="checking..." onclick="
   if(this.value==='Google Login'){
