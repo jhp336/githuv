@@ -76,14 +76,7 @@
 </head>
 <body>
   <span id="logincheck"></span>
-  <script>
-    FB.getLoginStatus(function(res){
-      console.log(res);
-      if(res.status==='connected'){
-      document.querySelector('#logincheck').innerHTML='<link rel="stylesheet" href="loginstyle.css"/>';
-      }
-    }); 
-  </script>
+  
   <input class="btn" type="button" id="authBtn" value="checking..." onclick="
   if(this.value==='Facebook Login'){
     FB.login(function(res){
@@ -95,9 +88,14 @@
     FB.logout(function(res){
       console.log('logout=>',res);
       checkLoginStatus(res);
-    });
-    
+    });  
   }
+  FB.getLoginStatus(function(res){
+      console.log(res);
+      if(res.status==='connected'){
+      document.querySelector('#logincheck').innerHTML='<link rel=&quot;stylesheet href=&quot;loginstyle.css&quot;/>';
+      }
+    }); 
   "><span id="name"></span>
   <input class="btn" type="button" id="gBtn" value="checking..." onclick="
   if(this.value==='Google Login'){
