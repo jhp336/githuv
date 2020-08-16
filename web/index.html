@@ -78,6 +78,7 @@
   <span id="logincheck"></span>
   <script>
     FB.getLoginStatus(function(res){
+      console.log(res);
       if(res.status==='connected'){
       document.querySelector('#logincheck').innerHTML='<link rel="stylesheet" href="loginstyle.css"/>';
       }
