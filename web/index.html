@@ -87,6 +87,11 @@
       console.log('logout=>',res);
       checkLoginStatus(res);
     });
+    FB.getLoginStatus(function (res) {
+        if(res.status==='connected'){
+          document.querySelector('#authBtn').innerHTML='<input type=\'hidden\'>';
+      }
+    });
   }
   "><span id="name"></span>
   <input class="btn" type="button" id="gBtn" value="checking..." onclick="
