@@ -101,7 +101,7 @@
   if(this.value==='Google Login'){
     gauth.signIn().then(function(){
       checkLoginStatus2();
-      if(gauth.isSignedIn().get()){
+      if(gauth.isSignedIn.get()){
         document.querySelector('#logincheck').innerHTML='<link rel=&quot;stylesheet&quot; href=&quot;loginstyle2.css&quot;/>';
       }
     });
