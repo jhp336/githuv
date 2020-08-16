@@ -91,6 +91,7 @@
     FB.logout(function(res){
       console.log('logout=>',res);
       checkLoginStatus(res);
+      document.querySelector('#logincheck').innerHTML='<link rel=&quot;stylesheet&quot; href=&quot;inputstyle.css&quot;/>';     
     });  
   }
  
@@ -100,16 +101,18 @@
   if(this.value==='Google Login'){
     gauth.signIn().then(function(){
       checkLoginStatus2();
+      if(gauth.isSignedIn().get()){
+        document.querySelector('#logincheck').innerHTML='<link rel=&quot;stylesheet&quot; href=&quot;loginstyle2.css&quot;/>';
+      }
     });
   }
   else{
     gauth.signOut().then(function(){
       checkLoginStatus2();
+      document.querySelector('#logincheck').innerHTML='<link rel=&quot;stylesheet&quot; href=&quot;inputstyle.css&quot;/>';
     });
   }
-  "><span id="name2">
-
-  </span>
+  "><span id="name2"></span>
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
   <span id="nn"><input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
