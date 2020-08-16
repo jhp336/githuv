@@ -75,6 +75,14 @@
   
 </head>
 <body>
+  <span id="logincheck"></span>
+  <script>
+    FB.getLoginStatus(function(res){
+      if(res.status==='connected'){
+      document.querySelector('#logincheck').innerHTML='<link rel="stylesheet" href="loginstyle.css"/>';
+      }
+    }); 
+  </script>
   <input class="btn" type="button" id="authBtn" value="checking..." onclick="
   if(this.value==='Facebook Login'){
     FB.login(function(res){
@@ -87,11 +95,7 @@
       console.log('logout=>',res);
       checkLoginStatus(res);
     });
-    FB.getLoginStatus(function (res) {
-        if(res.status==='connected'){
-          document.querySelector('#authBtn').innerHTML='<input type=\'hidden\'>';
-      }
-    });
+    
   }
   "><span id="name"></span>
   <input class="btn" type="button" id="gBtn" value="checking..." onclick="
@@ -105,7 +109,9 @@
       checkLoginStatus2();
     });
   }
-  "><span id="name2"></span>
+  "><span id="name2">
+
+  </span>
   <h1><a href="#!Welcome" onclick="fetchpage('Welcome')">WEB</a></h1>
   <span id="nn"><input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
