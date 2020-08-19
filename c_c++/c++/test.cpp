@@ -1,47 +1,38 @@
 #include <iostream>
-#include <time.h>
-#include <set>
+#include<vector>
+#include <algorithm>
 using namespace std;
+bool cmp(pair<int,int>a,pair<int,int> b){
+    if(a.first==b.first)
+    return a.second>b.second;
+    else return a.first>b.first;
+}
 int main() {
-    while (1){
-        cout<<"몇 자리로 할까요??(-1 입력 시 게임 종료!!)\n";
-        int n=4;
-        if(n==-1){
-            cout<<"게임 종료!!\n";
-            break;
-        }
-        srand(time(NULL));
-        string s;
-        int ans[n]{1,2,3,4},ss[n];
-        
     
-        while(1){            
-            int str=0,ball=0;
-            cout<<n<<" 자리 숫자를 입력해 주세요:(첫 자리 0 가능, -1 입력 시 게임 종료!)\n";
-            cin>>s;
-            for(int i=0;i<n;i++)
-            ss[i]=s[i]-48;
-            if(s=="-1"){
-                cout<<"게임 종료!!\n\n";
-                break;
-            }
-            for(int i=0;i<n;i++){
-                for(int j=0;j<n;j++){
-                    if(ss[i]==ans[j]){
-                        if(i==j)
-                        str++;
-                        else ball++;
-                        break;
-                    }
-                }
-            }
-            if(str==n){
-                cout<<"정답입니다!!ㅋ\n\n";
-                break;
-            }
-            else
-            cout<<str<<" 스트라이크, "<<ball<<" 볼 입니다!\n\n";
+    int n,cnt=0,chk=0,tmp;
+    n=4;
+    vector<pair<int,int>>m;
+    for(int i=0;i<n;i++){
+        int v=4;
+        if(i==0)
+        tmp=v;
+        m.push_back(make_pair(v,i));
+    }
+    sort(m.begin(),m.end(),cmp);
+    vector<pair<int,int>>::iterator it;
+    for(it=m.begin();it->first>=tmp;it++){
+        chk=0;
+        while(it->first>tmp){
+            it->first--;
+            tmp++;
+            cnt++;
+        }
+        if(it->first==tmp){
+            chk=1;
         }
     }
+    if(chk==1)
+    cnt++;
+    cout<<cnt;
     return 0;
 }
