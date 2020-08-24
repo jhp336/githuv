@@ -4,23 +4,23 @@
 using namespace std;
 int main() {
     int sum=0;
-    set<pair<int,int>>m;
+    map<int,int,greater<int>>m;
     for(int i=0;i<8;i++){
         int s;
         cin>>s;
         m.insert(make_pair(s,i+1));
     }
-    set<pair<int,int>>::iterator it;
-    set<int>s;
+    map<int,int>::iterator it;
+    set<int> n;
     int ch=0;
-    for(it=--m.end();ch<5;it--){
+    for(it=m.begin();ch<5;it++){
         sum=sum+it->first;
-        s.insert(it->second);
+        n.insert(it->second);
         ch++;
     }
-    set<int>::iterator itt;
     cout<<sum<<'\n';
-    for(itt=s.begin();itt!=s.end();itt++)
+    set<int>::iterator itt;
+    for(itt=n.begin();itt!=n.end();itt++)
     cout<<*itt<<' ';
     return 0;
 }
