@@ -1,17 +1,42 @@
 var http = require('http');
 var fs = require('fs');
+var url= require('url');
+const { REPL_MODE_SLOPPY } = require('repl');
 var app = http.createServer(function(request,response){
-    var url = request.url;
-    if(request.url == '/'){
-      url = '/index.html';
+    var _url = request.url;
+    var queryData = url.parse(_url,true).query;
+    var title = queryData.id;
+    console.log(_url);
+    if(_url == '/'){
+      title = 'Welcome!';
     }
-    if(request.url == '/favicon.ico'){
+    if(_url == '/favicon.ico'){
         response.writeHead(404);
         response.end();
         return;
     }
     response.writeHead(200);
-    response.end(fs.readFileSync(__dirname + url));
- 
+    fs.readFile(`Data/${title}`,'utf8',function(err,para){
+    var templat =`
+      <!doctype html>
+      <html>
+        <head>
+          <title>WEB1 - ${title}</title>
+          <meta charset="utf-8">
+        </head>
+        <body>
+          <h1><a href="/">WEB</a></h1>
+          <ol>
+            <li><a href="/?id=HTML">HTML</a></li>
+            <li><a href="/?id=CSS">CSS</a></li>
+            <li><a href="/?id=JavaScript">JavaScript</a></li>
+          </ol>
+          <h2>${title}</h2>
+          <p>${para}</p>
+        </body>
+      </html>
+    `;
+    response.end(templat);
+    })
 });
 app.listen(3000);
