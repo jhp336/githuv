@@ -2,16 +2,19 @@
 #include <deque>
 using namespace std;
 int main() {
+    cin.tie(0);
+    ios_base::sync_with_stdio(false);
     int n,m,cnt=0;
-    n=10,m=3;
+    cin>>n>>m;
     deque<int> arr;
     deque<int>dq;
     for(int i=1;i<n+1;i++){
         dq.push_back(i);
     }
     for(int i=0;i<m;i++){
-        int num[m]{2,9,5};
-        arr.push_back(num[i]);
+        int num;
+        cin>>num;
+        arr.push_back(num);
     }
     deque<int>::iterator it;
     for(int i=0;i<m;i++){
@@ -32,7 +35,6 @@ int main() {
             }
         }
         dq.pop_front();
-        arr.pop_front();
     }
     cout<<cnt;
     return 0;
