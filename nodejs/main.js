@@ -12,14 +12,10 @@ var app = http.createServer(function(request,response){
             if(title===undefined){
                 var title = 'Welcome!';
                 var para = 'Welcome to Nodejs!';
-            }
+            }            
             fs.readdir('data',function(err,filelist){
                 var list=''
-                /*<li><a href="/?id=HTML">HTML</a></li>
-                <li><a href="/?id=CSS">CSS</a></li>
-                <li><a href="/?id=JavaScript">JavaScript</a></li>
-                */
-               for(var i=0;i<filelist.length;i++){
+                for(var i=0;i<filelist.length;i++){
                  var arr=[1,0,2];
                     list=list+'<li><a href="?id='+filelist[arr[i]]+'">'+filelist[arr[i]]+'</a></li>'
                 }
