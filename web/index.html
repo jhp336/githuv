@@ -83,7 +83,7 @@
         var tags="";
         for(i=0;i<item.length;i++){
           var it=item[i];
-          var tag='<li><a href="#!'+it+'"onclick="fetchpage(\'Data'+it+'\')">'+it+'</a></li>'
+          var tag='<li><a href="#!'+it+'"onclick="fetchpage(\''+it+'\')">'+it+'</a></li>'
           tags=tags+tag;
         }
         document.querySelector('#nav').innerHTML=tags;
