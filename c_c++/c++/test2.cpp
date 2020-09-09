@@ -1,30 +1,31 @@
 #include <iostream>
-#include<vector>
 #include <algorithm>
-using namespace std;
+using namespace std;    
+string arr[3]={"AA","V2","RE4"};
+int cal(string a){
+    int cnt=0;
+    for(int i=0;i<a.length();i++){
+        char c[1]{a[i]};
+        if(atoi(c)!=0)
+        cnt=cnt+atoi(c);
+    }
+    return cnt;
+}
+bool cmp(string a,string b){
+    if(a.length()<b.length())
+    return a<b;
+    else if(a.length()>b.length())
+    return a>b;
+    int aa=cal(a);
+    int bb=cal(b);
+    if(aa<bb)
+    return a<b;
+    else if(aa>bb)
+    return a>b;
+    if(a<b)
+    return a<b;
+    else return a>b; 
+}
 int main() {
-    cin.tie(0);
-    ios_base::sync_with_stdio(0);
-    int n,cnt=0,chk=0,tmp;
-    cin>>n;
-    vector<int>m;
-    cin>>tmp;
-    if(n==1){
-        cout<<0;
-        return 0;
-    }
-    for(int i=1;i<n;i++){
-        int v;
-        cin>>v;
-        m.push_back(v);
-    }
-    sort(m.begin(),m.end(),greater<int>());
-    while(tmp<=m.front()){
-        m.front()--;
-        tmp++;
-        cnt++;
-        sort(m.begin(),m.end(),greater<int>());
-    }
-    cout<<cnt;
-    return 0;
+    sort(arr,arr+3,cmp);
 }
