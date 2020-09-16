@@ -39,7 +39,7 @@ bool Rectangle::operator==(Rectangle& s)
 {
     if(this==&s)
     return true;
-    if(xLow==s.xLow&&yLow==s.yLow)
+    if(xLow==s.xLow&&yLow==s.yLow&&height==s.height&&width==s.width)
     return true;
     else return false;
 }
