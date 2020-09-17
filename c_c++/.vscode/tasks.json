@@ -14,7 +14,8 @@
                 "${file}",
                 "-g",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}.out",
+                "${fileDirname}/rectangle.cpp"
             ],
             "group": "build",
             "problemMatcher": {
