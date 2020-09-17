@@ -1,5 +1,5 @@
 #include <iostream>
-#include "poly.h"
+#include "pol.h"
 using namespace std;
 
 istream& operator>> (istream& is, Polynomial& p) {
@@ -81,5 +81,16 @@ Polynomial Polynomial::operator+(Polynomial& b)
    for(;bPos<b.terms;bPos++)
     c.NewTerm(b.termArray[bPos].coef,b.termArray[bPos].exp);
 
+    return c;
+}
+Polynomial Polynomial::operator*(Polynomial& b){
+    Polynomial c;
+    for(int apos=0;apos<terms;apos++){
+        for(int bpos=0;bpos<b.terms;bpos++){
+            float t=termArray[apos].coef*b.termArray[bpos].coef;
+            int e=termArray[apos].exp+b.termArray[bpos].exp;
+            c.NewTerm(t,e);
+        }
+    }
     return c;
 }
