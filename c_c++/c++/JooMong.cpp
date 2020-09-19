@@ -8,7 +8,6 @@ int main() {
     cin>>n;
     set<int> s;
     set<int>::iterator it;
-    set<int>::iterator itt;
     int m;
     cin>>m;
     for(int i=0;i<n;i++){
