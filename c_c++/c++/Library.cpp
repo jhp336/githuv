@@ -2,40 +2,48 @@
 #include<set>
 using namespace std;
 int cnt=0;
-void cal(multiset<int>s1,multiset<int>s2,int m){
+void cal1(multiset<int>s1,int m){
     multiset<int>::iterator it;
-        multiset<int>::iterator itt;
         for(it=--s1.end();it!=s1.begin();){
-            cnt=cnt+2*(*it);
             for(int i=0;i<m;i++){
+                if(i==0)
+                cnt=cnt+2*(*it);
                 it--;
-                if(i==0)
-                itt=it;
                 if(it==s1.begin()){
+                    if(i==m-1)
+                    cnt=cnt+2*(*it);
                     break;
-                }
+                }  
             }
-        }
-        cnt=cnt+2*(*itt);
+        }   
+    if(s1.size()==1)
+    cnt=cnt+2*(*it);     
         
-        
-        for(it=--s2.end();it!=s2.begin();){
-            if(it!=--s2.end())
-            cnt=cnt+2*(*it);
-            else cnt=cnt+*it;
+}
+void cal2(multiset<int>s2,int m){
+    multiset<int>::iterator it;
+    for(it=--s2.end();it!=s2.begin();){
             for(int i=0;i<m;i++){
-               it--;
-                if(i==0)
-                itt=it;
-                if(it==s1.begin()){
-                    break;
+                if(i==0){
+                    if(it!=--s2.end())
+                    cnt=cnt+2*(*it);
+                    else cnt=cnt+(*it);
                 }
+                it--;
+                if(it==s2.begin()){
+                    if(i==m-1)
+                    cnt=cnt+2*(*it);
+                    break;
+                }  
             }
-        }
-        cnt=cnt+2*(*itt);
+    }
+    if(s2.size()==1)
+    cnt=cnt+(*it);
 }
 int main() {
-    int n,m;
+    cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    int n,m,h1,h2;
     cin>>n>>m;
     multiset<int> s1,s2;
     for(int i=0;i<n;i++){
@@ -45,43 +53,22 @@ int main() {
         s1.insert(tmp);
         else s2.insert(tmp*(-1));
     }
-    int h1=*--s1.end();
-    int h2=*--s2.end();
-    multiset<int>::iterator it;
-        multiset<int>::iterator itt;
-        int ch=0;
-        for(it=--s1.end();it!=s1.begin();){
-            cnt=cnt+2*(*it);
-            for(int i=0;i<m;i++){
-                it--;
-                if(i==0)
-                itt=it;
-                if(it==s1.begin()){
-                    ch=1;
-                    break;
-                }
-            }
-        }
-        
-        
-        ch=0;
-        for(it=--s2.end();it!=s2.begin();){
-            if(it!=--s2.end())
-            cnt=cnt+2*(*it);
-            else cnt=cnt+*it;
-            for(int i=0;i<m;i++){
-               it--;
-                if(i==0)
-                itt=it;
-                if(it==s1.begin()){
-                    ch=1;
-                    break;
-                }
-            }
-        }
-        
-    
-
+    if(!s1.empty())
+    h1=*--s1.end();
+    else h1=0;
+    if(!s2.empty())
+    h2=*--s2.end();
+    else h2=0;
+    if(h1<h2){
+        if(h1)
+        cal1(s1,m);
+        cal2(s2,m);
+    }
+    else {
+        if(h2)
+        cal1(s2,m);
+        cal2(s1,m);
+    }
     cout<<cnt;
     return 0;
 

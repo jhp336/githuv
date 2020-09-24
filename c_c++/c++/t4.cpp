@@ -1,39 +1,73 @@
 #include <iostream>
-#include <deque>
+#include<set>
 using namespace std;
+int cnt=0;
+void cal1(multiset<int>s1,int m){
+    multiset<int>::iterator it;
+        for(it=--s1.end();it!=s1.begin();){
+            for(int i=0;i<m;i++){
+                if(i==0)
+                cnt=cnt+2*(*it);
+                it--;
+                if(it==s1.begin()){
+                    if(i==m-1)
+                    cnt=cnt+2*(*it);
+                    break;
+                }  
+            }
+        }   
+    if(s1.size()==1)
+    cnt=cnt+2*(*it);     
+        
+}
+void cal2(multiset<int>s2,int m){
+    multiset<int>::iterator it;
+    for(it=--s2.end();it!=s2.begin();){
+            for(int i=0;i<m;i++){
+                if(i==0){
+                    if(it!=--s2.end())
+                    cnt=cnt+2*(*it);
+                    else cnt=cnt+(*it);
+                }
+                it--;
+                if(it==s2.begin()){
+                    if(i==m-1)
+                    cnt=cnt+2*(*it);
+                    break;
+                }  
+            }
+    }
+    if(s2.size()==1)
+    cnt=cnt+(*it);
+}
 int main() {
-    int n,m,cnt=0;
-    n=10,m=3;
-    deque<int> arr;
-    deque<int>dq;
-    for(int i=1;i<n+1;i++){
-        dq.push_back(i);
+    int n,m,h1,h2;
+    cin>>n>>m;
+    multiset<int> s1,s2;
+    for(int i=0;i<n;i++){
+        int tmp;
+        cin>>tmp;
+        if(tmp>0)
+        s1.insert(tmp);
+        else s2.insert(tmp*(-1));
     }
-    for(int i=0;i<m;i++){
-        int num[m]{2,9,5};
-        arr.push_back(num[i]);
+    if(!s1.empty())
+    h1=*--s1.end();
+    else h1=0;
+    if(!s2.empty())
+    h2=*--s2.end();
+    else h2=0;
+    if(h1<h2){
+        if(h1)
+        cal1(s1,m);
+        cal2(s2,m);
     }
-    deque<int>::iterator it;
-    for(int i=0;i<m;i++){
-        while(dq.front()!=arr[i]){
-            int ch=0;
-            for(it=dq.begin();*it!=arr[i];it++){
-                ch++;
-            }
-            if(ch<=dq.size()/2){
-                dq.push_back(dq.front());
-                dq.pop_front();
-                cnt++;
-            }
-            else{ 
-                dq.push_front(dq.back());
-                dq.pop_back();
-                cnt++;
-            }
-        }
-        dq.pop_front();
-        arr.pop_front();
+    else {
+        if(h2)
+        cal1(s2,m);
+        cal2(s1,m);
     }
     cout<<cnt;
     return 0;
+
 }
