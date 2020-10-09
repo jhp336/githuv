@@ -183,7 +183,7 @@ void Postfix(Expression e) {
             stack.push(x);
         }
      while (stack.top() != '#') { cout << stack.top(); stack.pop(); }
-        stack.pop();~
+        stack.pop();
     cout << endl;
 
 }
