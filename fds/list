@@ -1,0 +1,3 @@
+Node* tmp = first;
+        first = new Node(e);
+        first->link = tmp;

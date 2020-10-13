@@ -4,17 +4,17 @@ using namespace std;
 #include "bagstack.h"
 
 Bag::Bag(int bagCapacity) : capacity(bagCapacity) {
-//교재 참조
-    if(capacity<1) throw "Capacity must be > 0";
-    array =new int [capacity];
-    top=-1;
+	//교재 참조
+	if (capacity < 1) throw "Capacity must be > 0";
+	array = new int[capacity];
+	top = -1;
 }
 
 Bag::~Bag() { delete[] array; }
 
-inline int Bag::Size() const { return top+1;}
+inline int Bag::Size() const { return top + 1; }
 
-inline bool Bag::IsEmpty() const { return Size() == 0;}
+inline bool Bag::IsEmpty() const { return Size() == 0; }
 
 inline int Bag::Element() const {
 	if (IsEmpty()) throw "Bag is empty";
@@ -22,55 +22,57 @@ inline int Bag::Element() const {
 }
 void Bag::Push(const int x) {
 	//교재참조
-    if(capacity==top+1) ChangeSize1D(array,capacity,2*capacity);
-    capacity*=2;
-    array[++top]=x;
+	if (capacity == top + 1) {
+		ChangeSize1D(array, capacity, 2 * capacity);
+		capacity *= 2;
+	}
+	array[++top] = x;
 }
 
 void ChangeSize1D(int*& a, const int oldsize, const int newSize)
 {
 	if (newSize < 0) throw "New length must be >= 0";
-	int * temp = new int[newSize];
+	int* temp = new int[newSize];
 	int number = std::min(oldsize, newSize);
-	std::copy(a, a+number, temp);
+	std::copy(a, a + number, temp);
 	delete[] a;
 	a = temp;
 
 }
 
 
-void Bag::Pop() { 
-  // 교재참조
-  if(IsEmpty()) throw "Bag is empty, cannot delete.";
-  int deletePos=top/2;
-  copy(array+deletePos+1,array+top+1,array+deletePos);
-  top--;
+void Bag::Pop() {
+	// 교재참조
+	if (IsEmpty()) throw "Bag is empty, cannot delete.";
+	int deletePos = top / 2;
+	copy(array + deletePos + 1, array + top + 1, array + deletePos);
+	top--;
 }
 
-Stack::Stack(int stackCapacity):Bag(stackCapacity) {}
+Stack::Stack(int stackCapacity) :Bag(stackCapacity) {}
 
 Stack::~Stack() { }
 
 int Stack::Top() const
 {
-  //교재 참조	
-  if(IsEmpty()) throw "Stack is empty.";
-  return array[top];
+	//교재 참조	
+	if (IsEmpty()) throw "Stack is empty.";
+	return array[top];
 }
 
 void Stack::Pop()
 {
- //교재 참조	
- if(IsEmpty()) throw "Stack is empty. Cannot delete.";
- top--;
- }
+	//교재 참조	
+	if (IsEmpty()) throw "Stack is empty. Cannot delete.";
+	top--;
+}
 
 
 ostream& operator<<(ostream& os, Bag& b)
 {
-   // Bag의 b.array에 있는 모든 값을 출력한다
-   for(int i=0;i<b.Size();i++)
-   os<<b.array[i]<<' ';
-   os << endl;
-   return os;
+	// Bag의 b.array에 있는 모든 값을 출력한다
+	for (int i = 0; i < b.Size(); i++)
+		os << b.array[i] << ' ';
+	os << endl;
+	return os;
 }
