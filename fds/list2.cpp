@@ -27,33 +27,37 @@ void IntList::InsertFront(int e) {
     }
  }
 void IntList::Insert(int e) {
-    Node *tmp = first;
-    if(e<first->data)
+    Node* prev, *cur;
+    prev = cur = first;
+    if(e<cur->data)
     InsertFront(e);
     else {
-        while(e>tmp->link->data){
-            tmp = tmp->link;
-            if(tmp==last){
+        while(e>cur->data){
+            prev = cur;
+            cur = cur->link;
+            if(cur == last && e!=cur->data){
                 InsertBack(e);
                 return ;
             }
         }
-        if(e!=tmp->link->data){
-            Node *nod = new Node(e);
-            nod->link = tmp->link;
-            tmp->link = nod;
-        }      
+        if(e!=cur->data){
+            Node *tmp = new Node(e);
+            tmp->link = prev->link;
+            prev->link = tmp;
+        }
     }
  }
 void IntList::Delete(int e) { 
-    Node *tmp = first;
-    if(e==first->data){
+    Node* prev, *cur;
+    prev = cur = first;
+    if(e == cur->data){
         first = first->link;
     }
     else{
-        while(e!=tmp->link->data)
-        tmp=tmp->link;
-        
-        tmp->link=tmp->link->link;
-    }
+        while(e!=cur->data){
+            prev = cur;
+            cur = cur->link;
+        }
+        prev->link = cur->link;
+    }  
  }
