@@ -103,22 +103,13 @@ bool BST<K, E>::Find(const K& k, E& e)
     // root부터 시작해서 k와 같은 key를 갖고 있는 노드를 찾아 
     // 찾은 노드의 element를 e로 전달하여 반환한다. 
     // k를 갖고 있는 e를 찾았으면 true, 못 찾았으면 false를 반환한다.
-    queue<TreeNode<K, E>*> q;
     while (ptr) {
         if (ptr->key == k) {
             e = ptr->element;
             return true;
         }
-        else {
-            if (ptr->leftChild)
-                q.push(ptr->leftChild);
-            if (ptr->rightChild)
-                q.push(ptr->rightChild);
-            if (q.empty())
-                return false;
-            ptr = q.front();
-            q.pop();
-        }
+        else if (ptr->key > k) ptr = ptr->leftChild;
+        else ptr = ptr->rightChild;
     }
     return false;
 }
@@ -146,7 +137,7 @@ void BST<K, E>::Delete(TreeNode<K, E>*& ptr, K& oldkey)
             delete ptr; ptr = 0; return;
         }
 
-        else if (ptr->leftChild&&!ptr->rightChild)
+        else if (ptr->leftChild && !ptr->rightChild)
             // 그child를 ptr가 가리키게하고 현재 ptr가 가리키는 노드 지움
         {
             tmpptr = ptr; ptr = ptr->leftChild; delete tmpptr; return;
