@@ -1,6 +1,5 @@
 
     function NightDay(self){
-        var target=document.querySelector('body');
         if(self.value==='night'){
             BackgroundColor('black');
             BodyColor('white');
