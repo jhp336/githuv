@@ -4,7 +4,10 @@ priority_queue< Edge, vector<Edge>, Compare > PQ;
 
 queue< Edge > *Q; // each vertex has a queue
 void MoveIntoPQ_EdgesOfNodes(int v) {
-    
+    while(!Q[v].empty()){
+        PQ.push(Q[v].front());
+        Q[v].pop();
+    }
   // Move all edges of vertex 'v' in the queue Q into PQ
 }
 
@@ -30,13 +33,15 @@ void prim() {
 }
 void ReadEdges4prim(istream& is) {
   Edge e;
+  Q = new queue<Edge>[NNODES];
  // NNODES개 각 점(vertex)를 위한 queue들을 배열로 생성한다.
  // 각 점에 연결된 간선(edges)를 나타내기 위함 
-
   while ( GetEdge(is, e) )
   {  
     //두 점(vertex 또는 노드)의 큐에 각각 e를 넣는다. 
     // 한 edge에 연결된 점은 두 개 (e.v1, e.v2) 
+    Q[e.v1].push(e);
+    Q[e.v2].push(e);
   }
   MoveIntoPQ_EdgesOfNodes(0); // 시작 점 0의 edge들을 PQ 로 이동한다.
 }
