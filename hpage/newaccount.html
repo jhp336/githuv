@@ -28,7 +28,7 @@
                     <td><label for="birth">생일</label></td>
                     <td>
                         <input id="birth" type="text" placeholder="년도(4자리)" style="width: 70px;">
-                        <select>
+                        <select style="height:22px">
                         <option>01</option>
                         <option>02</option>
                         <option>03</option>
@@ -53,10 +53,13 @@
                     </td>
                 </tr>
                 <tr><td><br></td></tr>
-                <tr>
-                    <td></td><td><input type="submit" value="회원가입"></td>
-                </tr>
-            </table>
+            </table>             
+            <div id="btn">      
+                <input class="click" type="submit" value="완료">
+                <input class="click" type="button" value="취소" onclick="
+                location.href='login.html'
+                ">
+            </div> 
         </form>
     </body>
 </html>

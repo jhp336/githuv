@@ -9,7 +9,6 @@ header{
     text-align: center;
     margin: 0 550px;
     background-color: rgb(241, 237, 237);
-    color: rgb(95, 95, 241);
 }
 #new{
     margin: 20px 550px 0;
@@ -21,9 +20,22 @@ table{
     background-color: rgb(241, 237, 237);
     margin-left: 30px;
 }
-#btn{
-    margin-left: 123px;
+.btn{
+    width: 300px;
+    height: 30px;
+    margin-left:20px;
+    border: 0px none ;
+    color: rgb(220, 224, 228);
+    background-color: rgb(8, 109, 104) ;
+    cursor: pointer;
 }
-.click{
-     cursor: pointer;
+.font{
+    text-align: center;
+}
+a{
+    text-decoration:none;
+    color: rgb(95, 95, 241) ;
+}
+a:hover{
+    text-decoration: underline;
 }
