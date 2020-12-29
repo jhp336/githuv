@@ -3,6 +3,8 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+        <script src="func.js"></script>
         <title>회원가입</title>
     </head>
     <body>
@@ -12,6 +14,10 @@
         </header>
         <form id="new">
             <table>
+                <tr>
+                    <td><label for="name">성명</label></td>
+                    <td><input id="name" type="text" placeholder="성명"></td>
+                </tr>
                 <tr>
                     <td><label for="id">아이디</label></td>
                     <td><input id="id" type="text" placeholder="아이디"></td>
@@ -25,7 +31,23 @@
                     <td><input id="pwc" type="password" placeholder="비밀번호 확인"></td>
                 </tr>
                 <tr>
-                    <td><label for="birth">생일</label></td>
+                    <td><label for="pwq">분실 시 질문</label></td>
+                    <td>
+                        <select name="que" onchange="question(this)">
+                            <option value="0">::선택::</option>
+                            <option value="별명은?">별명은?</option>
+                            <option value="고향은?">고향은?</option>
+                            <option value="dir">직접 입력</option>
+                        </select>
+                        <input type="text" id="direct" hidden>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="text" id="ans" disabled></td>
+                </tr>
+                <tr>
+                    <td><label for="birth">생년월일</label></td>
                     <td>
                         <input id="birth" type="text" placeholder="년도(4자리)" style="width: 70px;">
                         <select style="height:22px">
