@@ -10,7 +10,7 @@
     <body>
         <header>
             <h1>회원가입</h1>
-            <p>새 계정을 만들어 보세요!</p>
+            <p style="font-weight:bold;">새 계정을 만들어 보세요!</p>
         </header>
         <form id="new">
             <table>
@@ -31,7 +31,7 @@
                     <td><input id="pwc" type="password" placeholder="비밀번호 확인"></td>
                 </tr>
                 <tr>
-                    <td><label for="pwq">분실 시 질문</label></td>
+                    <td>분실 시 질문</td>
                     <td>
                         <select name="que" onchange="question(this)">
                             <option value="0">::선택::</option>
@@ -39,17 +39,20 @@
                             <option value="고향은?">고향은?</option>
                             <option value="dir">직접 입력</option>
                         </select>
-                        <input type="text" id="direct" hidden>
-                    </td>
+                    </td>                        
                 </tr>
                 <tr>
                     <td></td>
+                    <td><input type="text" id="direct" placeholder="질문을 입력하세요" hidden></td>
+                </tr>
+                <tr>
+                    <td>답변</td>
                     <td><input type="text" id="ans" disabled></td>
                 </tr>
                 <tr>
                     <td><label for="birth">생년월일</label></td>
                     <td>
-                        <input id="birth" type="text" placeholder="년도(4자리)" style="width: 70px;">
+                        <input id="birth" type="text" pattern="[0-9]+" placeholder="년도(4자리)" style="width: 70px;">
                         <select style="height:22px">
                         <option>01</option>
                         <option>02</option>
@@ -64,7 +67,7 @@
                         <option>11</option>
                         <option>12</option>
                         </select>
-                        <input type="text" placeholder="일" maxlength="2" style="width: 30px;">
+                        <input type="text" placeholder="일" pattern="[0-9]+" maxlength="2" style="width: 30px;">
                     </td>
                 </tr>
                 <tr>
@@ -76,7 +79,7 @@
                 </tr>
                 <tr><td><br></td></tr>
             </table>             
-            <div id="btn">      
+            <div id="btn" style="text-align: center;">      
                 <input class="click" type="submit" value="완료">
                 <input class="click" type="button" value="취소" onclick="
                 location.href='login.html'

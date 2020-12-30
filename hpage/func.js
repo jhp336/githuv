@@ -10,3 +10,8 @@ function question(ele){
         $("#direct").show();
     }
 }
+function click(btn){
+    if($(btn).css('background-color') != 'rgb(241, 237, 237)'){
+        $(btn).css('background-color','rgb(241, 237, 237)');
+    }
+}
