@@ -13,12 +13,11 @@ header{
     width:450px;
     background-color: rgb(241, 237, 237);
 }
-.btn{
+.findbtn{
     width: 180px;
     height: 30px;
     border: none ;
     color: rgb(30, 31, 32);
-    background-color: rgb(176, 182, 182) ;
     cursor: pointer;
 }
 a{
@@ -27,4 +26,14 @@ a{
 }
 a:hover{
     text-decoration: underline;
+}
+#new{
+    margin: 0 auto;
+    width: 450px;
+    padding: 20px 0 10px ;
+    background-color: rgb(241, 237, 237);
+}
+table{
+    margin: 0 auto;
+    background-color: rgb(241, 237, 237);
 }

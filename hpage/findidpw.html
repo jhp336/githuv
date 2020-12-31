@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="utf=8">
-        <link rel="stylesheet" href="findstyle.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+        <script src="func.js"></script>
         <title>아이디/비밀번호 찾기</title>
     </head>
     <body>
@@ -11,15 +13,26 @@
             <p><a href="login.html">로그인 화면으로</a></p>    
         </header>
         <div style="text-align: center;">
-            <input class="btn" id="idfind" type="button" value="아이디 찾기" onclick="
-            click(this);
+            <input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color: rgb(241, 237, 237);" onclick="
+            clickbtn(this);
             ">
-            <input class="btn" id="pwfind" type="button" value="비밀번호 찾기" onclick="
-            click(this);
+            <input class="findbtn" id="pwfind" type="button" value="비밀번호 찾기"style="background-color: rgb(176, 182, 182)" onclick="
+            clickbtn(this);
             ">
         </div>
-        <article>
-            
-        </article>
+        <form id="new">
+            <table>
+                <tr>
+                    <td><label for="name">성명</label></td>
+                    <td><input id="name" type="text" placeholder="성명"></td>
+                </tr>
+            </table>
+            <br>
+            <div style="text-align: center;">
+                <input class="click" type="submit" value="확인">
+            </div>
+        </form>
     </body>
 </html>
+
+

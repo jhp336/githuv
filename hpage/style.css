@@ -31,4 +31,28 @@ table{
     background-color: rgb(8, 109, 104) ;
     cursor: pointer;
 }
-
+.btn{
+    width: 300px;
+    height: 30px;
+    border: none ;
+    color: rgb(220, 224, 228);
+    background-color: rgb(8, 109, 104) ;
+    cursor: pointer;
+}
+.font{
+    text-align: center;
+}
+a{
+    text-decoration:none;
+    color: rgb(95, 95, 241) ;
+}
+a:hover{
+    text-decoration: underline;
+}
+.findbtn{
+    width: 180px;
+    height: 30px;
+    border: none ;
+    color: rgb(30, 31, 32);
+    cursor: pointer;
+}
