@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="style.css">
         <meta charset="utf-8">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-        <script src="func.js"></script>
+        <script src="newacc.js"></script>
         <title>회원가입</title>
     </head>
     <body>
@@ -15,23 +15,23 @@
         <form id="new">
             <table>
                 <tr>
-                    <td><label for="name">성명</label></td>
+                    <td><label for="name"><span>* </span>성명</label></td>
                     <td><input id="name" type="text" placeholder="성명"></td>
                 </tr>
                 <tr>
-                    <td><label for="id">아이디</label></td>
-                    <td><input id="id" type="text" placeholder="아이디"></td>
+                    <td><label for="id"><span>* </span>아이디</label></td>
+                    <td><input name="id" id="id" type="text" placeholder="아이디"></td>
                 </tr>
                 <tr>
-                    <td><label for="pw">비밀번호</label></td>
+                    <td><label for="pw"><span>* </span>비밀번호</label></td>
                     <td><input id="pw" type="password" placeholder="비밀번호"></td>
                 </tr>
                 <tr>
-                    <td><label for="pwc">비밀번호 확인</label></td>
+                    <td><label for="pwc"><span>* </span>비밀번호 확인</label></td>
                     <td><input id="pwc" type="password" placeholder="비밀번호 확인"></td>
                 </tr>
                 <tr>
-                    <td>분실 시 질문</td>
+                    <td><span>&nbsp&nbsp</span>분실 시 질문</td>
                     <td>
                         <select name="que" onchange="question(this)">
                             <option value="0">::선택::</option>
@@ -46,13 +46,13 @@
                     <td><input type="text" id="direct" placeholder="질문을 입력하세요" hidden></td>
                 </tr>
                 <tr>
-                    <td>답변</td>
-                    <td><input type="text" id="ans" disabled></td>
+                    <td><span>&nbsp&nbsp</span>답변</td>
+                    <td><input type="text" id="ans" disabled ></td>
                 </tr>
                 <tr>
-                    <td><label for="birth">생년월일</label></td>
+                    <td><label for="birth"><span>&nbsp&nbsp</span>생년월일</label></td>
                     <td>
-                        <input id="birth" type="text" pattern="[0-9]+" placeholder="년도(4자리)" style="width: 70px;">
+                        <input id="birth" type="text" pattern="[0-9]{4,4}" placeholder="년도(4자리)" maxlength="4" style="width: 70px;">
                         <select style="height:22px">
                         <option>01</option>
                         <option>02</option>
@@ -67,20 +67,26 @@
                         <option>11</option>
                         <option>12</option>
                         </select>
-                        <input type="text" placeholder="일" pattern="[0-9]+" maxlength="2" style="width: 30px;">
+                        <input type="text" placeholder="일" pattern="[0-9]{1,2}" maxlength="2" style="width: 30px;">
                     </td>
                 </tr>
                 <tr>
-                    <td>성별</td>
+                    <td><span>&nbsp&nbsp</span>성별</td>
                     <td>
                         <input name="sex" type="radio">남성
                         <input name="sex" type="radio">여성    
                     </td>
                 </tr>
+                <tr>
+                    <td></td><td><div style="text-align: right; font-size: x-small;"><span>* </span>표시는 필수 입력</div></td>
+                </tr>
                 <tr><td><br></td></tr>
+                
             </table>             
             <div id="btn" style="text-align: center;">      
-                <input class="click" type="submit" value="완료">
+                <button class="click" type="submit" onclick="
+                Check(this.form);
+                ">완료</button>
                 <input class="click" type="button" value="취소" onclick="
                 location.href='login.html'
                 ">
