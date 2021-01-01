@@ -21,7 +21,6 @@ header{
 }
 table{
     margin: 0 auto;
-    background-color: rgb(241, 237, 237);
 }
 .click{
     width: 45px;
@@ -30,7 +29,7 @@ table{
     color: rgb(220, 224, 228);
     background-color: rgb(8, 109, 104) ;
     cursor: pointer;
-}
+}/*확인,취소버튼*/
 .btn{
     width: 300px;
     height: 30px;
@@ -38,10 +37,7 @@ table{
     color: rgb(220, 224, 228);
     background-color: rgb(8, 109, 104) ;
     cursor: pointer;
-}
-.font{
-    text-align: center;
-}
+}/*로그인 버튼*/
 a{
     text-decoration:none;
     color: rgb(95, 95, 241) ;
@@ -55,7 +51,7 @@ a:hover{
     border: none ;
     color: rgb(30, 31, 32);
     cursor: pointer;
-}
+}/*아디찾기/비번찾기버튼*/
 span{
     font-size:xx-small;
     color:red;

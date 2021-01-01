@@ -7,7 +7,7 @@
         <script src="newacc.js"></script>
         <title>회원가입</title>
     </head>
-    <body>
+    <body onkeypress="enterpress()" >
         <header>
             <h1>회원가입</h1>
             <p style="font-weight:bold;">새 계정을 만들어 보세요!</p>
@@ -84,8 +84,8 @@
                 
             </table>             
             <div id="btn" style="text-align: center;">      
-                <button class="click" type="submit" onclick="
-                Check(this.form);
+                <button class="click" type="button" onclick="
+                Check('#new');
                 ">완료</button>
                 <input class="click" type="button" value="취소" onclick="
                 location.href='login.html'

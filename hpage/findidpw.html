@@ -7,7 +7,7 @@
         <script src="findbtn.js"></script>
         <title>아이디/비밀번호 찾기</title>
     </head>
-    <body>
+    <body onkeypress="enterpress()">
         <header>
             <h1>아이디/비밀번호 찾기</h1>
             <p><a href="login.html">로그인 화면으로</a></p>    
@@ -24,12 +24,12 @@
             <table>
                 <tr>
                     <td><label for="name">성명</label></td>
-                    <td><input id="name" type="text" placeholder="성명"></td>
+                    <td><input name="name" id="name" type="text" placeholder="성명"></td>
                 </tr>
             </table>
             <br>
             <div style="text-align: center;">
-                <input class="click" type="submit" value="확인">
+                <input class="click" type="button" value="확인">
             </div>
         </form>
     </body>
