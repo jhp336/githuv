@@ -69,7 +69,7 @@ Check=function(form){
         return;
     }//비번 일치 처리
 
-    form.submit();  
+    $(form).submit();  
 }
 
 enterpress=function(){

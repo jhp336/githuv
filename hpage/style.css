@@ -12,12 +12,14 @@ header{
     padding: 1px 0 1px;
     width:450px;
     background-color: rgb(241, 237, 237);
+    border-radius: 3px;
 }
 #new{
     margin: 0 auto;
     width: 450px;
     padding: 20px 0 10px ;
     background-color: rgb(241, 237, 237);
+    border-radius: 3px;
 }
 table{
     margin: 0 auto;
@@ -31,13 +33,39 @@ table{
     cursor: pointer;
 }/*확인,취소버튼*/
 .btn{
-    width: 300px;
-    height: 30px;
+    width: 250px;
+    height: 40px;
     border: none ;
     color: rgb(220, 224, 228);
     background-color: rgb(8, 109, 104) ;
     cursor: pointer;
+    font-size: 15px;
+    margin: 10px 0 15px;
 }/*로그인 버튼*/
+.findbtn{
+    width: 180px;
+    height: 30px;
+    border: none ;
+    color: rgb(30, 31, 32);
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+}/*아디찾기/비번찾기버튼*/
+input,button,select{
+    border:2px solid rgb(220, 224, 228);
+    border-radius: 3px;
+}
+.inputbox{
+    width: 200px;
+    height: 40px;
+    padding:0 15px;
+    font-size: 15px;
+}/*로그인 아이디/비번 박스*/
+.inputbox2{
+    width:200px;
+    height:20px;
+    padding:3px 10px;
+    font-size: 13px;
+}
 a{
     text-decoration:none;
     color: rgb(95, 95, 241) ;
@@ -45,13 +73,6 @@ a{
 a:hover{
     text-decoration: underline;
 }
-.findbtn{
-    width: 180px;
-    height: 30px;
-    border: none ;
-    color: rgb(30, 31, 32);
-    cursor: pointer;
-}/*아디찾기/비번찾기버튼*/
 span{
     font-size:xx-small;
     color:red;
