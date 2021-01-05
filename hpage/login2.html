@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style2.css">
         <meta charset="utf-8">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
         <script src="login.js"></script>
+        <script src="newacc.js"></script>
+        <script src="findbtn.js"></script>
+        <script src="test.js"></script>
         <title>로그인</title>
     </head>
     <body onkeypress="enterpress()">
@@ -20,14 +23,12 @@
                 <tr>
                     <td><input class="inputbox" id="pw" type="password" placeholder="비밀번호"></td>
                 </tr>
-                <tr><td><br></td></tr>
             </table>     
             <div style="text-align: center;">
                 <input id="login" class="btn" type="button" value="로그인" onclick="Login('#new')">
             </div>
-            <br>
-            <div class="font" style="text-align: center;"><a href="findidpw.html">아이디/비밀번호를 잊으셨나요?</a></div>
-            <div class="font" style="text-align: center;"><a href="newaccount.html">계정이 없으신가요?</a></div>
+            <div class="font" style="text-align: center;" onclick="find()">아이디/비밀번호를 잊으셨나요?</div>
+            <div class="font" style="text-align: center;" onclick="newacc()">계정이 없으신가요?</div>
         </form>
     </body>
 </html>

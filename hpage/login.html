@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
         <script src="login.js"></script>
+        <script src="test.js"></script>
         <title>로그인</title>
     </head>
     <body onkeypress="enterpress()">
@@ -12,7 +13,7 @@
             <h1>로그인</h1>
             <p style="font-weight:bold;">계정에 로그인을 해주세요!</p>
         </header>
-        <form id="new">
+        <form id="new" name="login" method="POST" action="./login_process">
             <table>
                 <tr>
                     <td><input class="inputbox" id="id" type="text" placeholder="아이디"></td>
@@ -24,8 +25,8 @@
             <div style="text-align: center;">
                 <input id="login" class="btn" type="button" value="로그인" onclick="Login('#new')">
             </div>
-            <div class="font" style="text-align: center;"><a href="findidpw.html">아이디/비밀번호를 잊으셨나요?</a></div>
-            <div class="font" style="text-align: center;"><a href="newaccount.html">계정이 없으신가요?</a></div>
+            <div style="text-align: center;"><a href="findidpw.html">아이디/비밀번호를 잊으셨나요?</a></div>
+            <div style="text-align: center;"><a href="newaccount.html">계정이 없으신가요?</a></div>
         </form>
     </body>
 </html>

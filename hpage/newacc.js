@@ -5,6 +5,7 @@ function question(ele){
         $('#ans').attr('disabled',true);
     }
     else {
+        $("#direct").hide();
         $('#ans').attr('disabled',false)
         if(val==='dir')
         $("#direct").show();
