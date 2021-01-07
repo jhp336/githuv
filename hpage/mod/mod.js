@@ -123,7 +123,8 @@ module.exports={
                 ">
             </div> 
         </form>`
-        else return `<header>
+        else if(title=="findidpw")
+        return `<header>
         <h1>아이디/비밀번호 찾기</h1>
         <p><a href="login">로그인 화면으로</a></p>    
         </header>
@@ -146,5 +147,7 @@ module.exports={
             <input class="click" type="button" value="확인" onclick="Pressbtn('#new')">
         </div>
         </form>`
-        }
+
+        else return 'err'
+    }
     }

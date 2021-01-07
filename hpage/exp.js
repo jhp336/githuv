@@ -6,7 +6,7 @@ app.get('/:page',function(req,res){
     var body=mod.BODY(title);
     var html=mod.HTML(title,body);
     res.send(html);
+});   
 
-});
 app.use(express.static(__dirname));
 app.listen(3000);
