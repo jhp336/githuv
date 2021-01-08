@@ -77,3 +77,4 @@ enterpress=function(){
     if(window.event.keyCode==13)
     Check('#new');
 }
+

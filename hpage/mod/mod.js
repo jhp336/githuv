@@ -34,8 +34,8 @@ module.exports={
         <div style="text-align: center;">
             <input id="login" class="btn" type="button" value="로그인" onclick="Login('#new')">
         </div>
-        <div style="text-align: center;"><a href="findidpw">아이디/비밀번호를 잊으셨나요?</a></div>
-        <div style="text-align: center;"><a href="newaccount">계정이 없으신가요?</a></div>
+        <div style="text-align: center;"><a href="/home/findidpw">아이디/비밀번호를 잊으셨나요?</a></div>
+        <div style="text-align: center;"><a href="/home/newaccount">계정이 없으신가요?</a></div>
     </form>`
     
     else if(title=="newaccount")
@@ -119,14 +119,14 @@ module.exports={
                 Check('#new');
                 ">완료</button>
                 <input class="click" type="button" value="취소" onclick="
-                location.href='login'
+                location.href='/home/login'
                 ">
             </div> 
         </form>`
         else if(title=="findidpw")
         return `<header>
         <h1>아이디/비밀번호 찾기</h1>
-        <p><a href="login">로그인 화면으로</a></p>    
+        <p><a href="/home/login">로그인 화면으로</a></p>    
         </header>
         <div style="text-align: center;">
         <input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color: rgb(241, 237, 237);" onclick="
@@ -150,4 +150,4 @@ module.exports={
 
         else return 'err'
     }
-    }
+}
