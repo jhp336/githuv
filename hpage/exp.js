@@ -7,6 +7,7 @@ app.use(express.static('public'));
 app.use('/',require('./routes/index.js'));
 app.use('/home',require('./routes/home.js'));
 
+
 app.use(function(req,res,next){
     res.status(404).send("Sorry, I can't find");
 });

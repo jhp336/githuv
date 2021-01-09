@@ -70,6 +70,11 @@ Check=function(form){
         return;
     }//비번 일치 처리
 
+    if($('#male').val()==="on")
+    $('#male').val("male");
+    if($('#female').val()==="on")
+    $('#female').val("female");
+    
     $(form).submit();  
 }
 

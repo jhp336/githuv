@@ -22,7 +22,7 @@ module.exports={
         <h1>로그인</h1>
         <p style="font-weight:bold;">계정에 로그인을 해주세요!</p>
     </header>
-    <form id="new" name="login" method="POST" action="login.php">
+    <form id="new" name="login" method="POST" action="/home/login_process">
         <table>
             <tr>
                 <td><input class="inputbox" name="user_id" id="id" type="text" placeholder="아이디"></td>
@@ -43,11 +43,11 @@ module.exports={
     <h1>회원가입</h1>
      <p style="font-weight:bold;">새 계정을 만들어 보세요!</p>
         </header>
-        <form id="new" name="new" method="POST" action="./register">
+        <form id="new" name="new" method="POST" action="/home/join_process">
             <table>
                 <tr>
                     <td><label for="name"><span>* </span>성명</label></td>
-                    <td><input class="inputbox2" id="name" type="text" placeholder="성명"></td>
+                    <td><input class="inputbox2" name="name" id="name" type="text" placeholder="성명"></td>
                 </tr>
                 <tr>
                     <td><label for="id"><span>* </span>아이디</label></td>
@@ -55,7 +55,7 @@ module.exports={
                 </tr>
                 <tr>
                     <td><label for="pw"><span>* </span>비밀번호</label></td>
-                    <td><input class="inputbox2" id="pw" type="password" placeholder="비밀번호"></td>
+                    <td><input class="inputbox2" name="pw" id="pw" type="password" placeholder="비밀번호"></td>
                 </tr>
                 <tr>
                     <td><label for="pwc"><span>* </span>비밀번호 확인</label></td>
@@ -64,7 +64,7 @@ module.exports={
                 <tr>
                     <td><label for="direct"><span>&nbsp&nbsp</span>분실 시 질문</label></td>
                     <td>
-                        <select class="inputbox2" style="width:224px; height: 30px;" name="que" onchange="question(this)">
+                        <select name="quest" class="inputbox2" style="width:224px; height: 30px;" name="que" onchange="question(this)">
                             <option value="0">::선택::</option>
                             <option value="별명은?">별명은?</option>
                             <option value="고향은?">고향은?</option>
@@ -74,17 +74,17 @@ module.exports={
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input class="inputbox2" type="text" id="direct" placeholder="질문을 입력하세요" hidden></td>
+                    <td><input class="inputbox2" type="text" name="direct_q" id="direct" placeholder="질문을 입력하세요" hidden></td>
                 </tr>
                 <tr>
                     <td><label for="ans"><span>&nbsp&nbsp</span>답변</label></td>
-                    <td><input class="inputbox2" type="text" id="ans" disabled ></td>
+                    <td><input class="inputbox2" type="text" name="ans" id="ans" disabled ></td>
                 </tr>
                 <tr>
                     <td><label for="birth"><span>&nbsp&nbsp</span>생년월일</label></td>
                     <td>
-                        <input class="inputbox2" id="birth" type="text" pattern="[0-9]{4,4}" placeholder="년도(4자리)" maxlength="4" style="width: 70px;">
-                        <select class="inputbox2" style="width:60px; height: 30px; " >
+                        <input class="inputbox2" name="year" id="birth" type="text" pattern="[0-9]{4,4}" placeholder="년도(4자리)" maxlength="4" style="width: 70px;">
+                        <select class="inputbox2" name="month" style="width:60px; height: 30px; " >
                         <option>01</option>
                         <option>02</option>
                         <option>03</option>
@@ -98,14 +98,14 @@ module.exports={
                         <option>11</option>
                         <option>12</option>
                         </select>
-                        <input class="inputbox2" type="text" placeholder="일" pattern="[0-9]{1,2}" maxlength="2" style="width: 34.9px;">
+                        <input class="inputbox2" type="text" name="day" placeholder="일" pattern="[0-9]{1,2}" maxlength="2" style="width: 34.9px;">
                     </td>
                 </tr>
                 <tr>
                     <td><span>&nbsp&nbsp</span>성별</td>
                     <td>
-                        <input name="sex" type="radio">남성
-                        <input name="sex" type="radio">여성    
+                        <input id="male" name="sex" type="radio">남성
+                        <input id="female" name="sex" type="radio">여성    
                     </td>
                 </tr>
                 <tr>
