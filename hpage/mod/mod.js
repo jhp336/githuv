@@ -46,6 +46,12 @@ module.exports={
         <form id="new" name="new" method="POST" action="/home/join_process">
             <table>
                 <tr>
+                    <td><label for="nickname"><span>* </span>닉네임</label></td>
+                    <td>
+                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임">
+                    </td>
+                </tr>
+                <tr>
                     <td><label for="name"><span>* </span>성명</label></td>
                     <td><input class="inputbox2" name="name" id="name" type="text" placeholder="성명"></td>
                 </tr>
@@ -61,6 +67,7 @@ module.exports={
                     <td><label for="pwc"><span>* </span>비밀번호 확인</label></td>
                     <td><input class="inputbox2" id="pwc" type="password" placeholder="비밀번호 확인"></td>
                 </tr>
+                
                 <tr>
                     <td><label for="direct"><span>&nbsp&nbsp</span>분실 시 질문</label></td>
                     <td>
@@ -102,17 +109,9 @@ module.exports={
                     </td>
                 </tr>
                 <tr>
-                    <td><span>&nbsp&nbsp</span>성별</td>
-                    <td>
-                        <input id="male" name="sex" type="radio">남성
-                        <input id="female" name="sex" type="radio">여성    
-                    </td>
-                </tr>
-                <tr>
                     <td></td><td><div style="text-align: right; font-size: x-small;"><span>* </span>표시는 필수 입력</div></td>
                 </tr>
                 <tr><td><br></td></tr>
-                
             </table>             
             <div id="btn" style="text-align: center;">      
                 <button class="click" type="button" onclick="

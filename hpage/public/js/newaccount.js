@@ -17,9 +17,22 @@ Check=function(form){
     var NAME=$('#name');    
     var PW=$("#pw");
     var PWC=$('#pwc');
+    var NICK=$('#nickname');
     var test1=/^[가-힣]{1,12}$/;
-    var test2=/^(?=.*[a-zA-z])(?=.*[0-9])[a-zA-Z0-9]{4,12}$/;
+    var test2=/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{4,12}$/;
     var test3=/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9~!@#$%^&*?]{4,12}$/;
+    var test4=/^(?=.*[a-zA-Z])[a-zA-Z0-9가-힣]{2,10}|(?=.*[가-힣])[a-zA-Z0-9가-힣]{2,10}$/;
+    if(NICK.val()===""){
+        alert('사용할 닉네임을 입력해 주세요');
+        NICK.focus();
+        return;
+    }
+    if(!test4.test(NICK.val())){
+        alert('닉네임은 한글 또는 영문을 포함한 2~10 글자로 작성해주세요');
+        NICK.focus();
+        return;
+    }//닉네임 처리
+    
     if(NAME.val()===""){
         alert('이름을 입력하세요');
         NAME.focus();
@@ -70,10 +83,7 @@ Check=function(form){
         return;
     }//비번 일치 처리
 
-    if($('#male').val()==="on")
-    $('#male').val("male");
-    if($('#female').val()==="on")
-    $('#female').val("female");
+    
     
     $(form).submit();  
 }

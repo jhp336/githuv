@@ -1,6 +1,5 @@
 var express=require('express');
 var app=express();
-var mod=require('./mod/mod.js');
 
 app.use(express.static('public'));
 
