@@ -5,6 +5,7 @@ app.use(express.static('public'));
 
 app.use('/',require('./routes/index.js'));
 app.use('/home',require('./routes/home.js'));
+app.use('/auth',require('./routes/auth.js'));
 
 
 app.use(function(req,res,next){

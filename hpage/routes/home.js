@@ -4,7 +4,6 @@ var mod=require('../mod/mod.js');
 
 
 
-
 router.get('/:page',function(req,res){
     var title=req.params.page;
     if(title!="login"&&title!="newaccount"&&title!="findidpw")
@@ -14,8 +13,5 @@ router.get('/:page',function(req,res){
     res.send(html);
 });   
 
-router.post('/login_process',function(req,res){
-
-})
 
 module.exports=router;

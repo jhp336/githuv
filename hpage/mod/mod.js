@@ -22,7 +22,7 @@ module.exports={
         <h1>로그인</h1>
         <p style="font-weight:bold;">계정에 로그인을 해주세요!</p>
     </header>
-    <form id="new" name="login" method="POST" action="/home/login_process">
+    <form id="new" name="login" method="post" action="/auth/login">
         <table>
             <tr>
                 <td><input class="inputbox" name="user_id" id="id" type="text" placeholder="아이디"></td>
@@ -43,7 +43,7 @@ module.exports={
     <h1>회원가입</h1>
      <p style="font-weight:bold;">새 계정을 만들어 보세요!</p>
         </header>
-        <form id="new" name="new" method="POST" action="/home/join_process">
+        <form id="new" name="new" method="post" action="/auth/join">
             <table>
                 <tr>
                     <td><label for="nickname"><span>* </span>닉네임</label></td>
