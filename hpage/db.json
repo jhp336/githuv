@@ -1,85 +1,9 @@
 {
   "users": [
     {
-      "nickname": "qs",
-      "name": "바",
-      "id": "jh45",
-      "password": "jh45",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "nickname": "바바",
-      "name": "바",
-      "id": "jh45",
-      "password": "jh45",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "nickname": "qk",
-      "name": "바",
-      "id": "jh45",
-      "password": "jh45",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "nickname": "qkqk",
-      "name": "바",
-      "id": "jh55",
-      "password": "jh45",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "nickname": "qkqk",
-      "name": "비",
-      "id": "jh45",
-      "password": "jh45",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "nickname": "qk",
-      "name": "바",
-      "id": "jh4444",
-      "password": "jh4444",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "nickname": "qk",
-      "name": "바",
-      "id": "jh45",
-      "password": "jh45",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "nickname": "jj",
-      "name": "바",
+      "key": "ntVlCHO4K",
+      "nickname": "방이",
+      "name": "방",
       "id": "jh45",
       "password": "jh45",
       "question": "0",

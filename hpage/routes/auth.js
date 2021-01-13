@@ -2,17 +2,9 @@ var express = require('express');
 var router=express.Router();
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({extended:false}))
+var shortid=require('shortid');
+var db=require('../mod/db.js');
 
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync');
-
-const adapter = new FileSync('db.json')
-const db = low(adapter)
-db.defaults({users:[]}).write();
-router.get('/',function(req,res){
-    db.get('users').remove({day: ''}).write();
-
-})
 router.post('/join',function(req,res){
     var post=req.body;
     var nick=post.nickname;
@@ -25,8 +17,10 @@ router.post('/join',function(req,res){
     var year=post.year;
     var month=post.month;
     var day=post.day;
+   // var joinday,visit,post,comment;
 
     db.get('users').push({
+        key:shortid.generate(),
         nickname:nick,
         name:name,
         id:id,
@@ -38,7 +32,41 @@ router.post('/join',function(req,res){
         month:month,
         day:day
     }).write();
-    alert('회원가입이 완료되었습니다!');
-    db.get('users').remove({day: ''}).write();
+    res.redirect('/auth/welcome');
 })
+
+/*router.post('/login',function(req,res){
+    var post=req.body;
+    var id=post.user_id;
+    var pw=post.user_pw;
+    if(db.get('users').find({id:id}).value()===undefined)
+    var correct=undefined;
+    else correct=db.get('users').find({id:id}).value().password;
+    if(correct===undefined||correct!=pw){
+        res.redirect('/home/login');
+    }
+    else res.redirect('/');
+    
+})*/
+
+
+router.get('/welcome',function(req,res){
+    html=`
+    <!DOCTYPE html>
+        <html>
+            <head>
+                <link rel="stylesheet" href="/css/style.css">
+                <meta charset="utf-8">
+                <title>Welcome</title>
+            </head>
+        <body >
+            <header>
+            <h1>환영합니다!</h1>
+            <p><a href="/home/login">로그인 화면으로</a></p>              </header>
+        </body>
+        </html>
+    `
+    res.send(html);
+})
+
 module.exports=router;
