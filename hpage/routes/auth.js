@@ -5,7 +5,8 @@ router.use(bodyParser.urlencoded({extended:false}))
 var shortid=require('shortid');
 var db=require('../mod/db.js');
 
-router.post('/join',function(req,res){
+module.exports=function(passport) {
+    router.post('/join',function(req,res){
     var post=req.body;
     var nick=post.nickname;
     var name=post.name;
@@ -48,6 +49,12 @@ router.post('/join',function(req,res){
     else res.redirect('/');
     
 })*/
+router.post('/login',
+  passport.authenticate('local', { 
+        successRedirect: '/',
+        failureRedirect: '/home/login',
+        failureFlash:true
+    }));
 
 
 router.get('/welcome',function(req,res){
@@ -69,4 +76,5 @@ router.get('/welcome',function(req,res){
     res.send(html);
 })
 
-module.exports=router;
+    return router;
+}

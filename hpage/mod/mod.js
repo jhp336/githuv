@@ -16,8 +16,7 @@ module.exports={
     </html>
         `
     },
-    BODY:function(title){
-        if(title=="login")
+    LOGIN:function(msg){
         return `<header>
         <h1>로그인</h1>
         <p style="font-weight:bold;">계정에 로그인을 해주세요!</p>
@@ -30,6 +29,7 @@ module.exports={
             <tr>
                 <td><input class="inputbox" name="user_pw" id="pw" type="password" placeholder="비밀번호"></td>
             </tr>
+            <tr style="text-align: right; color:red;"><td>${msg}</td></tr>
         </table>     
         <div style="text-align: center;">
             <input id="login" class="btn" type="button" value="로그인" onclick="Login('#new')">
@@ -37,8 +37,8 @@ module.exports={
         <div style="text-align: center;"><a href="/home/findidpw">아이디/비밀번호를 잊으셨나요?</a></div>
         <div style="text-align: center;"><a href="/home/newaccount">계정이 없으신가요?</a></div>
     </form>`
-    
-    else if(title=="newaccount")
+    },
+    NEWACC:function(){
     return `<header>
     <h1>회원가입</h1>
      <p style="font-weight:bold;">새 계정을 만들어 보세요!</p>
@@ -122,7 +122,8 @@ module.exports={
                 ">
             </div> 
         </form>`
-        else if(title=="findidpw")
+    },
+    FINDIDPW:function(){
         return `<header>
         <h1>아이디/비밀번호 찾기</h1>
         <p><a href="/home/login">로그인 화면으로</a></p>    
@@ -146,7 +147,6 @@ module.exports={
             <input class="click" type="button" value="확인" onclick="Pressbtn('#new')">
         </div>
         </form>`
-
-        else return 'err'
     }
+    
 }
