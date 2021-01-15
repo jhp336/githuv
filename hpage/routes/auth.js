@@ -19,8 +19,7 @@ module.exports=function(passport) {
     var month=post.month;
     var day=post.day;
    // var joinday,visit,post,comment;
-
-    db.get('users').push({
+    var userinf={
         key:shortid.generate(),
         nickname:nick,
         name:name,
@@ -32,8 +31,13 @@ module.exports=function(passport) {
         year:year,
         month:month,
         day:day
-    }).write();
-    res.redirect('/auth/welcome');
+    }
+    db.get('users').push(userinf).write();
+    req.login(userinf,function(err){
+        req.session.save(function(){
+            res.redirect('/auth/welcome');
+        });
+    })
 })
 
 /*router.post('/login',function(req,res){
@@ -50,11 +54,13 @@ module.exports=function(passport) {
     
 })*/
 router.post('/login',
-  passport.authenticate('local', { 
+    passport.authenticate('local', { 
         successRedirect: '/',
         failureRedirect: '/home/login',
         failureFlash:true
-    }));
+    })
+);
+    
 
 
 router.get('/welcome',function(req,res){
@@ -69,7 +75,8 @@ router.get('/welcome',function(req,res){
         <body >
             <header>
             <h1>환영합니다!</h1>
-            <p><a href="/home/login">로그인 화면으로</a></p>              </header>
+            <p><a href="/">메인 화면으로</a></p>         
+            </header>
         </body>
         </html>
     `

@@ -5,11 +5,11 @@ var mod=require('../mod/mod.js');
 
 router.get('/login',function(req,res){
     var flash=req.flash();
-    var feedback='';
+    var msg='';
     if(flash.error){
-        feedback=flash.error[0];
+        msg=flash.error[0];
     }
-    var body=mod.LOGIN(feedback);
+    var body=mod.LOGIN(msg);
     var html=mod.HTML('login',body);
     res.send(html);
 });   

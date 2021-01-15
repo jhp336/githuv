@@ -5,7 +5,7 @@ module.exports=function(app){
     , LocalStrategy = require('passport-local').Strategy;
     app.use(passport.initialize());
     app.use(passport.session());
-
+    
     passport.serializeUser(function(user, done) {
         done(null, user.key);
     });
@@ -26,10 +26,10 @@ module.exports=function(app){
             id:username
         }).value();
         if (!user) {
-            return done(null, false, { message: 'Incorrect userid.' });
+            return done(null, false, { message: '아이디 입력 오류' });
         }
         if (user.password!=password) {
-            return done(null, false, { message: 'Incorrect password.' });
+            return done(null, false, { message: '비밀번호 입력 오류' });
         }
         return done(null, user);
     }

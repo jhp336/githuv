@@ -17,11 +17,15 @@ module.exports={
         `
     },
     LOGIN:function(msg){
-        return `<header>
+        wrong='';
+        if(msg!="")
+        wrong='<script>$(\'#id\').focus()</script>';
+
+        return  `<header>
         <h1>로그인</h1>
         <p style="font-weight:bold;">계정에 로그인을 해주세요!</p>
-    </header>
-    <form id="new" name="login" method="post" action="/auth/login">
+        </header>
+        <form id="new" name="login" method="post" action="/auth/login">
         <table>
             <tr>
                 <td><input class="inputbox" name="user_id" id="id" type="text" placeholder="아이디"></td>
@@ -29,14 +33,14 @@ module.exports={
             <tr>
                 <td><input class="inputbox" name="user_pw" id="pw" type="password" placeholder="비밀번호"></td>
             </tr>
-            <tr style="text-align: right; color:red;"><td>${msg}</td></tr>
+            <tr style="text-align: right; color:red;"><td id="msg">${msg}</td></tr>
         </table>     
         <div style="text-align: center;">
             <input id="login" class="btn" type="button" value="로그인" onclick="Login('#new')">
         </div>
         <div style="text-align: center;"><a href="/home/findidpw">아이디/비밀번호를 잊으셨나요?</a></div>
         <div style="text-align: center;"><a href="/home/newaccount">계정이 없으신가요?</a></div>
-    </form>`
+        </form>${wrong}`
     },
     NEWACC:function(){
     return `<header>
