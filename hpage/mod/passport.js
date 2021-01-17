@@ -7,10 +7,12 @@ module.exports=function(app){
     app.use(passport.session());
     
     passport.serializeUser(function(user, done) {
+        console.log('ser',user);
         done(null, user.key);
     });
     
     passport.deserializeUser(function(id, done) {
+        console.log('deser',id);
         var user=db.get('users').find({
             key:id
         }).value();
@@ -34,5 +36,5 @@ module.exports=function(app){
         return done(null, user);
     }
     ));
-    return passport;
+    return passport; 
 }

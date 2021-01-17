@@ -7,7 +7,7 @@ router.get('/login',function(req,res){
     var flash=req.flash();
     var msg='';
     if(flash.error){
-        msg=flash.error[0];
+        msg=flash.error;
     }
     var body=mod.LOGIN(msg);
     var html=mod.HTML('login',body);

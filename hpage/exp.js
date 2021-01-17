@@ -9,7 +9,8 @@ app.use(express.static('public'));
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store:new FileStore()
 }))
 app.use(flash());
 

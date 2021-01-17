@@ -40,19 +40,6 @@ module.exports=function(passport) {
     })
 })
 
-/*router.post('/login',function(req,res){
-    var post=req.body;
-    var id=post.user_id;
-    var pw=post.user_pw;
-    if(db.get('users').find({id:id}).value()===undefined)
-    var correct=undefined;
-    else correct=db.get('users').find({id:id}).value().password;
-    if(correct===undefined||correct!=pw){
-        res.redirect('/home/login');
-    }
-    else res.redirect('/');
-    
-})*/
 router.post('/login',
     passport.authenticate('local', { 
         successRedirect: '/',

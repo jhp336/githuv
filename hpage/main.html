@@ -1,18 +1,20 @@
-var express = require('express');
-var router=express.Router();
-var mod=require('../mod/mod.js');
+<!DOCTYPE html>
+<html>
 
-router.get('/',function(req,res){
-    console.log(req.session.passport)
-    if(!req.session.passport){
-        res.redirect('/home/login');
-        return;
-    }
-    var body=`<body>
+<head>
+    <link rel="stylesheet" href="public/css/style.css">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+    <title>메인 페이지</title>
+</head>
+
+<body>
     <header>
         <h1>NTBoard</h1>
         <div style="margin-left:20px;">
-            <p font-size: 15px; font-weight: bold;">${req.user.nickname}님</p>
+            <p font-size: 15px; font-weight: bold;"> 님</p>
             <span><button onclick="
                         location.href='/auth/logout'
                         ">로그아웃</button></span>
@@ -30,8 +32,6 @@ router.get('/',function(req,res){
                 <td><button>비밀게시판</button></td>
             </tr>
         </table>
-    </div>`
-    var html=mod.HTML('메인페이지',body);
-    res.send(html);
-});
-module.exports=router;
+    </div>
+</html>
+`
