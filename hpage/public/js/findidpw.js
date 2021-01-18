@@ -1,7 +1,7 @@
-function clickbtn(but){
-    var btn2, btn=$(but)
-    if(btn.attr('id')==='idfind'){
-        btn2=$('#pwfind');
+function clickbtn(but) {
+    var btn2, btn = $(but)
+    if (btn.attr('id') === 'idfind') {
+        btn2 = $('#pwfind');
         $('form').html(`
         <table>
             <tr>
@@ -15,7 +15,7 @@ function clickbtn(but){
         `)
     }
     else {
-        btn2=$('#idfind');
+        btn2 = $('#idfind');
         $('form').html(`
         <table>
             <tr>
@@ -30,29 +30,29 @@ function clickbtn(but){
             <input class="click" type="button" value="확인"  onclick="Pressbtn('#new')">
         </div>`);
     }
-    if(btn.css("background-color") != "rgb(241, 237, 237)"){
-        btn.css("background-color","rgb(241, 237, 237)");
-        btn2.css("background-color","rgb(176, 182, 182)");
+    if (btn.css("background-color") != "rgb(241, 237, 237)") {
+        btn.css("background-color", "rgb(241, 237, 237)");
+        btn2.css("background-color", "rgb(176, 182, 182)");
     }
 }
 
-enterpress=function(){
-    if(window.event.keyCode==13)
-    Pressbtn('#new');
+enterpress = function () {
+    if (window.event.keyCode == 13)
+        Pressbtn('#new');
 }
-Pressbtn=function(form){
-    var NAME=$('#name');
-    var ID=$('#id');
-    if(NAME.val()===""){
+Pressbtn = function (form) {
+    var NAME = $('#name');
+    var ID = $('#id');
+    if (NAME.val() === "") {
         alert('이름을 입력해주세요');
         NAME.focus();
         return;
     }
-    if(ID.val()===""){
+    if (ID.val() === "") {
         alert('아이디를 입력해주세요');
         ID.focus();
         return;
     }
-
+    $(form).attr('onsubmit',true);
     $(form).submit();
 }

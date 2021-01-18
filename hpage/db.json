@@ -1,35 +1,11 @@
 {
   "users": [
     {
-      "key": "pIyBWIoHb",
-      "nickname": "wl",
-      "name": "지",
+      "key": "QyVmj9YTb",
+      "nickname": "지지",
+      "name": "지지",
       "id": "jh45",
       "password": "jh456",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "key": "fwU4XYlGj",
-      "nickname": "qlql",
-      "name": "비비",
-      "id": "jh123",
-      "password": "jh123",
-      "question": "0",
-      "direct": "",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "key": "xuJQSrBak",
-      "nickname": "지니",
-      "name": "지니",
-      "id": "jh457",
-      "password": "jh45",
       "question": "0",
       "direct": "",
       "year": "",

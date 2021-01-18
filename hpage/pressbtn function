@@ -1,0 +1,57 @@
+var NAME = $('#name');
+    var ID = $('#id');
+    if (NAME.val() === "") {
+        alert('이름을 입력해주세요');
+        NAME.focus();
+        return;
+    }
+    if (ID.val() === "") {
+        alert('아이디를 입력해주세요');
+        ID.focus();
+        return;
+    }
+    /*$(form).attr('onsubmit',true);
+    $(form).submit();*/
+
+    var user = ''
+    var msg = ''
+    if (!ID.val()) {
+        user = db.get('users').find({
+            name: NAME.val()
+        }).value();
+        if (!user)
+            msg = '해당 이름으로 가입한 계정이 없습니다!';
+        else
+            msg = user.id;
+        $(form).html(`
+        <table>
+        <tr>
+            <td>아이디 찾기 결과</td><td></td>
+        </tr>
+        <tr>
+            <td></td><td><input class="inputbox" type="text" disabled value="${msg}">
+        </tr>
+    </table>
+    <br>
+    `);
+        return;
+    }
+    user = db.get('users').find({
+        name: NAME.val(),
+        id: ID.val()
+    }).value();
+    if (!user)
+        msg = '해당 이름,아이디로 가입한 계정이 없습니다!';
+    else
+        msg = user.password;
+    $(form).html(`
+        <table>
+        <tr>
+            <td>비밀번호 찾기 결과</td><td></td>
+        </tr>
+        <tr>
+            <td></td><td><input class="inputbox" type="text" disabled value="${msg}">
+        </tr>
+    </table>
+    <br>
+    `);

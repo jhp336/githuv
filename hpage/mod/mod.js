@@ -1,5 +1,5 @@
 module.exports={
-    HTML:function(title,body){
+    HTML:function(title,js,body){
         return `
         <!DOCTYPE html>
         <html>
@@ -7,7 +7,7 @@ module.exports={
                 <link rel="stylesheet" href="/css/style.css">
                 <meta charset="utf-8">
                 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-                <script src="/js/${title}.js"></script>
+                <script src="/js/${js}.js"></script>
                 <title>${title}</title>
             </head>
         <body onkeypress="enterpress()">
@@ -140,7 +140,7 @@ module.exports={
         clickbtn(this);
         ">
         </div>
-        <form id="new">
+        <form id="new" onsubmit="return false;" method="post" action="/auth/findidpw_process">
         <table>
             <tr>
                 <td><input class="inputbox" name="name" id="name" type="text" placeholder="성명"></td>
@@ -148,8 +148,8 @@ module.exports={
         </table>
         <br>
         <div style="text-align: center;">
-            <input class="click" type="button" value="확인" onclick="Pressbtn('#new')">
-        </div>
+            <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
+            </div>
         </form>`
     }
     

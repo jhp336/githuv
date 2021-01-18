@@ -48,7 +48,38 @@ router.post('/login',
     })
 );
     
+router.get('/logout',function(req,res){
+    req.logout();
+    req.session.save(function(){
+        res.redirect('/home/login');
+    })
+});
 
+router.post('/findidpw_process',function(req,res){
+    var post=req.body;
+    var name=post.name;
+    var id=post.id;
+    var user=''
+
+    if(!id){
+        var user=db.get('users').find({
+            name:name
+        }).value();
+        if(!user)
+        res.send('해당 이름으로 가입한 계정이 없습니다!')
+        else
+        res.send(user.id);
+        return;
+    }
+    user=db.get('users').find({
+        name:name,
+        id:id
+    }).value();
+    if(!user)
+    res.send('해당 이름, 아이디로 가입한 계정이 없습니다!')
+    else
+    res.send(user.password);
+})
 
 router.get('/welcome',function(req,res){
     html=`
