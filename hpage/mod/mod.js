@@ -1,5 +1,5 @@
-module.exports={
-    HTML:function(title,js,body){
+module.exports = {
+    HTML: function (title, js, body) {
         return `
         <!DOCTYPE html>
         <html>
@@ -16,12 +16,12 @@ module.exports={
     </html>
         `
     },
-    LOGIN:function(msg){
-        wrong='';
-        if(msg!="")
-        wrong='<script>$(\'#id\').focus()</script>';
+    LOGIN: function (msg) {
+        wrong = '';
+        if (msg != "")
+            wrong = '<script>$(\'#id\').focus()</script>';
 
-        return  `<header>
+        return `<header>
         <h1>로그인</h1>
         <p style="font-weight:bold;">계정에 로그인을 해주세요!</p>
         </header>
@@ -42,8 +42,8 @@ module.exports={
         <div style="text-align: center;"><a href="/home/newaccount">계정이 없으신가요?</a></div>
         </form>${wrong}`
     },
-    NEWACC:function(){
-    return `<header>
+    NEWACC: function () {
+        return `<header>
     <h1>회원가입</h1>
      <p style="font-weight:bold;">새 계정을 만들어 보세요!</p>
         </header>
@@ -127,20 +127,32 @@ module.exports={
             </div> 
         </form>`
     },
-    FINDIDPW:function(){
-        return `<header>
+    FINDIDPW: function (opt,msg) {
+        var part = `<header>
         <h1>아이디/비밀번호 찾기</h1>
         <p><a href="/home/login">로그인 화면으로</a></p>    
         </header>
-        <div style="text-align: center;">
+        <div style="text-align: center;">`
+        var btn=''
+        if(opt!="비밀번호")
+        btn=`
         <input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color: rgb(241, 237, 237);" onclick="
         clickbtn(this);
         ">
         <input class="findbtn" id="pwfind" type="button" value="비밀번호 찾기"style="background-color: rgb(176, 182, 182)" onclick="
         clickbtn(this);
         ">
-        </div>
-        <form id="new" onsubmit="return false;" method="post" action="/auth/findidpw_process">
+        </div>`
+        else btn=`<input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color:  rgb(176, 182, 182)" onclick="
+        clickbtn(this);
+        ">
+        <input class="findbtn" id="pwfind" type="button" value="비밀번호 찾기"style="background-color:rgb(241, 237, 237)" onclick="
+        clickbtn(this);
+        ">
+        </div>`
+        if (!opt)
+            return part + btn +
+                `<form id="new" onsubmit="return false;" method="post" action="/home/findidpw">
         <table>
             <tr>
                 <td><input class="inputbox" name="name" id="name" type="text" placeholder="성명"></td>
@@ -151,6 +163,19 @@ module.exports={
             <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
             </div>
         </form>`
+        else 
+        return part + btn +
+            `<form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">
+        <table>
+        <tr>
+            <td>${opt} 찾기 결과</td><td></td>
+        </tr>
+        <tr>
+            <td><input class="inputbox3" type="text" disabled value="${msg}"><td></td>
+        </tr>
+    </table>
+    <br>
+    </form>`
     }
-    
+        
 }
