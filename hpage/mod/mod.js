@@ -50,18 +50,23 @@ module.exports = {
         <form id="new" name="new" method="post" action="/auth/join">
             <table>
                 <tr>
-                    <td><label for="nickname"><span>* </span>닉네임</label></td>
-                    <td>
-                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임">
-                    </td>
-                </tr>
-                <tr>
                     <td><label for="name"><span>* </span>성명</label></td>
                     <td><input class="inputbox2" name="name" id="name" type="text" placeholder="성명"></td>
                 </tr>
                 <tr>
+                    <td><label for="nickname"><span>* </span>닉네임</label></td>
+                    <td>
+                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" onchange="nicknamechange()">
+                        <button id="nicknamedupcheck" type="button" onclick="duplicheck()">중복확인</button>
+                        <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
+                    </td>
+                    
+                </tr>
+                <tr>
                     <td><label for="id"><span>* </span>아이디</label></td>
-                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디"></td>
+                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" onchange="idchange()">
+                    <button id="iddupcheck" type="button" onclick="duplicheck_()">중복확인</button>
+                    <input type="text" class="dupli" id="iddupok" value="사용 가능" hidden disabled>
                 </tr>
                 <tr>
                     <td><label for="pw"><span>* </span>비밀번호</label></td>
@@ -75,7 +80,7 @@ module.exports = {
                 <tr>
                     <td><label for="direct"><span>&nbsp&nbsp</span>분실 시 질문</label></td>
                     <td>
-                        <select name="quest" class="inputbox2" style="width:224px; height: 30px;" name="que" onchange="question(this)">
+                        <select name="quest" id="quest" class="inputbox2" style="width:224px; height: 30px;" name="que" onchange="question(this)">
                             <option value="0">::선택::</option>
                             <option value="별명은?">별명은?</option>
                             <option value="고향은?">고향은?</option>
@@ -94,8 +99,8 @@ module.exports = {
                 <tr>
                     <td><label for="birth"><span>&nbsp&nbsp</span>생년월일</label></td>
                     <td>
-                        <input class="inputbox2" name="year" id="birth" type="text" pattern="[0-9]{4,4}" placeholder="년도(4자리)" maxlength="4" style="width: 70px;">
-                        <select class="inputbox2" name="month" style="width:60px; height: 30px; " >
+                        <input class="inputbox2" name="year" id="year" type="text" pattern="[0-9]{4,4}" placeholder="년도(4자리)" maxlength="4" style="width: 70px;">
+                        <select class="inputbox2" name="month" id="month" style="width:60px; height: 30px; " >
                         <option>01</option>
                         <option>02</option>
                         <option>03</option>
@@ -109,15 +114,18 @@ module.exports = {
                         <option>11</option>
                         <option>12</option>
                         </select>
-                        <input class="inputbox2" type="text" name="day" placeholder="일" pattern="[0-9]{1,2}" maxlength="2" style="width: 34.9px;">
+                        <input class="inputbox2" type="text" name="day" id="day" placeholder="일" pattern="[0-9]{1,2}" maxlength="2" style="width: 34.9px;">
                     </td>
                 </tr>
                 <tr>
                     <td></td><td><div style="text-align: right; font-size: x-small;"><span>* </span>표시는 필수 입력</div></td>
                 </tr>
                 <tr><td><br></td></tr>
+                <input type="hidden" name="nicknamebool" id="nicknamebool" value="0">
+                <input type="hidden" name="idbool" id="idbool" value="0">
+
             </table>             
-            <div id="btn" style="text-align: center;">      
+            <div style="text-align: center;">      
                 <button class="click" type="button" onclick="
                 Check('#new');
                 ">완료</button>
@@ -127,15 +135,15 @@ module.exports = {
             </div> 
         </form>`
     },
-    FINDIDPW: function (opt,msg) {
+    FINDIDPW: function (opt, msg) {
         var part = `<header>
         <h1>아이디/비밀번호 찾기</h1>
         <p><a href="/home/login">로그인 화면으로</a></p>    
         </header>
         <div style="text-align: center;">`
-        var btn=''
-        if(opt!="비밀번호")
-        btn=`
+        var btn = ''
+        if (opt != "비밀번호")
+            btn = `
         <input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color: rgb(241, 237, 237);" onclick="
         clickbtn(this);
         ">
@@ -143,7 +151,7 @@ module.exports = {
         clickbtn(this);
         ">
         </div>`
-        else btn=`<input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color:  rgb(176, 182, 182)" onclick="
+        else btn = `<input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color:  rgb(176, 182, 182)" onclick="
         clickbtn(this);
         ">
         <input class="findbtn" id="pwfind" type="button" value="비밀번호 찾기"style="background-color:rgb(241, 237, 237)" onclick="
@@ -163,9 +171,9 @@ module.exports = {
             <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
             </div>
         </form>`
-        else 
-        return part + btn +
-            `<form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">
+        else
+            return part + btn +
+                `<form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">
         <table>
         <tr>
             <td>${opt} 찾기 결과</td><td></td>
@@ -177,5 +185,5 @@ module.exports = {
     <br>
     </form>`
     }
-        
+
 }

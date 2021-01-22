@@ -2,6 +2,7 @@ var express = require('express');
 var router=express.Router();
 var mod=require('../mod/mod.js');
 var db=require('../mod/db.js');
+var dup=require('../mod/dupli.js');
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({extended:false}))
 
@@ -26,6 +27,12 @@ router.get('/findidpw',function(req,res){
     var html=mod.HTML('아이디/비번 찾기','findidpw',body);
     res.send(html);
 });   
+router.post('/newaccount',function(req,res){
+    res.send(dup(req,'닉네임','nickname'));
+})
+router.post('/newaccount_',function(req,res){
+    res.send(dup(req,'아이디','id'));
+})
 router.post('/findidpw',function(req,res){
     var post=req.body;
     var name=post.name;
