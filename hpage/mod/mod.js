@@ -10,7 +10,7 @@ module.exports = {
                 <script src="/js/${js}.js"></script>
                 <title>${title}</title>
             </head>
-        <body onkeypress="enterpress()">
+        <body onkeydown="enterpress()">
             ${body}
         </body>
     </html>
@@ -56,7 +56,7 @@ module.exports = {
                 <tr>
                     <td><label for="nickname"><span>* </span>닉네임</label></td>
                     <td>
-                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" onchange="nicknamechange()">
+                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" onkeydown="nicknamechange()">
                         <button id="nicknamedupcheck" type="button" onclick="duplicheck()">중복확인</button>
                         <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
                     </td>
@@ -64,7 +64,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <td><label for="id"><span>* </span>아이디</label></td>
-                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" onchange="idchange()">
+                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" onkeydown="idchange()">
                     <button id="iddupcheck" type="button" onclick="duplicheck_()">중복확인</button>
                     <input type="text" class="dupli" id="iddupok" value="사용 가능" hidden disabled>
                 </tr>
@@ -74,7 +74,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <td><label for="pwc"><span>* </span>비밀번호 확인</label></td>
-                    <td><input class="inputbox2" id="pwc" type="password" placeholder="비밀번호 확인"></td>
+                    <td><input class="inputbox2" name="pwc" id="pwc" type="password" placeholder="비밀번호 확인"></td>
                 </tr>
                 
                 <tr>
@@ -121,8 +121,8 @@ module.exports = {
                     <td></td><td><div style="text-align: right; font-size: x-small;"><span>* </span>표시는 필수 입력</div></td>
                 </tr>
                 <tr><td><br></td></tr>
-                <input type="hidden" name="nicknamebool" id="nicknamebool" value="0">
-                <input type="hidden" name="idbool" id="idbool" value="0">
+                <input type="hidden" name="nicknamebool" id="nicknamebool">
+                <input type="hidden" name="idbool" id="idbool">
 
             </table>             
             <div style="text-align: center;">      
@@ -140,10 +140,7 @@ module.exports = {
         <h1>아이디/비밀번호 찾기</h1>
         <p><a href="/home/login">로그인 화면으로</a></p>    
         </header>
-        <div style="text-align: center;">`
-        var btn = ''
-        if (opt != "비밀번호")
-            btn = `
+        <div style="text-align: center;">
         <input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color: rgb(241, 237, 237);" onclick="
         clickbtn(this);
         ">
@@ -151,20 +148,22 @@ module.exports = {
         clickbtn(this);
         ">
         </div>`
-        else btn = `<input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color:  rgb(176, 182, 182)" onclick="
-        clickbtn(this);
-        ">
-        <input class="findbtn" id="pwfind" type="button" value="비밀번호 찾기"style="background-color:rgb(241, 237, 237)" onclick="
-        clickbtn(this);
-        ">
-        </div>`
+        var btn = ''
+        if (opt === "비밀번호")
+            btn = `<script>
+         $('#pwfind').css("background-color", "rgb(241, 237, 237)");
+         $('#idfind').css("background-color", "rgb(176, 182, 182)");
+         </script>`
         if (!opt)
-            return part + btn +
+            return part +
                 `<form id="new" onsubmit="return false;" method="post" action="/home/findidpw">
         <table>
-            <tr>
-                <td><input class="inputbox" name="name" id="name" type="text" placeholder="성명"></td>
-            </tr>
+        <tr>
+            <td><input class="inputbox" name= "name" id="name" type="text" placeholder="성명"></td>
+        </tr>
+        <tr>
+            <td><input class="inputbox" name="nickname" id="nickname" type="text" placeholder="닉네임"></td>
+        </tr>
         </table>
         <br>
         <div style="text-align: center;">

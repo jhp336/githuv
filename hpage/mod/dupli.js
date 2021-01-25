@@ -13,10 +13,9 @@ dupli = function (req, str, which) {
         }).value();
         if(post.idbool==='1'){
             add=`$('#iddupok').attr('hidden',false);
-            $('#iddupcheck').attr('hidden',true);`+add;
-        }
-        console.log(add);
-        
+            $('#iddupcheck').attr('hidden',true);
+            $('#idbool').val('1');`+add;        //id 사용가능 정보전달
+        }        
     }
     else {
         var info=post.id;
@@ -25,7 +24,8 @@ dupli = function (req, str, which) {
         }).value();
         if(post.nicknamebool==='1'){
             add=`$('#nicknamedupok').attr('hidden',false);
-            $('#nicknamedupcheck').attr('hidden',true);`+add;
+            $('#nicknamedupcheck').attr('hidden',true);
+            $('#nicknamebool').val('1');`+add;  //닉네임 사용가능 정보전달
         }
     }
     
@@ -36,6 +36,7 @@ dupli = function (req, str, which) {
         $('#nickname').val('${post.nickname}');
         $('#id').val('${post.id}');
         $('#pw').val('${post.pw}');
+        $('#pwc').val('${post.pwc}');
         $('#quest').val('${post.quest}');
         $('#direct').val('${post.direct_q}');
         $('#ans').val('${post.ans}');
@@ -46,7 +47,7 @@ dupli = function (req, str, which) {
     if (post.quest != '0') {
         script = script + `$('#ans').attr('disabled', false);`
         if (post.quest === 'dir')
-            script = script + `$("#direct").show();`
+            script = script + `$('#direct').show();`
     }
 
     if (user)//중복있는경우
@@ -55,6 +56,7 @@ dupli = function (req, str, which) {
     else script = script + `$('#${which}dupok').attr('hidden',false);
     $('#${which}dupcheck').attr('hidden',true);
     $('#${which}bool').val('1');`; //중복 x
+
 
     return html+script+add;
 }

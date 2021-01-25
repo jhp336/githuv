@@ -7,6 +7,9 @@ function clickbtn(but) {
             <tr>
                 <td><input class="inputbox" name= "name" id="name" type="text" placeholder="성명"></td>
             </tr>
+            <tr>
+                <td><input class="inputbox" name="nickname" id="nickname" type="text" placeholder="닉네임"></td>
+            </tr>
         </table>
         <br>
         <div style="text-align: center;">
@@ -42,10 +45,16 @@ enterpress = function () {
 }
 Pressbtn = function (form) {
     var NAME = $('#name');
+    var NICK = $('#nickname');
     var ID = $('#id');
     if (NAME.val() === "") {
         alert('이름을 입력해주세요');
         NAME.focus();
+        return;
+    }
+    if (NICK.val() === "") {
+        alert('닉네임을 입력해주세요');
+        NICK.focus();
         return;
     }
     if (ID.val() === "") {
