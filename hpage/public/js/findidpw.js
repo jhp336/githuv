@@ -2,8 +2,7 @@ function clickbtn(but) {
     var btn2, btn = $(but)
     if (btn.attr('id') === 'idfind') {
         btn2 = $('#pwfind');
-        $('#change').html(`
-        <form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">
+        $('form').html(`
         <table>
             <tr>
                 <td><input class="inputbox" name= "name" id="name" type="text" placeholder="성명"></td>
@@ -15,13 +14,11 @@ function clickbtn(but) {
         <br>
         <div style="text-align: center;">
             <input class="click" type="button" value="확인"  onclick="Pressbtn('#new')">
-        </div>
-        </form>`)
+        </div>`)
     }
     else {
         btn2 = $('#idfind');
-        $('#change').html(`
-        <form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">
+        $('form').html(`
         <table>
             <tr>
                 <td><input class="inputbox" name="name" id="name" type="text" placeholder="성명"></td>
@@ -33,8 +30,7 @@ function clickbtn(but) {
         <br>
         <div style="text-align: center;">
             <input class="click" type="button" value="확인"  onclick="Pressbtn('#new')">
-        </div>
-        </form>`);
+        </div>`);
     }
     if (btn.css("background-color") != "rgb(241, 237, 237)") {
         btn.css("background-color", "rgb(241, 237, 237)");

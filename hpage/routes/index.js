@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
     var body = `<body>
         <header>
             <h1>NTBoard</h1>
-            <div style="margin-left:20px;">
+            <div>
                 <p font-size: 15px; font-weight: bold;">${req.user.nickname}&nbsp님</p>
                 <span><button onclick="
                             location.href='/auth/logout'
@@ -20,7 +20,7 @@ router.get('/', function (req, res) {
                             location.href='/home/userinfo'
                             ">회원정보</button></span>
             </div>
-            <p></p>
+            <br>
         </header>
 
         <div id="new">

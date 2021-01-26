@@ -71,8 +71,36 @@ Check = function (form) {
         alert('아이디 중복확인을 해주세요!');
         ID.focus();
         return;
-    }
+    }//중복 확인 처리
 
+    if($('#quest').val()==="dir" && $('#direct').val()===''){
+        alert('직접 입력할 질문을 작성해주세요!');
+        $('#direct').focus();
+        return;
+    }
+    if($('#quest').val()!="질문 없음"&& $('#ans').val()===''){
+        alert('질문에 답변을 해주세요!');
+        $('#ans').focus();
+        return;
+    }//질문 답변 입력시 처리
+
+    if($('#year').val()){
+        var test5=/^[0-9]{4,4}$/;
+        if(!test5.test($('#year').val())){
+            alert('년도는 4자리 숫자로!');
+            $('#year').focus();
+            return;
+        }
+    }
+    if($('#day').val()){
+        var val=$('#day').val();
+        var test6=/^[0-9]{1,2}$/;
+        if(!test6.test(val)||val<1||val>31){
+            alert('1~31 사이의 숫자로!!');
+            $('#day').focus();
+            return;
+        }
+    }//생년월일 처리
     $(form).submit();
 }
 

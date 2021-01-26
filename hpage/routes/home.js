@@ -61,6 +61,8 @@ router.post('/findidpw', function (req, res) {
         }).value();
         if (!user)
         body = mod.FINDIDPW('비밀번호', '해당 이름, 아이디로 가입한 계정이 없습니다!');
+        else if(!user.answer) 
+        body=mod.FINDIDPW('비밀번호', '질문 등록 안 해서 못 찾음ㅋㅋ');
         else body = mod.FINDIDPW('비밀번호', user);
         html = mod.HTML('아이디/비번 찾기', 'findidpw', body);
         res.send(html);
@@ -71,7 +73,7 @@ router.post('/findidpw', function (req, res) {
         answer: ans
     }).value();
     if(!user)
-    body=mod.FINDIDPW('비밀번호', '질문에 대한 답변이 일치하지 않습니다!');
+    body=mod.FINDIDPW('비밀번호', `질문에 대한 답변이 일치하지 않습니다!`);
     else body = mod.FINDIDPW('비밀번호', user.password);
     html = mod.HTML('아이디/비번 찾기', 'findidpw', body);
     res.send(html);
