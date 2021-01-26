@@ -44,7 +44,7 @@ dupli = function (req, str, which) {
         $('#month').val('${post.month}');
         $('#day').val('${post.day}');
         `
-    if (post.quest != '0') {
+    if (post.quest != "질문 없음") {
         script = script + `$('#ans').attr('disabled', false);`
         if (post.quest === 'dir')
             script = script + `$('#direct').show();`

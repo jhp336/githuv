@@ -1,6 +1,6 @@
 function question(ele) {
     var val = $(ele).val();
-    if (val === '0') {
+    if (val === "질문 없음") {
         $("#direct").hide();
         $('#ans').attr('disabled', true);
     }

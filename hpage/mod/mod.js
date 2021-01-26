@@ -80,8 +80,8 @@ module.exports = {
                 <tr>
                     <td><label for="direct"><span>&nbsp&nbsp</span>분실 시 질문</label></td>
                     <td>
-                        <select name="quest" id="quest" class="inputbox2" style="width:224px; height: 30px;" name="que" onchange="question(this)">
-                            <option value="0">::선택::</option>
+                        <select name="quest" id="quest" class="inputbox2" style="width:204px; height: 30px;" name="que" onchange="question(this)">
+                            <option value="질문 없음">::선택::</option>
                             <option value="별명은?">별명은?</option>
                             <option value="고향은?">고향은?</option>
                             <option value="dir">직접 입력</option>
@@ -99,7 +99,7 @@ module.exports = {
                 <tr>
                     <td><label for="birth"><span>&nbsp&nbsp</span>생년월일</label></td>
                     <td>
-                        <input class="inputbox2" name="year" id="year" type="text" pattern="[0-9]{4,4}" placeholder="년도(4자리)" maxlength="4" style="width: 70px;">
+                        <input class="inputbox2" name="year" id="year" type="text" pattern="[0-9]{4,4}" placeholder="년도(4자리)" maxlength="4" style="width: 67px;">
                         <select class="inputbox2" name="month" id="month" style="width:60px; height: 30px; " >
                         <option>01</option>
                         <option>02</option>
@@ -114,7 +114,7 @@ module.exports = {
                         <option>11</option>
                         <option>12</option>
                         </select>
-                        <input class="inputbox2" type="text" name="day" id="day" placeholder="일" pattern="[0-9]{1,2}" maxlength="2" style="width: 34.9px;">
+                        <input class="inputbox2" type="text" name="day" id="day" placeholder="일" pattern="[0-9]{1,2}" maxlength="2" style="width: 18px;">
                     </td>
                 </tr>
                 <tr>
@@ -147,13 +147,9 @@ module.exports = {
         <input class="findbtn" id="pwfind" type="button" value="비밀번호 찾기"style="background-color: rgb(176, 182, 182)" onclick="
         clickbtn(this);
         ">
-        </div>`
-        var btn = ''
-        if (opt === "비밀번호")
-            btn = `<script>
-         $('#pwfind').css("background-color", "rgb(241, 237, 237)");
-         $('#idfind').css("background-color", "rgb(176, 182, 182)");
-         </script>`
+        </div>
+        <div id="change">`
+        
         if (!opt)
             return part +
                 `<form id="new" onsubmit="return false;" method="post" action="/home/findidpw">
@@ -169,20 +165,61 @@ module.exports = {
         <div style="text-align: center;">
             <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
             </div>
-        </form>`
-        else
-            return part + btn +
-                `<form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">
-        <table>
-        <tr>
-            <td>${opt} 찾기 결과</td><td></td>
-        </tr>
-        <tr>
-            <td><input class="inputbox3" type="text" disabled value="${msg}"><td></td>
-        </tr>
-    </table>
-    <br>
-    </form>`
+        </form>
+        </div>`;
+
+        var result=`<table>
+                    <tr>
+                        <td>${opt} 찾기 결과</td><td></td>
+                    </tr>
+                    <tr>
+                        <td><input class="inputbox3" type="text" disabled value="${msg}"></td>
+                    </tr>
+                </table>
+            <br>
+            </form>
+            </div>`;
+        if(opt==="아이디"){            
+            return part +
+                `<form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">`
+                +result;
+            }
+        if(opt === "비밀번호"){
+            var btn = `<script>
+            $('#pwfind').css("background-color", "rgb(241, 237, 237)");
+            $('#idfind').css("background-color", "rgb(176, 182, 182)");
+            </script>`
+            if(!msg.question)
+            return part+ btn +
+            `<form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">`
+            +result;
+            var id=msg.id;
+            if(msg.question==='dir')
+            msg=msg.direct;
+            else msg=msg.question;
+            return part + btn
+            +`<form id="new"  onsubmit="return false;" method="post" action="/home/findidpw">
+            <table>
+            <tr>
+                <td>${opt} 찾기 결과</td><td></td>
+            </tr>
+            <tr>
+                <td><input class="inputbox3" type="text" disabled value="${msg}"></td>
+            </tr>
+            <tr>
+                <td><input class="inputbox3" type="text" name="answer" placeholder="답변"></td>
+            </tr>
+            <input type="hidden" name="id" value="${id}">
+            </table>
+            <br>
+            <div style="text-align: center;">
+                <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
+            </div>
+            </form>
+            </div>
+            `
+        }
+
     }
 
 }

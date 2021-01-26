@@ -16,8 +16,8 @@ header{
 }
 #new{
     margin: 0 auto;
-    width: 450px;
-    padding: 20px 0 10px 20px;
+    width: 410px;
+    padding: 20px 20px 10px 20px;
     background-color: rgb(241, 237, 237);
     border-radius: 3px;
 }
@@ -61,7 +61,7 @@ input,button,select{
     font-size: 15px;
 }/*로그인 아이디/비번 박스*/
 .inputbox2{
-    width:200px;
+    width:180px;
     height:20px;
     padding:3px 10px;
     font-size: 13px;
