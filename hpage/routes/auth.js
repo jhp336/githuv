@@ -11,7 +11,19 @@ module.exports = function (passport) {
         var post = req.body;
         var name = post.name;
         var nick = post.nickname;
+        if (db.get('users').find({
+            nickname: nick
+        }).value()) {
+            res.send(`<script>alert('닉네임 중복! 다시 만들어주세요');window.history.back();</script>`)
+            return;
+        }
         var id = post.id;
+        if (db.get('users').find({
+            id: id
+        }).value()) {
+            res.send(`<script>alert('아이디 중복! 다시 만들어주세요');window.history.back();</script>`)
+            return;
+        }
         var pw = post.pw;
         var quest = post.quest;
         var direct = post.direct_q;
@@ -34,6 +46,10 @@ module.exports = function (passport) {
             day: day
         }
         db.get('users').push(userinf).write();
+
+        const low = require('lowdb')
+        const FileSync = require('lowdb/adapters/FileSync');
+        low(new FileSync(`${id}.json`)).defaults({ posts: [] }).write();
         req.login(userinf, function (err) {
             req.session.save(function () {
                 res.redirect('/');
@@ -41,27 +57,6 @@ module.exports = function (passport) {
         })
     })
 
-    router.post('/duplication', function (req, res) {
-        var user = db.get('users').find({
-            nickname: req.body.nickname
-        }).value();
-        if (user) {
-            var body = `<script>
-            alert('중복된 닉네임이 있습니다. 다시 정해주세요');
-            window.history.back();
-            </script>`;
-            var html = mod.HTML('회원가입', '', body);
-            res.send(html);
-        }
-        else {
-            var body = `<script>
-            alert('사용 가능한 닉네임입니다!');
-            window.history.back();
-            </script>`;
-            var html = mod.HTML('회원가입', '', body);
-            res.send(html);
-        }
-    })
     router.post('/login',
         passport.authenticate('local', {
             successRedirect: '/',

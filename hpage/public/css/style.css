@@ -91,6 +91,6 @@ span{
     color:red;
 }
 .bgimg{
-    background-image: url(/bgimg.jpg);
+    background-image: url(/img/bgimg.jpg);
     background-size: cover;
 }

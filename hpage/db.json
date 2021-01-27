@@ -1,37 +1,11 @@
 {
   "users": [
     {
-      "key": "vw0qhVnzC",
-      "name": "비비",
-      "nickname": "비비",
-      "id": "jh45",
-      "password": "jh456",
-      "question": "별명은?",
-      "direct": "",
-      "answer": "qlql",
-      "year": "",
-      "month": "01",
-      "day": ""
-    },
-    {
-      "key": "zAEHWgf45",
-      "name": "지지",
-      "nickname": "지지",
-      "id": "jh123",
-      "password": "jh123",
-      "question": "dir",
-      "direct": "나이는?????",
-      "answer": "205",
-      "year": "ㅁㄴㅇㅁ",
-      "month": "01",
-      "day": "ㅁ"
-    },
-    {
-      "key": "LFTxNx1Vl",
-      "name": "디디",
-      "nickname": "디디",
-      "id": "elel1",
-      "password": "elel1",
+      "key": "V9Ox2Ryr2",
+      "name": "바비",
+      "nickname": "바비",
+      "id": "qkql1",
+      "password": "qkql1",
       "question": "질문 없음",
       "direct": "",
       "year": "",
@@ -39,14 +13,13 @@
       "day": ""
     },
     {
-      "key": "U2OtXAwlX",
-      "name": "빅바",
-      "nickname": "비바",
-      "id": "qlqk1",
-      "password": "qlqk11",
-      "question": "고향은?",
+      "key": "n4xAOcjab",
+      "name": "기가",
+      "nickname": "기가",
+      "id": "rlrk1",
+      "password": "rlrk1",
+      "question": "질문 없음",
       "direct": "",
-      "answer": "여주",
       "year": "",
       "month": "월",
       "day": ""
