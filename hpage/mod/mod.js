@@ -2,7 +2,7 @@ module.exports = {
     HTML: function (title, js, body) {
         return `
         <!DOCTYPE html>
-        <html>
+        <html class="bgimg">
             <head>
                 <link rel="stylesheet" href="/css/style.css">
                 <meta charset="utf-8">
@@ -12,7 +12,7 @@ module.exports = {
             </head>
         <body onkeydown="enterpress()">
             ${body}
-        </body>
+        </body>            
     </html>
         `
     },
@@ -151,7 +151,7 @@ module.exports = {
         </div>
         <form id="new" onsubmit="return false;" method="post" action="/home/findidpw">
         `
-        
+
         if (!opt) //찾기 전
             return part +
                 `<table>
@@ -168,7 +168,7 @@ module.exports = {
             </div>
         </form>`;
 
-        var result=`<table>
+        var result = `<table>
                     <tr>
                         <td>${opt} 찾기 결과</td><td></td>
                     </tr>
@@ -178,22 +178,22 @@ module.exports = {
                 </table>
             <br>
             </form>`;
-        if(opt==="아이디"){            
+        if (opt === "아이디") {
             return part + result;
-            }
-        if(opt === "비밀번호"){
+        }
+        if (opt === "비밀번호") {
             var btn = `<script>
             $('#pwfind').css("background-color", "rgb(241, 237, 237)");
             $('#idfind').css("background-color", "rgb(176, 182, 182)");
             </script>`
-            if(!msg.question) //계정 정보x 혹은 질문 답변까지 완료 시
-            return part+ btn + result;
-            var id=msg.id;
-            if(msg.question==='dir')//질문이 직접입력일 시
-            msg=msg.direct;
-            else msg=msg.question;
+            if (!msg.question) //계정 정보x 혹은 질문 답변까지 완료 시
+                return part + btn + result;
+            var id = msg.id;
+            if (msg.question === 'dir')//질문이 직접입력일 시
+                msg = msg.direct;
+            else msg = msg.question;
             return part + btn
-            +`<table>
+                + `<table>
             <tr>
                 <td>${opt} 찾기 결과</td><td></td>
             </tr>

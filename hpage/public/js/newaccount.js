@@ -96,7 +96,7 @@ Check = function (form) {
         var val=$('#day').val();
         var test6=/^[0-9]{1,2}$/;
         if(!test6.test(val)||val<1||val>31){
-            alert('1~31 사이의 숫자로!!');
+            alert('날짜는 1~31 사이의 숫자로!!');
             $('#day').focus();
             return;
         }
