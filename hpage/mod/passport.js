@@ -11,10 +11,10 @@ module.exports=function(app){
         done(null, user.key);
     });
     
-    passport.deserializeUser(function(id, done) {
-        console.log('deser',id);
+    passport.deserializeUser(function(keyval, done) {
+        console.log('deser',keyval);
         var user=db.get('users').find({
-            key:id
+            key:keyval
         }).value();
         done(null, user);
     });

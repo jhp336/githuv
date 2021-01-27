@@ -20,7 +20,7 @@ app.use('/auth',require('./routes/auth.js')(passport));
 
 
 app.use(function(req,res,next){
-    res.status(404).send("Sorry, I can't find");
+    res.status(404).send("<script>alert('페이지가 존재하지 않습니다!');window.history.back();</script>");
 });
 app.use(function(err, req, res, next) {
     console.error(err.stack);
