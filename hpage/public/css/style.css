@@ -71,7 +71,7 @@ input,button,select{
     font-size: 15px;
     font-weight: bold;
     text-align: center;
-}
+}/*아디/비번 찾기결과 박스*/
 .dupli{
     width:60px;
     height:19px;
@@ -86,7 +86,7 @@ a{
 a:hover{
     text-decoration: underline;
 }
-span{
+.star{
     font-size:xx-small;
     color:red;
 }

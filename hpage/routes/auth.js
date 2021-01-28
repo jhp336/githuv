@@ -47,9 +47,7 @@ module.exports = function (passport) {
         }
         db.get('users').push(userinf).write();
 
-        const low = require('lowdb')
-        const FileSync = require('lowdb/adapters/FileSync');
-        low(new FileSync(`${id}.json`)).defaults({ posts: [] }).write();
+        
         req.login(userinf, function (err) {
             req.session.save(function () {
                 res.redirect('/');

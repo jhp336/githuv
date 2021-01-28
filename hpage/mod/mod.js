@@ -50,11 +50,11 @@ module.exports = {
         <form id="new" name="new" method="post" action="/auth/join">
             <table>
                 <tr>
-                    <td><label for="name"><span>* </span>성명</label></td>
+                    <td><label for="name"><span class="star">* </span>성명</label></td>
                     <td><input class="inputbox2" name="name" id="name" type="text" placeholder="성명"></td>
                 </tr>
                 <tr>
-                    <td><label for="nickname"><span>* </span>닉네임</label></td>
+                    <td><label for="nickname"><span class="star">* </span>닉네임</label></td>
                     <td>
                         <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" onkeydown="nicknamechange()">
                         <button id="nicknamedupcheck" type="button" onclick="duplicheck()">중복확인</button>
@@ -63,17 +63,17 @@ module.exports = {
                     
                 </tr>
                 <tr>
-                    <td><label for="id"><span>* </span>아이디</label></td>
+                    <td><label for="id"><span class="star">* </span>아이디</label></td>
                     <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" onkeydown="idchange()">
                     <button id="iddupcheck" type="button" onclick="duplicheck_()">중복확인</button>
                     <input type="text" class="dupli" id="iddupok" value="사용 가능" hidden disabled>
                 </tr>
                 <tr>
-                    <td><label for="pw"><span>* </span>비밀번호</label></td>
+                    <td><label for="pw"><span class="star">* </span>비밀번호</label></td>
                     <td><input class="inputbox2" name="pw" id="pw" type="password" placeholder="비밀번호"></td>
                 </tr>
                 <tr>
-                    <td><label for="pwc"><span>* </span>비밀번호 확인</label></td>
+                    <td><label for="pwc"><span class="star">* </span>비밀번호 확인</label></td>
                     <td><input class="inputbox2" name="pwc" id="pwc" type="password" placeholder="비밀번호 확인"></td>
                 </tr>
                 
@@ -97,7 +97,7 @@ module.exports = {
                     <td><input class="inputbox2" type="text" name="ans" id="ans" disabled ></td>
                 </tr>
                 <tr>
-                    <td><label for="birth"><span>&nbsp&nbsp</span>생년월일</label></td>
+                    <td><span>&nbsp&nbsp</span>생년월일</label></td>
                     <td>
                         <input class="inputbox2" name="year" id="year" type="text" placeholder="년도(4자리)" maxlength="4" style="width: 67px;">
                         <select class="inputbox2" name="month" id="month" style="width:60px; height: 30px; " >

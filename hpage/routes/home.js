@@ -28,10 +28,10 @@ router.get('/findidpw', function (req, res) {
     res.send(html);
 });
 router.post('/newaccount', function (req, res) {
-    res.send(dup(req, '닉네임', 'nickname'));
+    res.send(dup.dupli_new(req, '닉네임', 'nickname'));
 })
 router.post('/newaccount_', function (req, res) {
-    res.send(dup(req, '아이디', 'id'));
+    res.send(dup.dupli_new(req, '아이디', 'id'));
 })
 router.post('/findidpw', function (req, res) {
     var post = req.body;
