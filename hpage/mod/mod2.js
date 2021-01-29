@@ -7,7 +7,11 @@ module.exports={
         <p><a href="/">메인 페이지로</a></p>
         </header>
         <form id="new" method="post" action="/${id}/userinfo/assign">
-        <table>
+        <div style="text-align:center">
+        <input class="inputbox3" value="ID: ${id}" disabled>
+        </div>
+        <br>
+        <table>    
         <tr>
             <td><label for="name">성명</label></td>
             <td><input class="inputbox2" name="name" id="name" type="text" value="${name}" disabled></td>
@@ -21,13 +25,7 @@ module.exports={
             </td>
         </tr>
         <tr>
-            <td><label for="id">아이디</label></td>
-            <td><input class="inputbox2" name="id" id="id" type="text" value="${id}" disabled onkeydown="idchange()">
-            <button id="iddupcheck" type="button" onclick="duplicheck_('${id}')" hidden>중복확인</button>
-            <input type="text" class="dupli" id="iddupok" value="사용 가능" hidden disabled>
-        </tr>
-        <tr>
-            <td><label for="direct">분실 시 질문</label></td>
+            <td><label for="quest">분실 시 질문</label></td>
             <td>
                 <input name="quest" id="quest" class="inputbox2" type="text" value="${quest}" disabled>
             </td>                        
@@ -44,6 +42,7 @@ module.exports={
                 <input class="inputbox2" type="text" name="day" id="day" value="${day}" maxlength="2" style="width: 27px;" disabled>
             </td>
         </tr>
+        <input type="hidden" name="nicknamebool" id="nicknamebool">
         </table>
         <br>
         <div style="text-align: center;">      

@@ -1,4 +1,5 @@
 var mod = require('./mod.js');
+var mod2 = require('./mod2.js');
 var db = require('./db.js');
 
 module.exports = {
@@ -52,12 +53,35 @@ module.exports = {
         }
 
         if (user)//중복있는경우
-            script = script + `$('#${which}').focus();
+            script = script + `$('#nickname').focus();
     alert('해당 ${str}이(가) 이미 있습니다. 다시 정해주세요!');`;
-        else script = script + `$('#${which}dupok').attr('hidden',false);
-    $('#${which}dupcheck').attr('hidden',true);
-    $('#${which}bool').val('1');`; //중복 x
+        else script = script + `$('#nicknamedupok').attr('hidden',false);
+    $('#nicknamedupcheck').attr('hidden',true);
+    $('#nicknamebool').val('1');`; //중복 x
 
+
+        return html + script + add;
+    },
+
+    dupli_mod: function (req) {
+        var post = req.body;
+        var body = mod2.userinfo(post.name, post.nickname, post.id
+            , post.quest, post.ans, post.year, post.month, post.day);
+        var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
+        var add = `</script>`
+        var info = post.nickname;
+        var user = db.get('users').find({
+            nickname: info
+        }).value();
+
+        var script = '';
+
+        if (user)//중복있는경우
+            script = `$('#nickname').focus();
+    alert('해당 닉네임이 이미 있습니다. 다시 정해주세요!');`;
+        else script = `$('#nicknamedupok').attr('hidden',false);
+    $('#nicknamedupcheck').attr('hidden',true);
+    $('#nicknamebool').val('1');`; //중복 x
 
         return html + script + add;
     }

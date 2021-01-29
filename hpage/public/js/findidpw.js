@@ -10,9 +10,9 @@ function clickbtn(but) {
             <tr>
                 <td><input class="inputbox" name="nickname" id="nickname" type="text" placeholder="닉네임"></td>
             </tr>
+            <tr style="text-align: right; color:red;"><td id="msg"></td></tr> 
         </table>
-        <br>
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top:10px;">
             <input class="click" type="button" value="확인"  onclick="Pressbtn('#new')">
         </div>`)
     }
@@ -26,9 +26,9 @@ function clickbtn(but) {
             <tr>
                 <td><input class="inputbox" name="id" id="id" type="text" placeholder="아이디"></td>
             </tr>
+            <tr style="text-align: right; color:red;"><td id="msg"></td></tr> 
         </table>
-        <br>
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top:10px;">
             <input class="click" type="button" value="확인"  onclick="Pressbtn('#new')">
         </div>`);
     }
@@ -47,17 +47,17 @@ Pressbtn = function (form) {
     var NICK = $('#nickname');
     var ID = $('#id');
     if (NAME.val() === "") {
-        alert('이름을 입력해주세요');
+        $('#msg').html('이름을 입력해주세요');
         NAME.focus();
         return;
     }
     if (NICK.val() === "") {
-        alert('닉네임을 입력해주세요');
+        $('#msg').html('닉네임을 입력해주세요');
         NICK.focus();
         return;
     }
     if (ID.val() === "") {
-        alert('아이디를 입력해주세요');
+        $('#msg').html('아이디를 입력해주세요');
         ID.focus();
         return;
     }

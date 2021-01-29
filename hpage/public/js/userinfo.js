@@ -2,8 +2,6 @@ Modify=function(answer){
     $('#name').attr('disabled',false);
     $('#nickname').attr('disabled',false);
     $('#nicknamedupcheck').attr('hidden',false);
-    $('#iddupcheck').attr('hidden',false);
-    $('#id').attr('disabled',false);
     $('#quest').attr('disabled',false);
     $('#ans').attr('disabled',false);
     $("#ans").attr('style','');

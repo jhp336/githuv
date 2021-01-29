@@ -19,7 +19,7 @@ module.exports = {
     LOGIN: function (msg) {
         wrong = '';
         if (msg != "")
-            wrong = '<script>$(\'#id\').focus()</script>';
+            wrong = `<script>$('#id').focus()</script>`;
 
         return `<header>
         <h1>로그인</h1>
@@ -161,9 +161,9 @@ module.exports = {
         <tr>
             <td><input class="inputbox" name="nickname" id="nickname" type="text" placeholder="닉네임"></td>
         </tr>
+        <tr style="text-align: right; color:red;"><td id="msg"></td></tr>        
         </table>
-        <br>
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top:10px;">
             <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
             </div>
         </form>`;
