@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: false }))
 var shortid = require('shortid');
 var db = require('../mod/db.js');
-var mod = require('../mod/mod.js');
 
 module.exports = function (passport) {
     router.post('/join', function (req, res) {

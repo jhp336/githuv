@@ -10,7 +10,6 @@ module.exports = {
                 <script src="/js/${js}.js"></script>
                 <title>${title}</title>
             </head>
-        <body onkeydown="enterpress()">
             ${body}
         </body>            
     </html>
@@ -21,7 +20,8 @@ module.exports = {
         if (msg != "")
             wrong = `<script>$('#id').focus()</script>`;
 
-        return `<header>
+        return `<body onkeydown="enterpress()">
+        <header>
         <h1>로그인</h1>
         <p style="font-weight:bold;">계정에 로그인을 해주세요!</p>
         </header>
@@ -43,7 +43,8 @@ module.exports = {
         </form>${wrong}`
     },
     NEWACC: function () {
-        return `<header>
+        return `<body onkeydown="enterpress()">
+        <header>
     <h1>회원가입</h1>
      <p style="font-weight:bold;">새 계정을 만들어 보세요!</p>
         </header>
@@ -137,6 +138,8 @@ module.exports = {
         </form>`
     },
     FINDIDPW: function (opt, msg) {
+        var head=`<body onkeydown="enterpress()">`;
+        var head_='<body>'
         var part = `<header>
         <h1>아이디/비밀번호 찾기</h1>
         <p><a href="/home/login">로그인 화면으로</a></p>    
@@ -153,7 +156,7 @@ module.exports = {
         `
 
         if (!opt) //찾기 전
-            return part +
+            return head+part +
                 `<table>
         <tr>
             <td><input class="inputbox" name= "name" id="name" type="text" placeholder="성명"></td>
@@ -179,7 +182,7 @@ module.exports = {
             <br>
             </form>`;
         if (opt === "아이디") {
-            return part + result;
+            return head_+part + result;
         }
         if (opt === "비밀번호") {
             var btn = `<script>
@@ -192,7 +195,7 @@ module.exports = {
             if (msg.question === 'dir')//질문이 직접입력일 시
                 msg = msg.direct;
             else msg = msg.question;
-            return part + btn
+            return head+part + btn
                 + `<table>
             <tr>
                 <td>${opt} 찾기 결과</td><td></td>
@@ -201,12 +204,12 @@ module.exports = {
                 <td><input class="inputbox3" type="text" disabled value="${msg}"></td>
             </tr>
             <tr>
-                <td><input class="inputbox3" type="text" name="answer" placeholder="답변"></td>
+                <td><input class="inputbox3" type="text" id="answer" name="answer" placeholder="답변"></td>
             </tr>
             <input type="hidden" name="id" value="${id}">
+            <tr style="text-align: right; color:red;"><td id="msg"></td></tr>        
             </table>
-            <br>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-top:10px;">
                 <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
             </div>
             </form>

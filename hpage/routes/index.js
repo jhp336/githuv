@@ -37,16 +37,16 @@ router.get('/:userid/userinfo', function (req, res) {
         post.answer = '';
     if (post.month === '월')
         post.month = '';
-    var body = mod2.userinfo(post.name, post.nickname, post.id, post.question
+    var body = mod2.userinfo(post.nickname,post.name, post.nickname, post.id, post.question
         , post.answer, post.year, post.month, post.day);
     var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
     res.send(html);
 })
 router.post('/:userid/userinfo/modify', function (req, res) {
-    res.send(dup(req, '닉네임', 'nickname'));
+    res.send(dup.dupli_mod(req, req.user.nickname));
 })
 router.post('/:userid/userinfo/modify_', function (req, res) {
-    res.send(dup(req, '아이디', 'id'));
+    res.send(dup.dupli_mod(req, req.user.nickname));
 })
 
 module.exports = router;

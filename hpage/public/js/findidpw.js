@@ -1,4 +1,5 @@
 function clickbtn(but) {
+    $('body').attr('onkeydown',"enterpress()")
     var btn2, btn = $(but)
     if (btn.attr('id') === 'idfind') {
         btn2 = $('#pwfind');
@@ -46,6 +47,7 @@ Pressbtn = function (form) {
     var NAME = $('#name');
     var NICK = $('#nickname');
     var ID = $('#id');
+    var ANS =$('#answer');
     if (NAME.val() === "") {
         $('#msg').html('이름을 입력해주세요');
         NAME.focus();
@@ -59,6 +61,11 @@ Pressbtn = function (form) {
     if (ID.val() === "") {
         $('#msg').html('아이디를 입력해주세요');
         ID.focus();
+        return;
+    }
+    if(ANS.val()===""){
+        $('#msg').html('답변을 입력해주세요');
+        ANS.focus();
         return;
     }
     $(form).attr('onsubmit',true);
