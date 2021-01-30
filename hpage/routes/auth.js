@@ -25,7 +25,8 @@ module.exports = function (passport) {
         }
         var pw = post.pw;
         var quest = post.quest;
-        var direct = post.direct_q;
+        if(post.direct)
+        quest=post.direct;
         var ans = post.ans;
         var year = post.year;
         var month = post.month;
@@ -38,7 +39,6 @@ module.exports = function (passport) {
             id: id,
             password: pw,
             question: quest,
-            direct: direct,
             answer: ans,
             year: year,
             month: month,

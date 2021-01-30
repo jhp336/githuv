@@ -36,7 +36,7 @@ module.exports = {
             <tr style="text-align: right; color:red;"><td id="msg">${msg}</td></tr>
         </table>     
         <div style="text-align: center;">
-            <input id="login" class="btn" type="button" value="로그인" onclick="Login('#new')">
+            <input id="login" class="loginbtn btncss" type="button" value="로그인" onclick="Login('#new')">
         </div>
         <div style="text-align: center;"><a href="/home/findidpw">아이디/비밀번호를 잊으셨나요?</a></div>
         <div style="text-align: center;"><a href="/home/newaccount">계정이 없으신가요?</a></div>
@@ -58,7 +58,7 @@ module.exports = {
                     <td><label for="nickname"><span class="star">* </span>닉네임</label></td>
                     <td>
                         <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" onkeydown="nicknamechange()">
-                        <button id="nicknamedupcheck" type="button" onclick="duplicheck()">중복확인</button>
+                        <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck()">중복확인</button>
                         <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
                     </td>
                     
@@ -66,7 +66,7 @@ module.exports = {
                 <tr>
                     <td><label for="id"><span class="star">* </span>아이디</label></td>
                     <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" onkeydown="idchange()">
-                    <button id="iddupcheck" type="button" onclick="duplicheck_()">중복확인</button>
+                    <button id="iddupcheck" type="button" style="cursor:pointer;" onclick="duplicheck_()">중복확인</button>
                     <input type="text" class="dupli" id="iddupok" value="사용 가능" hidden disabled>
                 </tr>
                 <tr>
@@ -91,7 +91,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input class="inputbox2" type="text" name="direct_q" id="direct" placeholder="질문을 입력하세요" hidden></td>
+                    <td><input class="inputbox2" type="text" name="direct" id="direct" placeholder="질문을 입력하세요" hidden></td>
                 </tr>
                 <tr>
                     <td><label for="ans"><span>&nbsp&nbsp</span>답변</label></td>
@@ -120,7 +120,7 @@ module.exports = {
                     </td>
                 </tr>
                 <tr>
-                    <td></td><td><div style="text-align: right; font-size: x-small;"><span>* </span>표시는 필수 입력</div></td>
+                    <td></td><td><div style="text-align: right; font-size: x-small;"><span class="star">* </span>표시는 필수 입력</div></td>
                 </tr>
                 <tr><td><br></td></tr>
                 <input type="hidden" name="nicknamebool" id="nicknamebool">
@@ -128,10 +128,10 @@ module.exports = {
 
             </table>             
             <div style="text-align: center;">      
-                <button class="click" type="button" onclick="
+                <button class="click btncss" type="button" onclick="
                 Check('#new');
                 ">완료</button>
-                <input class="click" type="button" value="취소" onclick="
+                <input class="click btncss" type="button" value="취소" onclick="
                 location.href='/home/login'
                 ">
             </div> 
@@ -145,10 +145,10 @@ module.exports = {
         <p><a href="/home/login">로그인 화면으로</a></p>    
         </header>
         <div style="text-align: center;">
-        <input class="findbtn" id="idfind" type="button"  value="아이디 찾기" style="background-color: rgb(241, 237, 237);" onclick="
+        <input class="findbtn btncss" id="idfind" type="button"  value="아이디 찾기" style="background-color: rgb(241, 237, 237);" onclick="
         clickbtn(this);
         ">
-        <input class="findbtn" id="pwfind" type="button" value="비밀번호 찾기"style="background-color: rgb(176, 182, 182)" onclick="
+        <input class="findbtn btncss" id="pwfind" type="button" value="비밀번호 찾기"style="background-color: rgb(176, 182, 182)" onclick="
         clickbtn(this);
         ">
         </div>
@@ -167,7 +167,7 @@ module.exports = {
         <tr style="text-align: right; color:red;"><td id="msg"></td></tr>        
         </table>
         <div style="text-align: center; margin-top:10px;">
-            <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
+            <button class="click btncss" type="button" onclick="Pressbtn('#new')">확인</button>
             </div>
         </form>`;
 
@@ -192,9 +192,7 @@ module.exports = {
             if (!msg.question) //계정 정보x 혹은 질문 답변까지 완료 시
                 return part + btn + result;
             var id = msg.id;
-            if (msg.question === 'dir')//질문이 직접입력일 시
-                msg = msg.direct;
-            else msg = msg.question;
+            msg = msg.question;
             return head+part + btn
                 + `<table>
             <tr>
@@ -210,7 +208,7 @@ module.exports = {
             <tr style="text-align: right; color:red;"><td id="msg"></td></tr>        
             </table>
             <div style="text-align: center; margin-top:10px;">
-                <button class="click" type="button" onclick="Pressbtn('#new')">확인</button>
+                <button class="click btncss" type="button" onclick="Pressbtn('#new')">확인</button>
             </div>
             </form>
             `

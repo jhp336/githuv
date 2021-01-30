@@ -1,11 +1,12 @@
 var db=require('./db');
 module.exports={
     userinfo:function(originnick,name,nick,id,quest,ans,year,month,day){
-        return `<header>
+        return `<body>
+        <header>
         <h1><span style="color:orange;">${originnick}</span> 님의 회원 정보</h1>
         <p><a href="/">메인 페이지로</a></p>
         </header>
-        <form id="new" method="post" action="/${id}/userinfo/assign">
+        <form id="new" method="post" action="/${id}/userinfo">
         <div style="text-align:center">
         <input class="inputbox3" value="ID: ${id}" disabled>
         <input type="hidden" name="id" value="${id}" hidden>
@@ -13,14 +14,14 @@ module.exports={
         <br>
         <table>    
         <tr>
-            <td><label for="name">성명</label></td>
+            <td><label for="name"><span class="star modif" hidden>* </span>성명</label></td>
             <td><input class="inputbox2 modif2" name="name" id="name" type="text" value="${name}" disabled></td>
         </tr>
         <tr>
-            <td><label for="nickname">닉네임</label></td>
+            <td><label for="nickname"><span class="star modif" hidden>* </span>닉네임</label></td>
             <td>
                 <input class="inputbox2 modif2" id="nickname" name="nickname" type="text" value="${nick}" disabled onkeydown="nicknamechange()">
-                <button id="nicknamedupcheck" type="button" onclick="duplicheck('${id}');"hidden>중복확인</button>
+                <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck('${id}');"hidden>중복확인</button>
                 <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
             </td>
         </tr>
@@ -42,15 +43,19 @@ module.exports={
                 <input class="inputbox2 modif2" type="text" name="day" id="day" value="${day}" maxlength="2" style="width: 27px;" disabled>
             </td>
         </tr>
+        <tr class="modif" hidden>
+            <td></td><td><div style="text-align: right; font-size: x-small;"><span class="star">* </span>표시는 필수 입력</div></td>
+        </tr>
         <input type="hidden" name="nicknamebool" id="nicknamebool">
         </table>
         <br>
         <div style="text-align: center;">      
-                <input class="click" type="button" id="modify" value="수정" onclick="Modify('${ans}',0);">
-                <input class="inputbox2 modif" type="password" name="pw" placeholder="비밀번호" hidden>
-                <p><input class="click modif" type="button" value="완료" hidden onclick="Check('#new')">
-                <input class="click modif" type="button" value="취소" hidden onclick="
-                window.history.back();
+                <input class="click btncss" type="button" id="modify" value="수정" onclick="Modify('${ans}',0);">
+                <input class="inputbox2 modif" type="password" id="pw" name="pw" placeholder="비밀번호" hidden>
+                <div style="text-align: center; color:red; font-size:14px;" id="msg"></div>
+                <p><input class="click modif btncss" type="button" value="완료" hidden onclick="Check('#new')">
+                <input class="click modif btncss" type="button" value="취소" hidden onclick="
+                location.href='/${id}/userinfo'
                 "><p>
         </div> 
         </form>`
@@ -61,10 +66,10 @@ module.exports={
             <h1>NTBoard</h1>
             <div>
                 <p style="font-size: 15px; font-weight: bold;">${nick}&nbsp님</p>
-                <span><button onclick="
+                <span><button style="cursor:pointer;" onclick="
                             location.href='/auth/logout'
                             ">로그아웃</button></span>
-                <span><button onclick="
+                <span><button style="cursor:pointer;" onclick="
                             location.href='/${id}/userinfo'
                             ">회원정보</button></span>
             </div>
@@ -78,8 +83,7 @@ module.exports={
                     <td><button>비밀게시판</button></td>
                 </tr>
             </table>
-        </div>
-    </body> `
+        </div>`
     }
 
 }

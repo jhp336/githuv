@@ -21,31 +21,29 @@ header{
 table{
     margin: 0 auto;
 }
+.btncss{
+    border: none ;
+    cursor: pointer;
+}/*버튼 테두리없앰+커서올리면 변화*/
 .click{
     width: 45px;
     height: 25px;
-    border: none ;
     color: rgb(220, 224, 228);
     background-color: rgb(8, 109, 104) ;
-    cursor: pointer;
 }/*확인,취소버튼*/
-.btn{
+.loginbtn{
     width: 250px;
     height: 40px;
-    border: none ;
     color: rgb(220, 224, 228);
     background-color: rgb(8, 109, 104) ;
-    cursor: pointer;
     font-size: 15px;
     margin: 10px 0 15px;
 }/*로그인 버튼*/
 .findbtn{
     width: 180px;
     height: 30px;
-    border: none ;
     outline: 0;
     color: rgb(30, 31, 32);
-    cursor: pointer;
     border-radius: 3px 3px 0 0;
 }/*아디찾기/비번찾기버튼*/
 input,button,select{
@@ -75,7 +73,6 @@ input,button,select{
 .dupli{
     width:60px;
     height:19px;
-    text-align: center;
     border:2px solid rgb(243, 155, 155);
     color: rgb(134, 14, 14);
 }/*중복확인 버튼*/

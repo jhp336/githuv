@@ -101,6 +101,7 @@ Check = function (form) {
             return;
         }
     }//생년월일 처리
+    
     $(form).submit();
 }
 

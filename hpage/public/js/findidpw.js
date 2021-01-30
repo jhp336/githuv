@@ -14,7 +14,7 @@ function clickbtn(but) {
             <tr style="text-align: right; color:red;"><td id="msg"></td></tr> 
         </table>
         <div style="text-align: center; margin-top:10px;">
-            <input class="click" type="button" value="확인"  onclick="Pressbtn('#new')">
+            <input class="click btncss" type="button" value="확인"  onclick="Pressbtn('#new')">
         </div>`)
     }
     else {
@@ -30,7 +30,7 @@ function clickbtn(but) {
             <tr style="text-align: right; color:red;"><td id="msg"></td></tr> 
         </table>
         <div style="text-align: center; margin-top:10px;">
-            <input class="click" type="button" value="확인"  onclick="Pressbtn('#new')">
+            <input class="click btncss" type="button" value="확인"  onclick="Pressbtn('#new')">
         </div>`);
     }
     if (btn.css("background-color") != "rgb(241, 237, 237)") {

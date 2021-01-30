@@ -1,43 +1,28 @@
 {
   "users": [
     {
-      "key": "eH0XOd_Bt",
-      "name": "비비",
-      "nickname": "비비",
-      "id": "qlql1",
-      "password": "qlql1",
-      "question": "dir",
-      "direct": "인생영화?",
-      "answer": "위플래쉬",
-      "year": "1969",
-      "month": "01",
-      "day": "30"
-    },
-    {
-      "key": "427z6siQj",
-      "name": "시시",
+      "key": "nDdxe1M8V",
+      "name": "신",
       "nickname": "시시",
       "id": "tltl1",
       "password": "tltl1",
-      "question": "dir",
-      "direct": "키는",
+      "question": "키는",
       "answer": "160",
-      "year": "1999",
-      "month": "02",
-      "day": "3"
+      "year": "",
+      "month": "",
+      "day": ""
     },
     {
-      "key": "60lEgU9vC",
-      "name": "시",
-      "nickname": "tls",
-      "id": "tls11",
-      "password": "tls11!",
-      "question": "dir",
-      "direct": "hi",
-      "answer": "bye",
-      "year": "1966",
-      "month": "월",
-      "day": ""
+      "key": "uiCnZ4hYY",
+      "name": "민",
+      "nickname": "미미ddd",
+      "id": "alal1",
+      "password": "alal1",
+      "question": "고향",
+      "answer": "여주",
+      "year": "1999",
+      "month": "04",
+      "day": "1"
     }
   ],
   "post": []

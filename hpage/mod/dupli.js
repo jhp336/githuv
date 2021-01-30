@@ -1,7 +1,6 @@
 var mod = require('./mod.js');
 var mod2 = require('./mod2.js');
 var db = require('./db.js');
-require('body-parser')
 
 module.exports = {
     dupli_new: function (req, str, which) {
@@ -41,7 +40,7 @@ module.exports = {
         $('#pw').val('${post.pw}');
         $('#pwc').val('${post.pwc}');
         $('#quest').val('${post.quest}');
-        $('#direct').val('${post.direct_q}');
+        $('#direct').val('${post.direct}');
         $('#ans').val('${post.ans}');
         $('#year').val('${post.year}');
         $('#month').val('${post.month}');
