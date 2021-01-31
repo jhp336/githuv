@@ -1,11 +1,18 @@
-var db=require('./db');
-module.exports={
-    userinfo:function(originnick,name,nick,id,quest,ans,year,month,day,pw){
+module.exports = {
+    userinfo: function (originnick, name, nick, id, quest, ans, year, month, day, pw) {
         return `<body>
         <header>
         <h1><span style="color:orange;">${originnick}</span> 님의 회원 정보</h1>
         <p><a href="/">메인 페이지로</a></p>
         </header>
+        <div style="text-align: center;">
+        <input class="findbtn btncss" type="button" id="basicinf" value="기본 정보" style="background-color: rgb(241, 237, 237);" onclick="
+        location.href='/${id}/userinfo'
+        ">
+        <input class="findbtn btncss" id="pwinf" type="button" value="비밀번호 변경" style="background-color: rgb(176, 182, 182)" onclick="
+        location.href='/${id}/pwchange'       
+        ">
+        </div>
         <form id="new" method="post" action="/${id}/userinfo">
         <div style="text-align:center">
         <input class="inputbox3" value="ID: ${id}" disabled>
@@ -60,7 +67,45 @@ module.exports={
         </div> 
         </form>`
     },
-    mainpg:function(nick,id){
+    pwchange: function(nick,id){
+        return `<body>
+        <header>
+        <h1><span style="color:orange;">${nick}</span> 님의 회원 정보</h1>
+        <p><a href="/">메인 페이지로</a></p>
+        </header>
+        <div style="text-align: center;">
+        <input class="findbtn btncss" type="button" id="basicinf" value="기본 정보" style="background-color: rgb(176, 182, 182) " onclick="
+        location.href='/${id}/userinfo'
+        ">
+        <input class="findbtn btncss" id="pwinf" type="button" value="비밀번호 변경" style="background-color: rgb(241, 237, 237)" onclick="
+        location.href='/${id}/pwchange'       
+        ">
+        </div>
+        <form id="new" method="post" action="/${id}/userinfo">
+        <br>
+        <table>
+            <tr>
+                <td><label for="current">현재 비밀번호</label></td>
+                <td><input type="password" class="inputbox2" id="current" name="current"></td>
+            </tr>
+            <tr>
+                <td><label for="newer">새 비밀번호</label></td>
+                <td><input type="password" class="inputbox2" id="newer" name="newew"></td>
+            </tr>
+            <tr>
+                <td><label for="newerc">새 비밀번호 확인</label></td>
+                <td><input type="password" id="newerc" class="inputbox2" name="newewc"></td>
+            </tr>
+        </table>
+        <br>
+        <div style="text-align: center;">      
+            <input class="click btncss" type="button" value="완료" onclick="Check('#new')">
+                    
+            </div> 
+            </form>
+        `
+    },
+    mainpg: function (nick, id) {
         return `<body>
         <header>
             <h1>NTBoard</h1>

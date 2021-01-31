@@ -28,7 +28,7 @@ router.get('/:userid/userinfo', function (req, res) {
         return;
     }
     if (!post || post.key != user.key) {
-        res.send(`<script>alert('권한이 없습니다!');window.history.back();</script>`)
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
     if (!post.answer)
@@ -41,13 +41,22 @@ router.get('/:userid/userinfo', function (req, res) {
     res.send(html);
 })
 router.post('/:userid/userinfo',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var post=req.body;
     var user=db.get('users').find({
         id:post.id,
         password:post.pw
     }).value();
+    
     if(!user){
         res.send(dup.dupli_mod(req, req.user.nickname,1))
+        return;
+    }//비번 오류
+    if(req.user.key!=user.key){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
     if(post.month<10&&post.month[0]!='0') post.month='0'+post.month;
@@ -69,4 +78,10 @@ router.post('/:userid/userinfo/modify', function (req, res) {
     res.send(dup.dupli_mod(req, req.user.nickname));
 })
 
+router.get('/:userid/pwchange',function(req,res){
+    var post=req.user;
+    var body=mod2.pwchange(post.nickname,post.id);
+    var html=mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body)
+    res.send(html);
+})
 module.exports = router;

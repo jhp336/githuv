@@ -113,3 +113,15 @@ enterpress = function () {
     if (window.event.keyCode == 13)
         Check('#new');
 }
+
+function clickbtn(but) {
+    var btn2, btn = $(but)
+    if (btn.attr('id') === 'basicinf') 
+    btn2 = $('#pwinf');
+    else btn2 = $('#basicinf');
+       
+    if (btn.css("background-color") != "rgb(241, 237, 237)") {
+        btn.css("background-color", "rgb(241, 237, 237)");
+        btn2.css("background-color", "rgb(176, 182, 182)");
+    }
+}
