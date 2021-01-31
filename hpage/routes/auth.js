@@ -31,6 +31,7 @@ module.exports = function (passport) {
         var year = post.year;
         var month = post.month;
         var day = post.day;
+        if(day<10&&day[0]!='0') day='0'+day;
         // var joinday,visit,post,comment;
         var userinf = {
             key: shortid.generate(),

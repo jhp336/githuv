@@ -1,7 +1,18 @@
 Modify = function (answer, dup) {//dup=1이면 중복확인 완료 0이면 확인 전
     $('.modif2').attr('disabled', false);
-    if (dup === 0)
+    if (dup === 1){
+        $('#nicknamedupcheck').attr('hidden',true);
+        $('#nicknamedupok').attr('hidden', false);
+        $('#nicknamebool').val(1);
+    }
+    
+    else {
+        var len=$('#nickname').val().length;
         $('#nicknamedupcheck').attr('hidden', false);
+        $('#nickname').focus();
+        $('#nickname')[0].setSelectionRange(len,len);//커서 끝으로 하기위함
+        alert('해당 닉네임이 이미 있습니다. 다시 정해주세요!');       
+    }
     $("#ans").attr('style', '');
     $('#ans').val(answer);
 
@@ -12,7 +23,7 @@ Modify = function (answer, dup) {//dup=1이면 중복확인 완료 0이면 확�
 duplicheck = function (id) {
     var test = /^(?=.*[a-zA-Z]|.*[가-힣])[a-zA-Z0-9가-힣]{2,10}$/;
     if (!test.test($('#nickname').val())) {
-        alert('닉네임은 한글 또는 영문을 포함한 2~10 글자로 작성해주세요');
+        alert('닉네임은 한글 또는 영문을 포함한 2~10 글자로 공백없이 작성해주세요');
         $('#nickname').focus();
         return;
     }
@@ -39,7 +50,7 @@ Check = function (form) {
     var NICK = $('#nickname');
     var test2 = /^(?=.*[a-zA-Z]|.*[가-힣])[a-zA-Z0-9가-힣]{2,10}$/;
     if (!test2.test(NICK.val())) {
-        alert('닉네임을 한글 또는 영문을 포함한 2~10 글자로 작성해주세요');
+        alert('닉네임을 한글 또는 영문을 포함한 2~10 글자로 공백없이 작성해주세요');
         NICK.focus();
         return;
     }//닉네임 처리

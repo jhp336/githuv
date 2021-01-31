@@ -57,7 +57,7 @@ module.exports = {
                 <tr>
                     <td><label for="nickname"><span class="star">* </span>닉네임</label></td>
                     <td>
-                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" onkeydown="nicknamechange()">
+                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" oninput="nicknamechange()">
                         <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck()">중복확인</button>
                         <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
                     </td>
@@ -65,7 +65,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <td><label for="id"><span class="star">* </span>아이디</label></td>
-                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" onkeydown="idchange()">
+                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" oninput="idchange()">
                     <button id="iddupcheck" type="button" style="cursor:pointer;" onclick="duplicheck_()">중복확인</button>
                     <input type="text" class="dupli" id="iddupok" value="사용 가능" hidden disabled>
                 </tr>

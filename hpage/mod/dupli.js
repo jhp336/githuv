@@ -63,26 +63,23 @@ module.exports = {
         return html + script + add;
     },
 
-    dupli_mod: function (req,originnick) {
+    dupli_mod: function (req,originnick,err) {
         var post = req.body;
         var body = mod2.userinfo(originnick, post.name, post.nickname, post.id
-            , post.quest, post.ans, post.year, post.month, post.day);
+            , post.quest, post.ans, post.year, post.month, post.day,post.pw);
         var html = mod.HTML(`${originnick}님의 회원정보`, 'userinfo', body);
-        var info = post.nickname;
         var user = db.get('users').find({
-            nickname: info
+            nickname: post.nickname
         }).value();
-
-        var script = '<script>';
-
+        if(err) {
+            var script=`<script>alert('비밀번호가 일치하지 않습니다!');
+            Modify('${post.ans}',1);
+            $('#pw').val('');</script>`
+            return html + script;
+        }//중복확인 전 비번 틀릴시 수정 창으로 가지않는 오류 해결위해
         if (user)//중복있는경우
-            script = script+`$('#nickname').focus();
-    alert('해당 닉네임이 이미 있습니다. 다시 정해주세요!');
-    Modify('${post.ans}',0);</script>`;
-        else script = script+ `$('#nicknamedupok').attr('hidden',false);
-    $('#nicknamedupcheck').attr('hidden',true);
-    $('#nicknamebool').val('1');
-    Modify('${post.ans}',1);</script>`; //중복 x
+            var script = `<script>Modify('${post.ans}',0);</script>`;
+        else var script = `<script>Modify('${post.ans}',1);</script>`; //중복 x
 
         return html + script;
     }

@@ -25,7 +25,7 @@ Check = function (form) {
     var NICK = $('#nickname');
     var test2 = /^(?=.*[a-zA-Z]|.*[가-힣])[a-zA-Z0-9가-힣]{2,10}$/;
     if (!test2.test(NICK.val())) {
-        alert('닉네임을 한글 또는 영문을 포함한 2~10 글자로 작성해주세요');
+        alert('닉네임을 한글 또는 영문을 포함한 2~10 글자로 공백없이 작성해주세요');
         NICK.focus();
         return;
     }//닉네임 처리
@@ -113,7 +113,7 @@ enterpress = function () {
 duplicheck = function () {
     var test = /^(?=.*[a-zA-Z]|.*[가-힣])[a-zA-Z0-9가-힣]{2,10}$/;
     if (!test.test($('#nickname').val())) {
-        alert('닉네임은 한글 또는 영문을 포함한 2~10 글자로 작성해주세요');
+        alert('닉네임은 한글 또는 영문을 포함한 2~10 글자로 공백없이 작성해주세요');
         $('#nickname').focus();
         return;
     }

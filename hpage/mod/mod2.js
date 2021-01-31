@@ -1,6 +1,6 @@
 var db=require('./db');
 module.exports={
-    userinfo:function(originnick,name,nick,id,quest,ans,year,month,day){
+    userinfo:function(originnick,name,nick,id,quest,ans,year,month,day,pw){
         return `<body>
         <header>
         <h1><span style="color:orange;">${originnick}</span> 님의 회원 정보</h1>
@@ -20,9 +20,9 @@ module.exports={
         <tr>
             <td><label for="nickname"><span class="star modif" hidden>* </span>닉네임</label></td>
             <td>
-                <input class="inputbox2 modif2" id="nickname" name="nickname" type="text" value="${nick}" disabled onkeydown="nicknamechange()">
+                <input class="inputbox2 modif2" id="nickname" name="nickname" type="text" value="${nick}" disabled oninput="nicknamechange()">
                 <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck('${id}');"hidden>중복확인</button>
-                <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
+                <input type="text" class="dupli" id="nicknamedupok" value="사용 가능"hidden disabled>
             </td>
         </tr>
         <tr>
@@ -50,8 +50,8 @@ module.exports={
         </table>
         <br>
         <div style="text-align: center;">      
-                <input class="click btncss" type="button" id="modify" value="수정" onclick="Modify('${ans}',0);">
-                <input class="inputbox2 modif" type="password" id="pw" name="pw" placeholder="비밀번호" hidden>
+                <input class="click btncss" type="button" id="modify" value="수정" onclick="Modify('${ans}',1);">
+                <input class="inputbox2 modif" type="password" id="pw" name="pw" placeholder="비밀번호" value="${pw}" hidden>
                 <div style="text-align: center; color:red; font-size:14px;" id="msg"></div>
                 <p><input class="click modif btncss" type="button" value="완료" hidden onclick="Check('#new')">
                 <input class="click modif btncss" type="button" value="취소" hidden onclick="

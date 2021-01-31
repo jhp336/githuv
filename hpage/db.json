@@ -1,18 +1,6 @@
 {
   "users": [
     {
-      "key": "nDdxe1M8V",
-      "name": "신",
-      "nickname": "시시",
-      "id": "tltl1",
-      "password": "tltl1",
-      "question": "키는",
-      "answer": "160",
-      "year": "",
-      "month": "",
-      "day": ""
-    },
-    {
       "key": "uiCnZ4hYY",
       "name": "민",
       "nickname": "미미ddd",
@@ -23,6 +11,30 @@
       "year": "1999",
       "month": "04",
       "day": "1"
+    },
+    {
+      "key": "L1cmkBJW0",
+      "name": "신",
+      "nickname": "시시asd",
+      "id": "tltl1",
+      "password": "tltl1",
+      "question": "키는?",
+      "answer": "162",
+      "year": "1999",
+      "month": "10",
+      "day": "09"
+    },
+    {
+      "key": "1wQiU7Obh",
+      "name": "긴",
+      "nickname": "기기",
+      "id": "rlrl1",
+      "password": "rlrl1",
+      "question": "고향은?",
+      "answer": "여주",
+      "year": "1999",
+      "month": "05",
+      "day": "06"
     }
   ],
   "post": []
