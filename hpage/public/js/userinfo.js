@@ -114,11 +114,86 @@ enterpress = function () {
         Check('#new');
 }
 
-function clickbtn(but) {
+function clickbtn(but, nick, id, name, quest, ans, year, month, day) {
     var btn2, btn = $(but)
-    if (btn.attr('id') === 'basicinf') 
-    btn2 = $('#pwinf');
-    else btn2 = $('#basicinf');
+    if (btn.attr('id') === 'basicinf') {
+        btn2 = $('#pwinf');
+        $('form').html(`<div style="text-align:center">
+        <input style="border:2px double" class="inputbox3" value="ID: ${id}" disabled>
+        <input type="hidden" name="id" value="${id}" hidden>
+        </div>
+        <br>
+        <table>    
+        <tr>
+            <td><label for="name"><span class="star modif" hidden>* </span>성명</label></td>
+            <td><input class="inputbox2 modif2" name="name" id="name" type="text" value="${name}" disabled></td>
+        </tr>
+        <tr>
+            <td><label for="nickname"><span class="star modif" hidden>* </span>닉네임</label></td>
+            <td>
+                <input class="inputbox2 modif2" id="nickname" name="nickname" type="text" value="${nick}" disabled oninput="nicknamechange()">
+                <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck('${id}');"hidden>중복확인</button>
+                <input type="text" class="dupli" id="nicknamedupok" value="사용 가능"hidden disabled>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="quest">분실 시 질문</label></td>
+            <td>
+                <input name="quest" id="quest" class="inputbox2 modif2" type="text" value="${quest}" disabled>
+            </td>                        
+        </tr>
+        <tr>
+            <td><label for="ans">답변</label></td>
+            <td><input class="inputbox2 modif2" type="text" name="ans" id="ans" value="수정 시 볼 수 있습니다" style="font-style: italic; color:red" disabled ></td>
+        </tr>
+        <tr>
+            <td>생년월일</label></td>
+            <td>
+                <input class="inputbox2 modif2" name="year" id="year" type="text" value="${year}" maxlength="4" style="width: 67px;" disabled>
+                <input class="inputbox2 modif2" type="text" name="month" id="month" style="width:27px;" value="${month}" maxlength="2" disabled>
+                <input class="inputbox2 modif2" type="text" name="day" id="day" value="${day}" maxlength="2" style="width: 27px;" disabled>
+            </td>
+        </tr>
+        <tr class="modif" hidden>
+            <td></td><td><div style="text-align: right; font-size: x-small;"><span class="star">* </span>표시는 필수 입력</div></td>
+        </tr>
+        <input type="hidden" name="nicknamebool" id="nicknamebool">
+        </table>
+        <br>
+        <div style="text-align: center;">      
+                <input class="click btncss" type="button" id="modify" value="수정" onclick="Modify('${ans}',1);">
+                <input class="inputbox2 modif" type="password" id="pw" name="pw" placeholder="비밀번호" value="" hidden>
+                <div style="text-align: center; color:red; font-size:14px;" id="msg"></div>
+                <p><input class="click modif btncss" type="button" value="완료" hidden onclick="Check('#new')">
+                <input class="click modif btncss" type="button" value="취소" hidden onclick="
+                location.href='/${id}/userinfo'
+                "><p>
+        </div>`)
+    }
+    else {
+        btn2 = $('#basicinf');
+        $('form').html(`
+            <table>
+                <tr>
+                    <td><label for="current">현재 비밀번호</label></td>
+                    <td><input type="password" class="inputbox2" id="current" name="current" placeholder="현재 비밀번호"></td>
+                </tr>
+                <tr style="border: 2px solid gray"><td></td></tr>
+                <tr>
+                    <td><label for="newer">새 비밀번호</label></td>
+                    <td><input type="password" class="inputbox2" id="newer" name="newew" placeholder="새 비밀번호"></td>
+                </tr>
+                <tr>
+                    <td><label for="newerc">새 비밀번호 확인</label></td>
+                    <td><input type="password" id="newerc" class="inputbox2" name="newewc" placeholder="새 비밀번호 확인"></td>
+                </tr>
+                <tr style="text-align: right; color:red;"><td id="msg"></td></tr>             
+            </table>
+            <br>
+            <div style="text-align: center;">      
+                <input class="click btncss" type="button" value="완료" onclick="pwchange('#new')">
+            </div>` )
+    }
        
     if (btn.css("background-color") != "rgb(241, 237, 237)") {
         btn.css("background-color", "rgb(241, 237, 237)");
