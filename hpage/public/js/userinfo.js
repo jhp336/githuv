@@ -28,7 +28,7 @@ duplicheck = function (id) {
         return;
     }
 
-    $('#new').attr('action', `/${id}/userinfo/modify`);
+    $('#new').attr('action', `/${id}/userinfo_`);
     $('#new').submit();
 }//중복 확인
 nicknamechange = function () {
@@ -114,6 +114,11 @@ enterpress = function () {
         Check('#new');
 }
 
+enterpress_ = function () {
+    if (window.event.keyCode == 13)
+        pwchange('#new');
+}
+
 function clickbtn(but, nick, id, name, quest, ans, year, month, day) {
     var btn2, btn = $(but)
     if (btn.attr('id') === 'basicinf') {
@@ -172,6 +177,8 @@ function clickbtn(but, nick, id, name, quest, ans, year, month, day) {
     }
     else {
         btn2 = $('#basicinf');
+        $('body').attr('onkeydown',"enterpress_()")
+        $('form').attr('action',`/${id}/pwchange`)
         $('form').html(`
             <table>
                 <tr>
@@ -181,13 +188,13 @@ function clickbtn(but, nick, id, name, quest, ans, year, month, day) {
                 <tr style="border: 2px solid gray"><td></td></tr>
                 <tr>
                     <td><label for="newer">새 비밀번호</label></td>
-                    <td><input type="password" class="inputbox2" id="newer" name="newew" placeholder="새 비밀번호"></td>
+                    <td><input type="password" class="inputbox2" id="newer" name="newer" placeholder="새 비밀번호"></td>
                 </tr>
                 <tr>
                     <td><label for="newerc">새 비밀번호 확인</label></td>
-                    <td><input type="password" id="newerc" class="inputbox2" name="newewc" placeholder="새 비밀번호 확인"></td>
+                    <td><input type="password" id="newerc" class="inputbox2" placeholder="새 비밀번호 확인"></td>
                 </tr>
-                <tr style="text-align: right; color:red;"><td id="msg"></td></tr>             
+                <tr style="text-align: right; color:red;font-size:14px"><td></td><td id="msg"></td></tr>             
             </table>
             <br>
             <div style="text-align: center;">      
@@ -199,4 +206,30 @@ function clickbtn(but, nick, id, name, quest, ans, year, month, day) {
         btn.css("background-color", "rgb(241, 237, 237)");
         btn2.css("background-color", "rgb(176, 182, 182)");
     }
+}
+pwchange = function(form){
+    var cur = $('#current');
+    if(cur.val()===""){
+        $('#msg').html('현재 비밀번호를 입력하세요!');
+        cur.focus()
+        return;
+    }
+    var newer = $('#newer');
+    if(newer.val()===""){
+        $('#msg').html('새 비밀번호를 입력하세요!');
+        newer.focus()
+        return;
+    }
+    var newerc= $('#newerc');
+    if(newerc.val()===""){
+        $('#msg').html('비밀번호 확인 칸을 입력하세요!');
+        newerc.focus()
+        return;
+    }
+    if(newer.val()!=newerc.val()){
+        $('#msg').html('비밀번호 확인 불일치입니다!')
+        newerc.focus()
+        return;
+    }
+    $(form).submit();
 }

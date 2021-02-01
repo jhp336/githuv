@@ -15,6 +15,7 @@ router.get('/', function (req, res) {
     }
     var body = mod2.mainpg(req.user.nickname, req.user.id);
     var html = mod.HTML('메인페이지', '', body);
+    req.flash('info','hi');
     res.send(html);
 });
 
@@ -74,7 +75,7 @@ router.post('/:userid/userinfo',function(req,res){
     }).write();
     res.redirect(`/${post.id}/userinfo`);
 })
-router.post('/:userid/userinfo/modify', function (req, res) {
+router.post('/:userid/userinfo_', function (req, res) {
     res.send(dup.dupli_mod(req, req.user.nickname));
 })
 
@@ -83,5 +84,24 @@ router.get('/:userid/pwchange',function(req,res){
     var body=mod2.pwchange(post.nickname,post.id);
     var html=mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body)
     res.send(html);
+})
+router.post('/:userid/pwchange',function(req,res){
+    var post=req.body;
+    var user=db.get('users').find({
+        id:req.user.id,
+        password:post.current
+    }).value();
+    if(!user){ 
+        res.send(`<script>alert('현재 비밀번호가 일치하지 않습니다!');window.history.back();</script>`);
+        return;
+    }
+    db.get('users').find({
+        id:user.id,
+        password:post.current
+    }).assign({
+        password:post.newer
+    }).write();
+    console.log(user.id);
+    res.send(`<script>alert('비밀번호가 변경되었습니다!');location.href='/${user.id}/userinfo';</script>`);
 })
 module.exports = router;

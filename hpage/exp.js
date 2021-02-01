@@ -3,6 +3,8 @@ var app=express();
 var flash=require('connect-flash');
 var session = require('express-session')
 var FileStore = require('session-file-store')(session);
+var compression = require('compression')
+app.use(compression())
 
 app.use(express.static('public'));
 app.use(session({
