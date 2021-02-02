@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: false }))
 var shortid = require('shortid');
 var db = require('../mod/db.js');
+const bcrypt = require('bcrypt');
+
 
 module.exports = function (passport) {
     router.post('/join', function (req, res) {
@@ -23,42 +25,45 @@ module.exports = function (passport) {
             res.send(`<script>alert('아이디 중복! 다시 만들어주세요');window.history.back();</script>`)
             return;
         }
-        
-    
+
+
         var pw = post.pw;
         var quest = post.quest;
-        if(post.direct)
-        quest=post.direct;
+        if (post.direct)
+            quest = post.direct;
         if (!post.ans)
-        post.ans = '';
+            post.ans = '';
         var ans = post.ans;
         var year = post.year;
         if (post.month === '월')
-        post.month = '';
+            post.month = '';
         var month = post.month;
         var day = post.day;
-        if(day<10&&day[0]!='0'&&day!='') day='0'+day;
+        if (day < 10 && day[0] != '0' && day != '') day = '0' + day;
         // var joinday,visit,post,comment;
-        var userinf = {
-            key: shortid.generate(),
-            name: name,
-            nickname: nick,
-            id: id,
-            password: pw,
-            question: quest,
-            answer: ans,
-            year: year,
-            month: month,
-            day: day
-        }
-        db.get('users').push(userinf).write();
 
-        
-        req.login(userinf, function (err) {
-            req.session.save(function () {
-                res.redirect('/');
-            });
-        })
+        bcrypt.hash(pw, 10, function (err, hash) {
+            var userinf = {
+                key: shortid.generate(),
+                name: name,
+                nickname: nick,
+                id: id,
+                password: hash,  //pw 대신 암호화한 hash
+                question: quest,
+                answer: ans,
+                year: year,
+                month: month,
+                day: day
+            }
+            db.get('users').push(userinf).write();
+
+            req.login(userinf, function (err) {
+                req.session.save(function () {
+                    res.redirect('/');
+                });
+            })
+        });
+
     })
 
     router.post('/login',

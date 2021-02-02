@@ -122,6 +122,8 @@ enterpress_ = function () {
 function clickbtn(but, id, nick, name, quest, ans, year, month, day) {
     var btn2, btn = $(but)
     if (btn.attr('id') === 'basicinf') {
+        $('body').attr('onkeydown',"")
+        $('form').attr('action',`/${id}/userinfo`)
         btn2 = $('#pwinf');
         $('form').html(`<div style="text-align:center">
         <input style="border:2px double" class="inputbox3" value="ID: ${id}" disabled>

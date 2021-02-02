@@ -4,6 +4,7 @@ var router = express.Router();
 var mod = require('../mod/mod.js');
 var mod2 = require('../mod/mod2.js');
 var dup = require('../mod/dupli.js');
+var bcrypt = require('bcrypt');
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: false }))
 
@@ -15,7 +16,7 @@ router.get('/', function (req, res) {
     }
     var body = mod2.mainpg(req.user.nickname, req.user.id);
     var html = mod.HTML('메인페이지', '', body);
-    req.flash('info','hi');
+    req.flash('info', 'hi');
     res.send(html);
 });
 
@@ -32,73 +33,84 @@ router.get('/:userid/userinfo', function (req, res) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
-    
-    var body = mod2.userinfo(post.nickname,post.name, post.nickname, post.id, post.question
-        , post.answer, post.year, post.month, post.day,'');
+
+    var body = mod2.userinfo(post.nickname, post.name, post.nickname, post.id, post.question
+        , post.answer, post.year, post.month, post.day, '');
     var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
     res.send(html);
 })
-router.post('/:userid/userinfo',function(req,res){
-    if(!req.user){
+router.post('/:userid/userinfo', function (req, res) {
+    if (!req.user) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
-    var post=req.body;
-    var user=db.get('users').find({
-        id:post.id,
-        password:post.pw
+    var post = req.body;
+    var user = db.get('users').find({
+        id: post.id,
     }).value();
-    
-    if(!user){
-        res.send(dup.dupli_mod(req, req.user.nickname,1))
-        return;
-    }//비번 오류
-    if(req.user.key!=user.key){
+    if (req.user.key != user.key) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
-    if(post.month<10&&post.month[0]!='0') post.month='0'+post.month;
-    if(post.day<10&&post.day[0]!='0') post.day='0'+post.day;    
-    db.get('users').find({
-        id:post.id
-    }).assign({
-        name:post.name,
-        nickname:post.nickname,
-        question:post.quest,
-        answer:post.ans,
-        year:post.year,
-        month:post.month,
-        day:post.day
-    }).write();
-    res.redirect(`/${post.id}/userinfo`);
+    bcrypt.compare(post.pw, user.password, function (err, result) {
+        if (!result) { //비번오류
+            res.send(dup.dupli_mod(req, req.user.nickname, 1))
+            return;
+        }
+        if (post.month < 10 && post.month[0] != '0')
+            post.month = '0' + post.month;
+        if (post.day < 10 && post.day[0] != '0')
+            post.day = '0' + post.day;
+        db.get('users').find({
+            id: post.id
+        }).assign({
+            name: post.name,
+            nickname: post.nickname,
+            question: post.quest,
+            answer: post.ans,
+            year: post.year,
+            month: post.month,
+            day: post.day
+        }).write();
+        res.redirect(`/${post.id}/userinfo`);
+    });
 })
 router.post('/:userid/userinfo_', function (req, res) {
     res.send(dup.dupli_mod(req, req.user.nickname));
 })
-router.post('/:userid/pwchange',function(req,res){
-    if(!req.user){
+router.post('/:userid/pwchange', function (req, res) {
+    if (!req.user) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
-    var post=req.body;
-    var user=db.get('users').find({
-        id:post.id,
-        password:post.current
+    var post = req.body;
+    var user = db.get('users').find({
+        id: post.id,
     }).value();
-    if(!user){ 
-        res.send(`<script>alert('현재 비밀번호가 일치하지 않습니다!');window.history.back();</script>`);
-        return;
-    }
-    if(req.user.key!=user.key){
+    if (req.user.key != user.key) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
-    db.get('users').find({
-        id:post.id,
-        password:post.current
-    }).assign({
-        password:post.newer
-    }).write();`<script>alert('비밀번호가 변경되었습니다!');location.href='/${post.id}/userinfo';</script>`
-    res.send();
+    bcrypt.compare(post.current, user.password, function (err, result) {
+        if (!result) {//비밀번호 틀림, 돌아갔을 때 비밀번호 변경 ui 보이게끔
+            var own = req.user
+            var body = mod2.userinfo(own.nickname, own.name, own.nickname, own.id,
+                own.question, own.answer, own.year, own.month, own.day, '');
+            body = body + `<script>clickbtn('#pwinf','${own.id}');
+            alert('현재 비밀번호가 일치하지 않습니다!')</script>`;
+            var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
+            res.send(html);
+            return;
+        }
+        bcrypt.hash(post.newer, 10, function(err, hash) {
+            db.get('users').find({
+            id: post.id,
+        }).assign({
+            password: hash
+        }).write();
+        res.send(`<script>alert('비밀번호가 변경되었습니다!');
+        location.href='/${post.id}/userinfo';</script>`);
+        });
+    });
 })
 module.exports = router;

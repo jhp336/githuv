@@ -4,6 +4,7 @@ var mod = require('../mod/mod.js');
 var db = require('../mod/db.js');
 var dup = require('../mod/dupli.js');
 var shortid = require('shortid');
+var bcrypt = require('bcrypt');
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: false }))
 
@@ -44,7 +45,7 @@ router.post('/findidpw', function (req, res) {
     var body = '';
     var html = '';
     if (!ans) {
-        if (!id) {
+        if (!id) {//아이디찾기
             var user = db.get('users').find({
                 name: name,
                 nickname: nick
@@ -56,33 +57,36 @@ router.post('/findidpw', function (req, res) {
             res.send(html);
             return;
         }
-        user = db.get('users').find({
+        user = db.get('users').find({ //비밀번호찾기1
             name: name,
             id: id
         }).value();
         if (!user)
-        body = mod.FINDIDPW('비밀번호', '해당 이름, 아이디로 가입한 계정이 없습니다!');
-        else if(!user.answer) 
-        body=mod.FINDIDPW('비밀번호', '질문 등록 안 해서 못 찾음ㅋㅋ');
+            body = mod.FINDIDPW('비밀번호', '해당 이름, 아이디로 가입한 계정이 없습니다!');
+        else if (!user.answer)
+            body = mod.FINDIDPW('비밀번호', '질문 등록 안 해서 못 찾음ㅋㅋ');
         else body = mod.FINDIDPW('비밀번호', user);
         html = mod.HTML('아이디/비번 찾기', 'findidpw', body);
         res.send(html);
-        return ;
+        return;
     }
-    user = db.get('users').find({
+    user = db.get('users').find({//비밀번호 찾기2
         id: id,
         answer: ans
     }).value();
-    if(!user)
-    body=mod.FINDIDPW('비밀번호', `질문에 대한 답변이 일치하지 않습니다!`);
+    if (!user)
+        body = mod.FINDIDPW('비밀번호', `질문에 대한 답변이 일치하지 않습니다!`);
     else {
-        db.get('users').find({
-            id: id,
-            answer:ans
-        }).assign({
-            password:shortid.generate()
-        }).write();
-        body = mod.FINDIDPW('비밀번호', user.password, 1);
+        var tmppw = shortid.generate();
+        bcrypt.hash(tmppw, 10, function (err, hash) {
+            db.get('users').find({
+                id: id,
+                answer: ans
+            }).assign({
+                password: hash
+            }).write();
+        });
+        body = mod.FINDIDPW('비밀번호', tmppw, 1);
     }
     html = mod.HTML('아이디/비번 찾기', 'findidpw', body);
     res.send(html);
