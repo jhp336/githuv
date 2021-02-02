@@ -71,3 +71,9 @@ Pressbtn = function (form) {
     $(form).attr('onsubmit',true);
     $(form).submit();
 }
+copy=function(){
+    var clipboard = new ClipboardJS('#copybtn');
+    clipboard.on('success',function(){
+        $('#copyok').html('복사 완료!')
+    })
+}

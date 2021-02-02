@@ -7,10 +7,10 @@ module.exports = {
         </header>
         <div style="text-align: center;">
         <input class="findbtn btncss" type="button" id="basicinf" value="기본 정보" style="background-color: rgb(241, 237, 237);" onclick="
-        clickbtn(this, '${nick}', '${id}', '${name}','${quest}', '${ans}', '${year}', '${month}', '${day}')
+        clickbtn(this, '${id}', '${nick}', '${name}','${quest}', '${ans}', '${year}', '${month}', '${day}')
         ">
         <input class="findbtn btncss" id="pwinf" type="button" value="비밀번호 변경" style="background-color: rgb(176, 182, 182)" onclick="
-        clickbtn(this)     
+        clickbtn(this, '${id}')     
         ">
         </div>
         <form id="new" method="post" action="/${id}/userinfo">

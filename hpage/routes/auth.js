@@ -23,15 +23,21 @@ module.exports = function (passport) {
             res.send(`<script>alert('아이디 중복! 다시 만들어주세요');window.history.back();</script>`)
             return;
         }
+        
+    
         var pw = post.pw;
         var quest = post.quest;
         if(post.direct)
         quest=post.direct;
+        if (!post.ans)
+        post.ans = '';
         var ans = post.ans;
         var year = post.year;
+        if (post.month === '월')
+        post.month = '';
         var month = post.month;
         var day = post.day;
-        if(day<10&&day[0]!='0') day='0'+day;
+        if(day<10&&day[0]!='0'&&day!='') day='0'+day;
         // var joinday,visit,post,comment;
         var userinf = {
             key: shortid.generate(),

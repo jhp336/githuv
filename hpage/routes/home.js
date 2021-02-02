@@ -3,6 +3,7 @@ var router = express.Router();
 var mod = require('../mod/mod.js');
 var db = require('../mod/db.js');
 var dup = require('../mod/dupli.js');
+var shortid = require('shortid');
 const bodyParser = require('body-parser')
 router.use(bodyParser.urlencoded({ extended: false }))
 
@@ -74,7 +75,15 @@ router.post('/findidpw', function (req, res) {
     }).value();
     if(!user)
     body=mod.FINDIDPW('비밀번호', `질문에 대한 답변이 일치하지 않습니다!`);
-    else body = mod.FINDIDPW('비밀번호', user.password);
+    else {
+        db.get('users').find({
+            id: id,
+            answer:ans
+        }).assign({
+            password:shortid.generate()
+        }).write();
+        body = mod.FINDIDPW('비밀번호', user.password, 1);
+    }
     html = mod.HTML('아이디/비번 찾기', 'findidpw', body);
     res.send(html);
 })

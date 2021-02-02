@@ -91,3 +91,9 @@ a:hover{
     background-image: url(/img/bgimg.jpg);
     background-size: cover;
 }
+#copybtn{
+    width:75px;
+    height:25px;
+    color: rgb(220, 224, 228);
+    background-color: rgb(8, 109, 104) ;
+}/*복사버튼*/

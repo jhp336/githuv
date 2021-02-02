@@ -32,10 +32,7 @@ router.get('/:userid/userinfo', function (req, res) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
         return;
     }
-    if (!post.answer)
-        post.answer = '';
-    if (post.month === '월')
-        post.month = '';
+    
     var body = mod2.userinfo(post.nickname,post.name, post.nickname, post.id, post.question
         , post.answer, post.year, post.month, post.day,'');
     var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
@@ -78,30 +75,30 @@ router.post('/:userid/userinfo',function(req,res){
 router.post('/:userid/userinfo_', function (req, res) {
     res.send(dup.dupli_mod(req, req.user.nickname));
 })
-
-router.get('/:userid/pwchange',function(req,res){
-    var post=req.user;
-    var body=mod2.pwchange(post.nickname,post.id);
-    var html=mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body)
-    res.send(html);
-})
 router.post('/:userid/pwchange',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var post=req.body;
     var user=db.get('users').find({
-        id:req.user.id,
+        id:post.id,
         password:post.current
     }).value();
     if(!user){ 
         res.send(`<script>alert('현재 비밀번호가 일치하지 않습니다!');window.history.back();</script>`);
         return;
     }
+    if(req.user.key!=user.key){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     db.get('users').find({
-        id:user.id,
+        id:post.id,
         password:post.current
     }).assign({
         password:post.newer
-    }).write();
-    console.log(user.id);
-    res.send(`<script>alert('비밀번호가 변경되었습니다!');location.href='/${user.id}/userinfo';</script>`);
+    }).write();`<script>alert('비밀번호가 변경되었습니다!');location.href='/${post.id}/userinfo';</script>`
+    res.send();
 })
 module.exports = router;

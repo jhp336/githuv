@@ -6,6 +6,7 @@
   "main": "exp.js",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "clipboard": "^2.0.6",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie": "^0.4.1",
@@ -32,7 +33,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build":""
+    "build": ""
   },
   "author": "",
   "license": "ISC"

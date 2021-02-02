@@ -119,7 +119,7 @@ enterpress_ = function () {
         pwchange('#new');
 }
 
-function clickbtn(but, nick, id, name, quest, ans, year, month, day) {
+function clickbtn(but, id, nick, name, quest, ans, year, month, day) {
     var btn2, btn = $(but)
     if (btn.attr('id') === 'basicinf') {
         btn2 = $('#pwinf');
@@ -180,6 +180,7 @@ function clickbtn(but, nick, id, name, quest, ans, year, month, day) {
         $('body').attr('onkeydown',"enterpress_()")
         $('form').attr('action',`/${id}/pwchange`)
         $('form').html(`
+        <input type="hidden" name="id" value="${id}" hidden>
             <table>
                 <tr>
                     <td><label for="current">현재 비밀번호</label></td>
@@ -218,6 +219,12 @@ pwchange = function(form){
     if(newer.val()===""){
         $('#msg').html('새 비밀번호를 입력하세요!');
         newer.focus()
+        return;
+    }
+    var test = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9~!@#$%^&*?]{4,12}$/;
+    if (!test.test(newer.val())) {
+        alert('비밀번호를 영문과 숫자 4~12자리로 공백없이 작성해주세요 + 특수문자 ~!@#$%^&*? 포함 가능!')
+        newer.focus();
         return;
     }
     var newerc= $('#newerc');

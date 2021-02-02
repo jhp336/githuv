@@ -8,6 +8,7 @@ module.exports = {
                 <meta charset="utf-8">
                 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
                 <script src="/js/${js}.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
                 <title>${title}</title>
             </head>
             ${body}
@@ -137,7 +138,7 @@ module.exports = {
             </div> 
         </form>`
     },
-    FINDIDPW: function (opt, msg) {
+    FINDIDPW: function (opt, msg, tmp) {
         var head=`<body onkeydown="enterpress()">`;
         var head_='<body>'
         var part = `<header>
@@ -189,8 +190,32 @@ module.exports = {
             $('#pwfind').css("background-color", "rgb(241, 237, 237)");
             $('#idfind').css("background-color", "rgb(176, 182, 182)");
             </script>`
-            if (!msg.question) //계정 정보x 혹은 질문 답변까지 완료 시
-                return part + btn + result;
+            if (!msg.question) {//계정 정보x 혹은 질문 답변까지 완료 시
+                if(!tmp)
+                return head_+ part + btn + result;
+                return head_+part+btn+`
+                <table>
+                    <tr>
+                        <td>임시 ${opt} 발급</td><td></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"><input style="background-color: rgb(241, 237, 237);" class="inputbox3" id="tmppw" type="text" readonly value="${msg}"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center"><button type="button" data-clipboard-target="#tmppw" id="copybtn" class="btncss" onclick="copy()">복사하기</button></td>
+                    </tr>
+                    <tr>
+                        <td id="copyok" style="text-align:center; font-size:12px; color:rgb(8, 109, 104)"><br></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center; font-weight: bold; color:rgb(139, 7, 7)">
+                        해당 비밀번호를 복사하여 로그인 후 <br>비밀번호를 반드시 변경해주세요!</td>
+                    </tr>
+                </table>
+            <br>
+            </form>
+                `
+            }
             var id = msg.id;
             msg = msg.question;
             return head+part + btn
