@@ -38,7 +38,7 @@ router.post('/newaccount_', function (req, res) {
 router.post('/findidpw', function (req, res) {
     var post = req.body;
     var name = post.name;
-    var nick = post.nickname;
+    var email = post.email;
     var id = post.id;
     var ans = post.answer;
     var user = '';
@@ -48,10 +48,10 @@ router.post('/findidpw', function (req, res) {
         if (!id) {//아이디찾기
             var user = db.get('users').find({
                 name: name,
-                nickname: nick
+                email: email
             }).value();
             if (!user)
-                body = mod.FINDIDPW('아이디', '해당 이름, 닉네임으로 가입한 계정이 없습니다!');
+                body = mod.FINDIDPW('아이디', '해당 이름, 이메일로 가입한 계정이 없습니다!');
             else body = mod.FINDIDPW('아이디', user.id);
             html = mod.HTML('아이디/비번 찾기', 'findidpw', body);
             res.send(html);

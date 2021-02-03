@@ -28,6 +28,9 @@ module.exports = function (passport) {
 
 
         var pw = post.pw;
+        if(post.email2==="직접 입력")
+        var email = post.email1+'@'+post.email3;
+        else var email=post.email1+'@'+post.email2;
         var quest = post.quest;
         if (post.direct)
             quest = post.direct;
@@ -49,6 +52,7 @@ module.exports = function (passport) {
                 nickname: nick,
                 id: id,
                 password: hash,  //pw 대신 암호화한 hash
+                email:email,
                 question: quest,
                 answer: ans,
                 year: year,

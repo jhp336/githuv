@@ -19,6 +19,7 @@ Modify = function (answer, dup) {//dup=1이면 중복확인 완료 0이면 확�
     $('#modify').attr('hidden', true);
     $('.modif').attr('hidden', false);
     $('body').attr('onkeydown',"enterpress()")
+    $('.modif2').css('font-weight','')
 }//수정 버튼 클릭
 duplicheck = function (id) {
     var test = /^(?=.*[a-zA-Z]|.*[가-힣])[a-zA-Z0-9가-힣]{2,10}$/;
@@ -54,6 +55,14 @@ Check = function (form) {
         NICK.focus();
         return;
     }//닉네임 처리
+
+    var em=$('#email');
+    var test_ = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{4,14}[\@]{1}[a-zA-Z.]{2,12}[a-z]{1}[.]{1}[a-zA-Z]{2,3}$/;
+    if(!test_.test(em.val())){
+        alert('이메일을 형식에 맞게 입력해주세요!');
+        em.focus();
+        return;
+    }//이메일 처리
 
     var dup1 = $('#nicknamebool').val();
     if (dup1 != '1') {
@@ -119,11 +128,12 @@ enterpress_ = function () {
         pwchange('#new');
 }
 
-function clickbtn(but, id, nick, name, quest, ans, year, month, day) {
+function clickbtn(but, id, nick, name, email, quest, ans, year, month, day) {
     var btn2, btn = $(but)
     if (btn.attr('id') === 'basicinf') {
-        $('body').attr('onkeydown',"")
-        $('form').attr('action',`/${id}/userinfo`)
+        $('body').attr('onkeydown',"");
+        $('form').attr('action',`/${id}/userinfo`);
+        
         btn2 = $('#pwinf');
         $('form').html(`<div style="text-align:center">
         <input style="border:2px double" class="inputbox3" value="ID: ${id}" disabled>
@@ -142,6 +152,10 @@ function clickbtn(but, id, nick, name, quest, ans, year, month, day) {
                 <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck('${id}');"hidden>중복확인</button>
                 <input type="text" class="dupli" id="nicknamedupok" value="사용 가능"hidden disabled>
             </td>
+        </tr>
+        <tr>
+            <td><label for="email"><span class="star modif" hidden>* </span>이메일</label></td>
+            <td><input class="inputbox2 modif2" name="email" id="email" type="text" value="${email}" disabled></td>
         </tr>
         <tr>
             <td><label for="quest">분실 시 질문</label></td>
@@ -175,7 +189,8 @@ function clickbtn(but, id, nick, name, quest, ans, year, month, day) {
                 <input class="click modif btncss" type="button" value="취소" hidden onclick="
                 location.href='/${id}/userinfo'
                 "><p>
-        </div>`)
+        </div>`);
+        $('.modif2').css('font-weight','bold');
     }
     else {
         btn2 = $('#basicinf');
@@ -188,7 +203,6 @@ function clickbtn(but, id, nick, name, quest, ans, year, month, day) {
                     <td><label for="current">현재 비밀번호</label></td>
                     <td><input type="password" class="inputbox2" id="current" name="current" placeholder="현재 비밀번호"></td>
                 </tr>
-                <tr style="border: 2px solid gray"><td></td></tr>
                 <tr>
                     <td><label for="newer">새 비밀번호</label></td>
                     <td><input type="password" class="inputbox2" id="newer" name="newer" placeholder="새 비밀번호"></td>

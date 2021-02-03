@@ -53,36 +53,49 @@ module.exports = {
             <table>
                 <tr>
                     <td><label for="name"><span class="star">* </span>성명</label></td>
-                    <td><input class="inputbox2" name="name" id="name" type="text" placeholder="성명"></td>
+                    <td><input class="inputbox2" name="name" id="name" type="text" placeholder="성명(한글 1~12)"></td>
                 </tr>
                 <tr>
                     <td><label for="nickname"><span class="star">* </span>닉네임</label></td>
                     <td>
-                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임" oninput="nicknamechange()">
+                        <input class="inputbox2" id="nickname" name="nickname" type="text" placeholder="닉네임(한글/영문 포함 2~12)" oninput="nicknamechange()">
                         <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck()">중복확인</button>
                         <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
                     </td>
-                    
                 </tr>
                 <tr>
                     <td><label for="id"><span class="star">* </span>아이디</label></td>
-                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디" oninput="idchange()">
+                    <td><input class="inputbox2" name="id" id="id" type="text" placeholder="아이디(영문+숫자 4~12)" oninput="idchange()">
                     <button id="iddupcheck" type="button" style="cursor:pointer;" onclick="duplicheck_()">중복확인</button>
                     <input type="text" class="dupli" id="iddupok" value="사용 가능" hidden disabled>
                 </tr>
                 <tr>
                     <td><label for="pw"><span class="star">* </span>비밀번호</label></td>
-                    <td><input class="inputbox2" name="pw" id="pw" type="password" placeholder="비밀번호"></td>
+                    <td><input class="inputbox2" name="pw" id="pw" type="password" placeholder="비밀번호(영문+숫자(+특문) 4~12)"></td>
                 </tr>
                 <tr>
                     <td><label for="pwc"><span class="star">* </span>비밀번호 확인</label></td>
                     <td><input class="inputbox2" name="pwc" id="pwc" type="password" placeholder="비밀번호 확인"></td>
                 </tr>
-                
+                <tr>
+                    <td><label for="email1"><span class="star">* </span>이메일</label></td>
+                    <td><input class="inputbox2" name="email1" id="email1" type="text" placeholder="이메일(4~14 자리)" style="width:110px;"> @
+                        <select name="email2" id="email2" class="inputbox2" style="width:133px; height: 30px;" onchange="email(this)">
+                            <option value="none">::선택::</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="hanmail.net">hanmail.net</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="직접 입력">직접 입력</option>
+                        </select>
+                        <input class="inputbox2" name="email3" id="email3" type="text" placeholder="이메일 입력" style="width:109px" hidden>
+                    </td>
+                </tr>
                 <tr>
                     <td><label for="direct"><span>&nbsp&nbsp</span>분실 시 질문</label></td>
                     <td>
-                        <select name="quest" id="quest" class="inputbox2" style="width:204px; height: 30px;"onchange="question(this)">
+                        <select name="quest" id="quest" class="inputbox2" style="width:219px; height: 30px;"onchange="question(this)">
                             <option value="질문 없음">::선택::</option>
                             <option value="별명은?">별명은?</option>
                             <option value="고향은?">고향은?</option>
@@ -117,7 +130,7 @@ module.exports = {
                         <option>11</option>
                         <option>12</option>
                         </select>
-                        <input class="inputbox2" type="text" name="day" id="day" placeholder="일" maxlength="2" style="width: 18px;">
+                        <input class="inputbox2" type="text" name="day" id="day" placeholder="일" maxlength="2" style="width: 33px;">
                     </td>
                 </tr>
                 <tr>
@@ -163,7 +176,7 @@ module.exports = {
             <td><input class="inputbox" name= "name" id="name" type="text" placeholder="성명"></td>
         </tr>
         <tr>
-            <td><input class="inputbox" name="nickname" id="nickname" type="text" placeholder="닉네임"></td>
+            <td><input class="inputbox" name="email" id="email" type="text" placeholder="이메일"></td>
         </tr>
         <tr style="text-align: right; color:red;"><td id="msg"></td></tr>        
         </table>

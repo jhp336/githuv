@@ -16,7 +16,6 @@ router.get('/', function (req, res) {
     }
     var body = mod2.mainpg(req.user.nickname, req.user.id);
     var html = mod.HTML('메인페이지', '', body);
-    req.flash('info', 'hi');
     res.send(html);
 });
 
@@ -34,8 +33,8 @@ router.get('/:userid/userinfo', function (req, res) {
         return;
     }
 
-    var body = mod2.userinfo(post.nickname, post.name, post.nickname, post.id, post.question
-        , post.answer, post.year, post.month, post.day, '');
+    var body = mod2.userinfo(post.nickname, post.name, post.nickname, post.id,
+    post.email, post.question, post.answer, post.year, post.month, post.day, '');
     var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
     res.send(html);
 })
@@ -66,6 +65,7 @@ router.post('/:userid/userinfo', function (req, res) {
         }).assign({
             name: post.name,
             nickname: post.nickname,
+            email:post.email,
             question: post.quest,
             answer: post.ans,
             year: post.year,
@@ -95,7 +95,7 @@ router.post('/:userid/pwchange', function (req, res) {
         if (!result) {//비밀번호 틀림, 돌아갔을 때 비밀번호 변경 ui 보이게끔
             var own = req.user
             var body = mod2.userinfo(own.nickname, own.name, own.nickname, own.id,
-                own.question, own.answer, own.year, own.month, own.day, '');
+            own.email, own.question, own.answer, own.year, own.month, own.day, '');
             body = body + `<script>clickbtn('#pwinf','${own.id}');
             alert('현재 비밀번호가 일치하지 않습니다!')</script>`;
             var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);

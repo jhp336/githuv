@@ -12,6 +12,14 @@ function question(ele) {
     }
 }
 
+email= function(email) {
+    var val=$(email).val();
+    if(val==="직접 입력"){
+        $('#email2').hide();
+        $('#email3').attr('hidden',false);
+    }
+}
+
 Check = function (form) {
     var NAME = $('#name');
     var test1 = /^[가-힣]{1,12}$/;
@@ -59,6 +67,27 @@ Check = function (form) {
         PWC.focus();
         return;
     }//비번 일치 처리
+
+    var em1=$('#email1');
+    var em2=$('#email2');
+    var em3=$('#email3');
+    var test_ = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{4,14}$/;
+    var test2_=/^[a-zA-Z.]{2,12}[a-z]{1}[.]{1}[a-zA-Z]{2,3}$/;
+    if(!test_.test(em1.val())){
+        alert('이메일 앞자리를 형식에 맞게 입력해주세요!');
+        em1.focus();
+        return;
+    }
+    if(em2.val()==="none"){
+        alert('이메일 뒷자리를 선택해주세요!');
+        em2.focus();
+        return;
+    }
+    if(em2.val()==="직접 입력"&&!test2_.test(em3.val())){
+        alert('이메일 뒷자리를 형식에 맞게 입력해주세요!');
+        em3.focus();
+        return;
+    }//이메일 처리
 
     var dup1=$('#nicknamebool').val();
     if(dup1!='1'){
@@ -143,3 +172,4 @@ idchange = function () {
     $('#iddupok').attr('hidden', true);              
     $('#iddupcheck').attr('hidden', false);          //사용가능->중복확인
 }//아이디 칸 내용 변경시
+

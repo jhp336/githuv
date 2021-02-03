@@ -9,7 +9,7 @@ function clickbtn(but) {
                 <td><input class="inputbox" name= "name" id="name" type="text" placeholder="성명"></td>
             </tr>
             <tr>
-                <td><input class="inputbox" name="nickname" id="nickname" type="text" placeholder="닉네임"></td>
+                <td><input class="inputbox" name="email" id="email" type="text" placeholder="이메일"></td>
             </tr>
             <tr style="text-align: right; color:red;"><td id="msg"></td></tr> 
         </table>
@@ -45,7 +45,7 @@ enterpress = function () {
 }
 Pressbtn = function (form) {
     var NAME = $('#name');
-    var NICK = $('#nickname');
+    var EMAIL = $('#email');
     var ID = $('#id');
     var ANS =$('#answer');
     if (NAME.val() === "") {
@@ -53,9 +53,9 @@ Pressbtn = function (form) {
         NAME.focus();
         return;
     }
-    if (NICK.val() === "") {
-        $('#msg').html('닉네임을 입력해주세요');
-        NICK.focus();
+    if (EMAIL.val() === "") {
+        $('#msg').html('이메일을 입력해주세요');
+        EMAIL.focus();
         return;
     }
     if (ID.val() === "") {

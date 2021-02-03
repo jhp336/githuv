@@ -1,5 +1,5 @@
 module.exports = {
-    userinfo: function (originnick, name, nick, id, quest, ans, year, month, day, pw) {
+    userinfo: function (originnick, name, nick, id, email, quest, ans, year, month, day, pw) {
         return `<body>
         <header>
         <h1><span style="color:orange;">${originnick}</span> 님의 회원 정보</h1>
@@ -7,7 +7,7 @@ module.exports = {
         </header>
         <div style="text-align: center;">
         <input class="findbtn btncss" type="button" id="basicinf" value="기본 정보" style="background-color: rgb(241, 237, 237);" onclick="
-        clickbtn(this, '${id}', '${nick}', '${name}','${quest}', '${ans}', '${year}', '${month}', '${day}')
+        clickbtn(this, '${id}', '${nick}', '${name}', '${email}', '${quest}', '${ans}', '${year}', '${month}', '${day}')
         ">
         <input class="findbtn btncss" id="pwinf" type="button" value="비밀번호 변경" style="background-color: rgb(176, 182, 182)" onclick="
         clickbtn(this, '${id}')     
@@ -31,6 +31,10 @@ module.exports = {
                 <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck('${id}');"hidden>중복확인</button>
                 <input type="text" class="dupli" id="nicknamedupok" value="사용 가능"hidden disabled>
             </td>
+        </tr>
+        <tr>
+            <td><label for="email"><span class="star modif" hidden>* </span>이메일</label></td>
+            <td><input class="inputbox2 modif2" name="email" id="email" type="text" value="${email}" disabled></td>
         </tr>
         <tr>
             <td><label for="quest">분실 시 질문</label></td>
@@ -65,7 +69,11 @@ module.exports = {
                 location.href='/${id}/userinfo'
                 "><p>
         </div> 
-        </form>`
+        </form>
+        <script>
+        $('.modif2').css('font-weight','bold')
+        </script>
+        `
     },
     mainpg: function (nick, id) {
         return `<body>

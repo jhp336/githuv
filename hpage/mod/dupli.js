@@ -39,6 +39,9 @@ module.exports = {
         $('#id').val('${post.id}');
         $('#pw').val('${post.pw}');
         $('#pwc').val('${post.pwc}');
+        $('#email1').val('${post.email1}');
+        $('#email2').val('${post.email2}');
+        $('#email3').val('${post.email3}');
         $('#quest').val('${post.quest}');
         $('#direct').val('${post.direct}');
         $('#ans').val('${post.ans}');
@@ -46,6 +49,8 @@ module.exports = {
         $('#month').val('${post.month}');
         $('#day').val('${post.day}');
         `
+        if(post.email2==="직접 입력")
+        script=script+`email('#email2');`
         if (post.quest != "질문 없음") {
             script = script + `$('#ans').attr('disabled', false);`
             if (post.quest === 'dir')
@@ -65,8 +70,8 @@ module.exports = {
 
     dupli_mod: function (req,originnick,err) {
         var post = req.body;
-        var body = mod2.userinfo(originnick, post.name, post.nickname, post.id
-            , post.quest, post.ans, post.year, post.month, post.day,post.pw);
+        var body = mod2.userinfo(originnick, post.name, post.nickname, post.id,
+        post.email, post.quest, post.ans, post.year, post.month, post.day,post.pw);
         var html = mod.HTML(`${originnick}님의 회원정보`, 'userinfo', body);
         var user = db.get('users').find({
             nickname: post.nickname

@@ -7,13 +7,13 @@ header{
     margin: 0 auto;
     margin-bottom: 50px;
     padding: 1px 0 1px;
-    width:450px;
+    width:460px;
     background-color: rgb(241, 237, 237);
     border-radius: 3px;
 }
 #new{
     margin: 0 auto;
-    width: 410px;
+    width: 420px;
     padding: 20px 20px 10px 20px;
     background-color: rgb(241, 237, 237);
     border-radius: 3px;
@@ -50,6 +50,7 @@ input,button,select{
     border:2px solid rgb(220, 224, 228);
     border-radius: 3px;
 }
+
 .inputbox{
     width: 200px;
     height: 40px;
@@ -57,7 +58,7 @@ input,button,select{
     font-size: 15px;
 }/*로그인 아이디/비번 박스*/
 .inputbox2{
-    width:180px;
+    width:195px;
     height:20px;
     padding:3px 10px;
     font-size: 13px;
@@ -70,6 +71,11 @@ input,button,select{
     font-weight: bold;
     text-align: center;
 }/*아디/비번 찾기결과 박스*/
+.inputbox:focus,.inputbox2:focus,.inputbox3:focus{
+    outline: none ;
+    border:2px solid rgb(255, 80, 80);
+    box-shadow: 0 0 10px rgb(163, 163, 199);
+}
 .dupli{
     width:60px;
     height:19px;
