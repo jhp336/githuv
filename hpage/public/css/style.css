@@ -46,7 +46,7 @@ table{
     color: rgb(30, 31, 32);
     border-radius: 3px 3px 0 0;
 }/*아디찾기/비번찾기버튼*/
-input,button,select{
+input,button,select,textarea{
     border:2px solid rgb(220, 224, 228);
     border-radius: 3px;
 }
@@ -103,3 +103,34 @@ a:hover{
     color: rgb(220, 224, 228);
     background-color: rgb(8, 109, 104) ;
 }/*복사버튼*/
+.boardcate{
+    margin-left: 220px;
+    background-color: rgb(215, 238, 238);
+    border-right:2px solid gray;
+    padding: 10px 40px;
+    border-radius: 3px 0 0 3px;
+}
+.postlist{
+    background-color: rgb(241, 237, 237);
+    border-radius: 3px;
+    margin:0 200px 0 0;
+}
+.board{
+    margin:0;
+    width:1006px;
+}
+#grid{
+    display: grid;
+    grid-template-columns: 400px 1fr;
+}
+#title{
+    width:220px;
+    margin: 20px 0 ;
+}
+#maintxt{
+    width:500px;
+    height:400px;
+}
+#maintxt,#title:focus{
+    border:2px solid rgb(241, 237, 237)
+}

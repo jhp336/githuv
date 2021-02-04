@@ -75,10 +75,10 @@ module.exports = {
         </script>
         `
     },
-    mainpg: function (nick, id) {
+    header:function(nick,id){
         return `<body>
         <header>
-            <h1>NTBoard</h1>
+            <h1><a href="/">NTBoard</a></h1>
             <div>
                 <p style="font-size: 15px; font-weight: bold;">${nick}&nbsp님</p>
                 <span><button style="cursor:pointer;" onclick="
@@ -89,16 +89,90 @@ module.exports = {
                             ">회원정보</button></span>
             </div>
             <br>
-        </header>
+        </header>`
+    },
+    mainpg: function (nick, id) {
+        return this.header(nick,id)+
 
-        <div id="new">
+        `<div id="new">
             <table>
                 <tr>
-                    <td><button>자유게시판</button></td>
-                    <td><button>비밀게시판</button></td>
+                    <td><button style="cursor:pointer;" onclick="
+                    location.href='/square'
+                    ">자유게시판</button></td>
+                    <td><button style="cursor:pointer;" onclick="
+                    location.href='/square'
+                    ">비밀게시판</button></td>
                 </tr>
             </table>
         </div>`
+    },
+    square:function(db,nick,id){
+        var head= this.header(nick,id);
+        var  int=`<div style="text-align:right">    
+            <input type="button" value="글쓰기" onclick="
+            location.href='/square/write';
+            ">
+        </div>
+        <div id="grid">
+        <table class="boardcate">
+            <tr>
+                <td>전체 글보기</td>
+            </tr>
+            <tr>
+                <td>--드라마</td>
+            </tr>
+            <tr>
+                <td>--영화</td>
+            </tr>
+            <tr>
+                <td>--애니메이션</td>
+            </tr>
+            <tr>
+                <td>--도서</td>
+            </tr>
+        </table>
+        <div class="postlist">
+            <table class="board">`
+        if(!db.length)
+        var list=`<tr><td>게시글이 없습니다</td></tr></table></div></div>`
+        else {
+            var list='</table></div></div>';
+            for(var i=0;i<db.length;i++)
+            var list= `<tr><td><a href='/square/`+(i+1)+`'>${db[i].title}</a></td></tr>`+list;
+        }       
+        return head+int+list
+    },
+    write:function(){
+        return `
+        <body onkeydown="enterpress()">
+        <form id="post" method="post" action='/square/write'>
+        <table>
+            <tr>
+                <td>
+                <input type="text" class="inputbox" id="title" name="title" placeholder="제목">
+                </td>
+            </tr>
+            <tr style="text-align: right; color:red;"><td id="msg1"></td></tr>
+            <tr>
+                <td>
+                <textarea class="inputbox" id="maintxt" name="maintxt" placeholder="내용을 입력해주세요"></textarea>
+                </td>
+            </tr>  
+            <tr style="text-align: right; color:red;"><td id="msg2"></td></tr>  
+            <br>
+            
+        </table>    
+        <div style="text-align: center;">      
+                <button class="click btncss" type="button" onclick="
+                Write('#post');
+                ">완료</button>
+                <input class="click btncss" type="button" value="취소" onclick="
+                location.href='/square'
+                ">
+            </div> 
+        </form>
+        `
     }
 
 }

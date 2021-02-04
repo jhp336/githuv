@@ -1,18 +1,36 @@
 {
   "users": [
     {
-      "key": "tCgelpBFF",
+      "key": "H9PIW1-Yl",
       "name": "시",
-      "nickname": "시시aaa",
+      "nickname": "시시",
       "id": "tltl1",
-      "password": "$2b$10$9WCE0nAyTC1NjigNw6eocePK/ClC4ao9AUtb3imwSyNpINhg1pirG",
-      "email": "tltl11@naver.com",
+      "password": "$2b$10$60CELP/cRR6g6YUOsubwBeWhpED7WkK9JCMCQVGaug3OS1Oq2dpqi",
+      "email": "tltl1@naver.com",
       "question": "키",
       "answer": "123",
-      "year": "1233",
-      "month": "04",
-      "day": "02"
+      "year": "",
+      "month": "",
+      "day": "",
+      "write": 2
     }
   ],
-  "post": []
+  "post": [
+    {
+      "no": 1,
+      "title": "aa",
+      "maintxt": "dddd",
+      "data": "2021-02-04T14:27:15.036Z",
+      "author": "시시",
+      "id": "tltl1"
+    },
+    {
+      "no": 2,
+      "title": "asdazszc",
+      "maintxt": "sadqwrwadasfa",
+      "data": "2021-02-04T14:27:21.124Z",
+      "author": "시시",
+      "id": "tltl1"
+    }
+  ]
 }

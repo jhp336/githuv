@@ -57,7 +57,8 @@ module.exports = function (passport) {
                 answer: ans,
                 year: year,
                 month: month,
-                day: day
+                day: day,
+                write:0
             }
             db.get('users').push(userinf).write();
 

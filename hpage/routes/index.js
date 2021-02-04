@@ -45,7 +45,7 @@ router.post('/:userid/userinfo', function (req, res) {
     }
     var post = req.body;
     var user = db.get('users').find({
-        id: post.id,
+        id: req.params.userid,
     }).value();
     if (req.user.key != user.key) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
@@ -85,7 +85,7 @@ router.post('/:userid/pwchange', function (req, res) {
     }
     var post = req.body;
     var user = db.get('users').find({
-        id: post.id,
+        id: req.params.userid,
     }).value();
     if (req.user.key != user.key) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
