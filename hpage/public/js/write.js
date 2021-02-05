@@ -8,9 +8,11 @@ Write= function(form){
     } 
     var main=$('#maintxt')
     if(main.val()===""){
+        $('#msg1').html('')
         $('#msg2').html('내용을 입력하세요!');
         main.focus();
-        return
+        return;
     }
+    $(form).attr('onsubmit',true);
     $(form).submit();
 }

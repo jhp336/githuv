@@ -109,11 +109,7 @@ module.exports = {
     },
     square:function(db,nick,id){
         var head= this.header(nick,id);
-        var  int=`<div style="text-align:right">    
-            <input type="button" value="글쓰기" onclick="
-            location.href='/square/write';
-            ">
-        </div>
+        var  int=`
         <div id="grid">
         <table class="boardcate">
             <tr>
@@ -133,46 +129,81 @@ module.exports = {
             </tr>
         </table>
         <div class="postlist">
-            <table class="board">`
+            <table class="board">
+            <tr><td><div style="text-align:right">    
+            <input style="cursor:pointer" type="button" value="글쓰기" onclick="
+            location.href='/square/write';
+            "></div></td><tr>
+        </div>`
         if(!db.length)
         var list=`<tr><td>게시글이 없습니다</td></tr></table></div></div>`
         else {
             var list='</table></div></div>';
-            for(var i=0;i<db.length;i++)
-            var list= `<tr><td><a href='/square/`+(i+1)+`'>${db[i].title}</a></td></tr>`+list;
+            for(var i=0;i<db.length;i++){
+                if(db[i].maintxt.length>15)
+                var text=db[i].maintxt.substr(0,14)+'...';
+                else var text=db[i].maintxt;
+            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/square/`+(i+1)+`'>${db[i].title}</a></div>
+            <div>${text}</div><div>${db[i].date}</div>
+            </td></tr>`+list;
+            }
         }       
         return head+int+list
     },
-    write:function(){
+    write:function(title,maintxt,num){
         return `
-        <body onkeydown="enterpress()">
-        <form id="post" method="post" action='/square/write'>
+        <body>
+        <form id="post" onsubmit="return false;"  method="post" action='/square/write'>
         <table>
             <tr>
                 <td>
-                <input type="text" class="inputbox" id="title" name="title" placeholder="제목">
+                <input type="text" class="inputbox" id="title" name="title" placeholder="제목" value="${title}"}>
+                <span id="msg1" style="text-align: right; color:red;"></span>
                 </td>
             </tr>
-            <tr style="text-align: right; color:red;"><td id="msg1"></td></tr>
             <tr>
                 <td>
-                <textarea class="inputbox" id="maintxt" name="maintxt" placeholder="내용을 입력해주세요"></textarea>
+                <textarea class="inputbox" id="maintxt" name="maintxt" placeholder="내용을 입력해주세요"}>${maintxt}</textarea>
                 </td>
             </tr>  
             <tr style="text-align: right; color:red;"><td id="msg2"></td></tr>  
-            <br>
-            
+            <input type="hidden" name="num" value="${num}">  
         </table>    
         <div style="text-align: center;">      
                 <button class="click btncss" type="button" onclick="
                 Write('#post');
                 ">완료</button>
-                <input class="click btncss" type="button" value="취소" onclick="
+                <input id="cancel" class="click btncss" type="button" value="취소" onclick="
                 location.href='/square'
                 ">
             </div> 
         </form>
         `
+    },
+    post:function(title,maintxt,num){
+        return`<body> 
+        <form id="post" onsubmit="return false;"  method="post" action='/square/modify'>
+        <table>
+            <tr><td><div style="text-align:right">   
+                <input style="cursor:pointer" type="button" value="글 목록" onclick="
+                location.href='/square'">
+                <input style="cursor:pointer" type="button" value="글 수정" onclick="
+                form.submit();
+                "></div></td><tr>
+            <tr>
+                <td>
+                <input class="inputbox" id="title" name="title" value="${title}" readonly></div>
+                <div id="date" style="font-size:10px; color:gray;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <textarea id="maintxt" name="maintxt" style="font-size:30px;font-weight:bold" readonly>${maintxt}</textarea>
+                </td>
+            </tr>
+            <input type="hidden" name="num" value="${num}">  
+        </table>    
+        </form>`
     }
 
 }

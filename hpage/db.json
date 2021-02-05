@@ -12,23 +12,55 @@
       "year": "",
       "month": "",
       "day": "",
-      "write": 2
+      "write": 6
     }
   ],
   "post": [
     {
       "no": 1,
-      "title": "aa",
-      "maintxt": "dddd",
-      "data": "2021-02-04T14:27:15.036Z",
+      "title": "asd",
+      "maintxt": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+      "date": "02/05",
       "author": "시시",
       "id": "tltl1"
     },
     {
       "no": 2,
-      "title": "asdazszc",
-      "maintxt": "sadqwrwadasfa",
-      "data": "2021-02-04T14:27:21.124Z",
+      "title": "안녕>",
+      "maintxt": "나는 홍익대학교 컴퓨터공학과 3학년 박재훈이다 ㅋㅋ",
+      "date": "02/05",
+      "author": "시시",
+      "id": "tltl1"
+    },
+    {
+      "no": 3,
+      "title": "ㅁㄴㅇ",
+      "maintxt": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "date": "02/05",
+      "author": "시시",
+      "id": "tltl1"
+    },
+    {
+      "no": 4,
+      "title": "ㅇㄴㅁ",
+      "maintxt": "ㅇㄴㅁ",
+      "date": "02/05",
+      "author": "시시",
+      "id": "tltl1"
+    },
+    {
+      "no": 5,
+      "title": "ㅋㄴㅊ",
+      "maintxt": "ㅋㅌㅊㅁ",
+      "date": "02/05",
+      "author": "시시",
+      "id": "tltl1"
+    },
+    {
+      "no": 6,
+      "title": "ㅋㅌㅊㅁㅍzzzz",
+      "maintxt": "ㄴㅁzzzzzzz\r\n\r\n\r\nz\r\n\r\nz\r\nz",
+      "date": "02/05",
       "author": "시시",
       "id": "tltl1"
     }
