@@ -26,16 +26,16 @@ router.post('/write',function(req,res){
     var dt= new Date;
     var month=(dt.getMonth()+1);
     if (month < 10 && month[0] != '0' && month != '') month = '0' + month;
-    var day=dt.getDay();
+    var day=dt.getDate();
     if (day < 10 && day[0] != '0' && day != '') day = '0' + day;
     var now = month+'/'+day;
     db.get('post').push({
-        no:req.user.write+1,
+        no:db.get('post').value().length+1,
         title:post.title,
         maintxt:post.maintxt,
         date:now,
         author:req.user.nickname,
-        id:req.user.id
+        id:req.user.id,
     }).write();
     db.get('users').find({
         key:req.user.key
@@ -57,8 +57,7 @@ router.get('/:postno',function(req,res){
 router.post('/modify',function(req,res){
     var post=req.body;
     var body=mod2.write(post.title,post.maintxt,post.num)+
-    `<script>$('#post').attr('action','/square/modify_');
-    $('#cancel').attr('onclick','window.history.back()')</script>`;
+    `<script>$('#post').attr('action','/square/modify_');</script>`;
     var html=mod.HTML(`글 수정-${post.title}`,'write',body)
     res.send(html);
 })

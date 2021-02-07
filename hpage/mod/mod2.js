@@ -143,7 +143,8 @@ module.exports = {
                 if(db[i].maintxt.length>15)
                 var text=db[i].maintxt.substr(0,14)+'...';
                 else var text=db[i].maintxt;
-            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/square/`+(i+1)+`'>${db[i].title}</a></div>
+            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/square/`+(i+1)+`'>${db[i].title}</a>&nbsp&nbsp&nbsp&nbsp
+             <span style="font-size:15px;">by ${db[i].author}</span></div>
             <div>${text}</div><div>${db[i].date}</div>
             </td></tr>`+list;
             }
@@ -166,7 +167,7 @@ module.exports = {
                 <textarea class="inputbox" id="maintxt" name="maintxt" placeholder="내용을 입력해주세요"}>${maintxt}</textarea>
                 </td>
             </tr>  
-            <tr style="text-align: right; color:red;"><td id="msg2"></td></tr>  
+            <tr style="text-align: right; color:red;"><td id="msg2"><br></td></tr>  
             <input type="hidden" name="num" value="${num}">  
         </table>    
         <div style="text-align: center;">      
@@ -174,7 +175,7 @@ module.exports = {
                 Write('#post');
                 ">완료</button>
                 <input id="cancel" class="click btncss" type="button" value="취소" onclick="
-                location.href='/square'
+                window.history.back();
                 ">
             </div> 
         </form>
