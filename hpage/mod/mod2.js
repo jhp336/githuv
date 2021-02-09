@@ -101,13 +101,13 @@ module.exports = {
                     location.href='/square'
                     ">자유게시판</button></td>
                     <td><button style="cursor:pointer;" onclick="
-                    location.href='/square'
+                    location.href='/private'
                     ">비밀게시판</button></td>
                 </tr>
             </table>
         </div>`
     },
-    square:function(db,nick,id){
+    square:function(db,nick,id,opt){
         var head= this.header(nick,id);
         var  int=`
         <div id="grid">
@@ -131,8 +131,8 @@ module.exports = {
         <div class="postlist">
             <table class="board">
             <tr><td><div style="text-align:right">    
-            <input style="cursor:pointer" type="button" value="글쓰기" onclick="
-            location.href='/square/write';
+            <input id="write" style="cursor:pointer" type="button" value="글쓰기" onclick="
+            location.href='/${opt}/write';
             "></div></td><tr>
         </div>`
         if(!db.length)
@@ -143,7 +143,7 @@ module.exports = {
                 if(db[i].maintxt.length>15)
                 var text=db[i].maintxt.substr(0,14)+'...';
                 else var text=db[i].maintxt;
-            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/square/`+(i+1)+`'>${db[i].title}</a>&nbsp&nbsp&nbsp&nbsp
+            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+(i+1)+`'>${db[i].title}</a>&nbsp&nbsp&nbsp&nbsp
              <span style="font-size:15px;">by ${db[i].author}</span></div>
             <div>${text}</div><div>${db[i].date}</div>
             </td></tr>`+list;
@@ -181,13 +181,13 @@ module.exports = {
         </form>
         `
     },
-    post:function(title,maintxt,num){
+    post:function(title,maintxt,num,opt){
         return`<body> 
-        <form id="post" onsubmit="return false;"  method="post" action='/square/modify'>
+        <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
         <table>
             <tr><td><div style="text-align:right">   
-                <input style="cursor:pointer" type="button" value="글 목록" onclick="
-                location.href='/square'">
+                <input id="postlist" style="cursor:pointer" type="button" value="글 목록" onclick="
+                location.href='/${opt}'">
                 <input style="cursor:pointer" type="button" value="글 수정" onclick="
                 form.submit();
                 "></div></td><tr>

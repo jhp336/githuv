@@ -56,9 +56,9 @@ router.post('/:userid/userinfo', function (req, res) {
             res.send(dup.dupli_mod(req, req.user.nickname, 1))
             return;
         }
-        if (post.month < 10 && post.month[0] != '0')
+        if (post.month!=''&&post.month < 10 && post.month[0] != '0')
             post.month = '0' + post.month;
-        if (post.day < 10 && post.day[0] != '0')
+        if (post.day!=''&&post.day < 10 && post.day[0] != '0')
             post.day = '0' + post.day;
         db.get('users').find({
             id: post.id

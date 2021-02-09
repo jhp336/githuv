@@ -1,98 +1,125 @@
 {
   "users": [
     {
-      "key": "H9PIW1-Yl",
+      "key": "TyTF8lh6P",
       "name": "시",
       "nickname": "시시",
       "id": "tltl1",
-      "password": "$2b$10$60CELP/cRR6g6YUOsubwBeWhpED7WkK9JCMCQVGaug3OS1Oq2dpqi",
+      "password": "$2b$10$ZZod3UustyZfOQa9u6VWWeHKt7ydCnM9mIJuQALwqfo8gUErjgvay",
       "email": "tltl1@naver.com",
       "question": "키",
       "answer": "123",
       "year": "",
       "month": "",
       "day": "",
-      "write": 7
+      "write": 2,
+      "prvwrite": 2
     },
     {
-      "key": "tZZQvzQd2",
-      "name": "비비",
-      "nickname": "비비바바",
+      "key": "VQaRejfs7",
+      "name": "비",
+      "nickname": "비비",
       "id": "qlql1",
-      "password": "$2b$10$g1fnFJnJD0tNDCVA1lAog.kWPsspMY87p0xUiWAMFfpRIB16ntE6a",
+      "password": "$2b$10$cbLRKQbVnlZFf.dpi7jf0.WWKaETeSarO7UN3rBys2uPIYLYN1tia",
       "email": "qlql1@naver.com",
-      "question": "별명은?",
-      "answer": "비비",
+      "question": "질문 없음",
+      "answer": "",
       "year": "",
-      "month": "0",
-      "day": "0",
-      "write": 4
+      "month": "",
+      "day": "",
+      "write": 1,
+      "prvwrite": 3
+    },
+    {
+      "key": "prZVfPYYL",
+      "name": "진",
+      "nickname": "지지asd",
+      "id": "wlwl1",
+      "password": "$2b$10$jOwFz8aXof3KhvSjtzATuuuGpBTRa2I6bTph4gVSTyKm896cyAt7q",
+      "email": "wlwl1@naver.com",
+      "question": "질문 없음",
+      "answer": "zz",
+      "year": "",
+      "month": "05",
+      "day": "",
+      "write": 0,
+      "prvwrite": 1
     }
   ],
   "post": [
     {
       "no": 1,
-      "title": "asd",
-      "maintxt": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
-      "date": "02/05",
+      "title": "ㅁㄴㅇㅁㅇㅁㅇ",
+      "maintxt": "ㄴㅁㅇㄴㅁㅇㅁㅇㅁ",
+      "date": "02/09",
       "author": "시시",
       "id": "tltl1"
     },
     {
       "no": 2,
-      "title": "안녕>",
-      "maintxt": "나는 홍익대학교 컴퓨터공학과 3학년 박재훈이다 ㅋㅋ",
-      "date": "02/05",
+      "title": "ㅁㅊㅊ",
+      "maintxt": "ㅊㅋㅌㅊㅋㅊㅌㅊㅋzzzzzzzz",
+      "date": "02/09",
       "author": "시시",
       "id": "tltl1"
     },
     {
       "no": 3,
-      "title": "ㅁㄴㅇ",
-      "maintxt": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
-      "date": "02/05",
+      "title": "zzzzzzzzz",
+      "maintxt": "zzz",
+      "date": "02/09",
+      "author": "비비",
+      "id": "qlql1"
+    }
+  ],
+  "secret": [
+    {
+      "no": 1,
+      "title": "ㅋㅌㅊㅋㅊㅌ",
+      "maintxt": "ㅁㄴㅁㅊㅁㅊzzzzz",
+      "date": "02/09",
       "author": "시시",
       "id": "tltl1"
     },
     {
-      "no": 4,
-      "title": "ㅇㄴㅁ",
-      "maintxt": "ㅇㄴㅁ",
-      "date": "02/05",
-      "author": "시시",
-      "id": "tltl1"
-    },
-    {
-      "no": 5,
-      "title": "ㅋㄴㅊ",
-      "maintxt": "ㅋㅌㅊㅁ",
-      "date": "02/05",
-      "author": "시시",
-      "id": "tltl1"
-    },
-    {
-      "no": 6,
-      "title": "ㅋㅌㅊㅁㅍzzzz",
-      "maintxt": "ㄴㅁzzzzzzz\r\n\r\n\r\nz\r\n\r\nz\r\nz",
-      "date": "02/05",
-      "author": "시시",
-      "id": "tltl1"
-    },
-    {
-      "no": 7,
-      "title": "안녕난비비야",
-      "maintxt": "놀라운 사실\r\n\r\n\r\n\r\n그런거없다!",
-      "date": "02/0",
+      "no": 1,
+      "title": "zzzzzzzzzzddqs",
+      "maintxt": "zzsadadasadzzzz",
+      "date": "02/09",
       "author": "비비",
       "id": "qlql1"
     },
     {
-      "no": 8,
-      "title": "aa",
-      "maintxt": "aaa",
-      "date": "02/07",
-      "author": "비비바바",
+      "no": 2,
+      "title": "zcxz",
+      "maintxt": "vvv",
+      "date": "02/09",
+      "author": "비비",
       "id": "qlql1"
+    },
+    {
+      "no": 2,
+      "title": "zcx",
+      "maintxt": "aaaa",
+      "date": "02/09",
+      "author": "비비",
+      "id": "qlql1"
+    },
+    {
+      "no": 2,
+      "title": "asdaada",
+      "maintxt": "zzzzzzzzzzzzzzzzzzzzzzzzz",
+      "date": "02/09",
+      "author": "시시",
+      "id": "tltl1"
+    },
+    {
+      "no": 1,
+      "title": "ads",
+      "maintxt": "asd",
+      "date": "02/09",
+      "author": "지지",
+      "id": "wlwl1"
     }
   ]
 }

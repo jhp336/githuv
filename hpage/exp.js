@@ -20,6 +20,7 @@ app.use('/',require('./routes/index.js'));
 app.use('/home',require('./routes/home.js'));
 app.use('/auth',require('./routes/auth.js')(passport));
 app.use('/square',require('./routes/square.js'));
+app.use('/private',require('./routes/private.js'));
 
 app.use(function(req,res,next){
     res.status(404).send("<script>alert('페이지가 존재하지 않습니다!');window.history.back();</script>");
