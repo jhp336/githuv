@@ -95,6 +95,7 @@ a:hover{
 }
 .bgimg{
     background-image: url(/img/bgimg.jpg);
+    background-size: cover;
 }
 #copybtn{
     width:75px;

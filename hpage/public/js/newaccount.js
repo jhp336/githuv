@@ -102,12 +102,12 @@ Check = function (form) {
         return;
     }//중복 확인 처리
 
-    if($('#quest').val()==="dir" && $('#direct').val()===''){
+    if($('#quest').val()==="dir" && $('#direct').val().trim()===''){
         alert('직접 입력할 질문을 작성해주세요!');
         $('#direct').focus();
         return;
     }
-    if($('#quest').val()!="질문 없음"&& $('#ans').val()===''){
+    if($('#quest').val()!="질문 없음"&& $('#ans').val().trim()===''){
         alert('질문에 답변을 해주세요!');
         $('#ans').focus();
         return;

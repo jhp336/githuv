@@ -71,12 +71,12 @@ Check = function (form) {
         return;
     }  //중복 확인 처리
 
-    if ($('#quest').val()!='질문 없음'&&$('#quest').val() != '' && $('#ans').val() === '') {
+    if ($('#quest').val()!='질문 없음'&&$('#quest').val().trim() != '' && $('#ans').val().trim() === '') {
         alert('질문에 답변을 해주세요!');
         $('#ans').focus();
         return;
     }
-    if ($('#quest').val() === '' && $('#ans').val() != '') {
+    if ($('#quest').val().trim() === '' && $('#ans').val().trim() != '') {
         alert('질문이 없는데 답변이 있습니다..?');
         $('#quest').focus();
         return;

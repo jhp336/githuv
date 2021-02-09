@@ -6,7 +6,7 @@ enterpress=function(){
 Login=function(form){
     var ID=$('#id');
     var PW=$('#pw');
-    if(ID.val()===""){
+    if(ID.val().trim()===""){
         $('#msg').html('아이디를 입력해주세요');
         ID.focus();
         return;

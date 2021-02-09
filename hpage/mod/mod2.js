@@ -28,8 +28,8 @@ module.exports = {
             <td><label for="nickname"><span class="star modif" hidden>* </span>닉네임</label></td>
             <td>
                 <input class="inputbox2 modif2" id="nickname" name="nickname" type="text" value="${nick}" disabled oninput="nicknamechange()">
-                <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck('${id}');"hidden>중복확인</button>
-                <input type="text" class="dupli" id="nicknamedupok" value="사용 가능"hidden disabled>
+                <button id="nicknamedupcheck" type="button" style="cursor:pointer;" onclick="duplicheck('${id}');" hidden>중복확인</button>
+                <input type="text" class="dupli" id="nicknamedupok" value="사용 가능" hidden disabled>
             </td>
         </tr>
         <tr>
@@ -47,7 +47,7 @@ module.exports = {
             <td><input class="inputbox2 modif2" type="text" name="ans" id="ans" value="수정 시 볼 수 있습니다" style="font-style: italic; color:red" disabled ></td>
         </tr>
         <tr>
-            <td>생년월일</label></td>
+            <td>생년월일</td>
             <td>
                 <input class="inputbox2 modif2" name="year" id="year" type="text" value="${year}" maxlength="4" style="width: 67px;" disabled>
                 <input class="inputbox2 modif2" type="text" name="month" id="month" style="width:27px;" value="${month}" maxlength="2" disabled>

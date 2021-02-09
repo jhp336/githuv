@@ -3,7 +3,7 @@
     {
       "key": "TyTF8lh6P",
       "name": "시",
-      "nickname": "시시",
+      "nickname": "시시asda",
       "id": "tltl1",
       "password": "$2b$10$ZZod3UustyZfOQa9u6VWWeHKt7ydCnM9mIJuQALwqfo8gUErjgvay",
       "email": "tltl1@naver.com",
@@ -12,8 +12,8 @@
       "year": "",
       "month": "",
       "day": "",
-      "write": 2,
-      "prvwrite": 2
+      "write": 3,
+      "prvwrite": 4
     },
     {
       "key": "VQaRejfs7",
@@ -44,6 +44,21 @@
       "day": "",
       "write": 0,
       "prvwrite": 1
+    },
+    {
+      "key": "ZYq6FSsu6",
+      "name": "비",
+      "nickname": "qkqk",
+      "id": "qkqk1",
+      "password": "$2b$10$lSc5t31BIN6sgSu8k9rIW.ArvJMD4sZ/QyYM0SWjmoQcq72pf/ROi",
+      "email": "qkqk1@naver.com",
+      "question": "d",
+      "answer": " ",
+      "year": "",
+      "month": "",
+      "day": "",
+      "write": 0,
+      "prvwrite": 0
     }
   ],
   "post": [
@@ -70,6 +85,14 @@
       "date": "02/09",
       "author": "비비",
       "id": "qlql1"
+    },
+    {
+      "no": 4,
+      "title": "안녕나는",
+      "maintxt": "홍대야\r\nㅋㅋ",
+      "date": "02/09",
+      "author": "시시asda",
+      "id": "tltl1"
     }
   ],
   "secret": [
@@ -120,6 +143,22 @@
       "date": "02/09",
       "author": "지지",
       "id": "wlwl1"
+    },
+    {
+      "no": 3,
+      "title": "ㅁㅇ",
+      "maintxt": "ㅋㅋㅋ",
+      "date": "02/09",
+      "author": "시시asda",
+      "id": "tltl1"
+    },
+    {
+      "no": 4,
+      "title": "ㅋ",
+      "maintxt": "\r\n\r\n\r\n\r\n\r\n \r\n.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "date": "02/09",
+      "author": "시시asda",
+      "id": "tltl1"
     }
   ]
 }
