@@ -53,7 +53,7 @@ router.get('/:postno',function(req,res){
         id:req.user.id,
     }).value();
     var body=mod2.post(post.title,post.maintxt,num,'private');
-    var html=mod.HTML(`비밀글 보기-${post.title}`,'',body);
+    var html=mod.HTML(`비밀글 보기-${post.title}`,'write',body);
 
     res.send(html);
 })
@@ -74,5 +74,18 @@ router.post('/modify_',function(req,res){
         maintxt:post.maintxt
     }).write();
     res.redirect(`/private/${post.num}`);
+})
+router.post('/delete',function(req,res){
+    var post=req.body;
+    db.get('secret').remove({
+        no:Number(post.num),
+        id:req.user.id
+    }).write();
+    db.get('users').find({
+        key:req.user.key
+    }).assign({
+        prvwrite:req.user.prvwrite-1
+    }).write();
+    res.send(`<script>alert('삭제되었습니다!');location.href='/private'</script>`)
 })
 module.exports=router;

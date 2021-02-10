@@ -1,3 +1,4 @@
+
 Write= function(form){
     var title=$('#title')
     if(title.val().trim()===""){
@@ -13,6 +14,11 @@ Write= function(form){
         main.focus();
         return;
     }
+    $(form).attr('onsubmit',true);
+    $(form).submit();
+}
+Delete=function(form,opt){
+    $(form).attr('action',`/${opt}/delete`);
     $(form).attr('onsubmit',true);
     $(form).submit();
 }

@@ -95,7 +95,7 @@ a:hover{
 }
 .bgimg{
     background-image: url(/img/bgimg.jpg);
-    background-size: cover;
+    background-attachment: scroll;
 }
 #copybtn{
     width:75px;
@@ -104,21 +104,22 @@ a:hover{
     background-color: rgb(8, 109, 104) ;
 }/*복사버튼*/
 .boardcate{
-    margin-left: 220px;
+    margin: 0 auto;
+    margin-right: 0;
     background-color: rgb(215, 238, 238);
     border-right:2px solid gray;
     padding: 10px 40px;
     border-radius: 3px 0 0 3px;
 }
 .postlist{
+    margin-right: 220px ;
     background-color: rgb(241, 237, 237);
     border-radius: 3px;
-    margin:0 200px 0 0;
-    height:1006px;
 }
 .board{
-    margin:0;
-    width:1006px;
+    width:100%;
+    border-spacing: 0.8px;
+    table-layout:fixed;
 }
 #grid{
     display: grid;
@@ -132,6 +133,19 @@ a:hover{
     width:500px;
     height:400px;
 }
-#maintxt,#title:focus{
-    border:2px solid rgb(241, 237, 237)
+#maintxt:focus,#title:focus{
+    border:2px solid rgb(241, 237, 237);
+}
+.postbtn{
+    width: 60px;
+    height: 35px;
+    color: rgb(220, 224, 228);
+    background-color: rgb(8, 109, 104) ;
+    cursor:pointer;
+}
+thead{
+    width: 903.2px;
+    background-color:rgb(206, 205, 230);
+    color:black;
+    text-align: center;
 }

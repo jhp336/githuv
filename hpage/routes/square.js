@@ -47,7 +47,7 @@ router.get('/:postno',function(req,res){
         no:num
     }).value();
     var body=mod2.post(post.title,post.maintxt,num,'square');
-    var html=mod.HTML(`글 보기-${post.title}`,'',body);
+    var html=mod.HTML(`글 보기-${post.title}`,'write',body);
 
     res.send(html);
 })
@@ -67,5 +67,17 @@ router.post('/modify_',function(req,res){
         maintxt:post.maintxt
     }).write();
     res.redirect(`/square/${post.num}`);
+})
+router.post('/delete',function(req,res){
+    var post=req.body;
+    db.get('post').remove({
+        no:Number(post.num)
+    }).write();
+    db.get('users').find({
+        key:req.user.key
+    }).assign({
+        write:req.user.write-1
+    }).write();
+    res.send(`<script>alert('삭제되었습니다!');location.href='/square'</script>`)
 })
 module.exports=router;

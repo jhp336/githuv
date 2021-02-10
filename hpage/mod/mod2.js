@@ -130,26 +130,36 @@ module.exports = {
         </table>
         <div class="postlist">
             <table class="board">
-            <tr><td><div style="text-align:right">    
-            <input id="write" style="cursor:pointer" type="button" value="글쓰기" onclick="
-            location.href='/${opt}/write';
-            "></div></td><tr>
-        </div>`
+            <colgroup>
+                <col width="60%"/>
+                <col width="25%"/>
+                <col width="15%"/>
+            </colgroup>
+            <thead><tr style="height:30px">
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+            </tr></thead>`
         if(!db.length)
-        var list=`<tr><td>게시글이 없습니다</td></tr></table></div></div>`
+        var list=`</table><div style="text-align:center;margin-top:45.6px">게시글이 없습니다</div></div>`
         else {
-            var list='</table></div></div>';
+            var list='';
             for(var i=0;i<db.length;i++){
                 if(db[i].maintxt.length>15)
                 var text=db[i].maintxt.substr(0,14)+'...';
                 else var text=db[i].maintxt;
-            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+(i+1)+`'>${db[i].title}</a>&nbsp&nbsp&nbsp&nbsp
-             <span style="font-size:15px;">by ${db[i].author}</span></div>
-            <div>${text}</div><div>${db[i].date}</div>
-            </td></tr>`+list;
+            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+db[i].no+`'>${db[i].title}</a></div>
+            <div>${text}</div></td>
+            <td style="font-size:15px;text-align:center">${db[i].author}</td>
+            <td style="font-size:15px;text-align:center">${db[i].date}</td></tr>`+list;
             }
-        }       
-        return head+int+list
+            list=list+`</table></div>`;
+        }    
+        var end=`<div style="text-align:left;margin-left:400px">    
+        <input id="write" class="postbtn" type="button" value="글쓰기" onclick="
+        location.href='/${opt}/write';
+        "></div></div>`   
+        return head+int+list+end
     },
     write:function(title,maintxt,num){
         return `
@@ -186,11 +196,15 @@ module.exports = {
         <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
         <table>
             <tr><td><div style="text-align:right">   
-                <input id="postlist" style="cursor:pointer" type="button" value="글 목록" onclick="
+                <input id="postlist" class="postbtn" type="button" value="글 목록" onclick="
                 location.href='/${opt}'">
-                <input style="cursor:pointer" type="button" value="글 수정" onclick="
+                <input class="postbtn" type="button" value="글 수정" onclick="
                 form.submit();
-                "></div></td><tr>
+                ">
+                <input class="postbtn" type="button" value="글 삭제" onclick="
+                Delete('#post','${opt}')
+                ">
+                </div></td><tr>
             <tr>
                 <td>
                 <input class="inputbox" id="title" name="title" value="${title}" readonly></div>
