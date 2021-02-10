@@ -31,8 +31,11 @@ router.post('/write',function(req,res){
     var prvpost=db.get('secret').filter({
         id:req.user.id,
     }).value();
+    var num=1;
+    if(prvpost.length!=0)
+    num=prvpost[prvpost.length-1].no+1;
     db.get('secret').push({
-        no:prvpost.length+1,
+        no:num,
         title:post.title,
         maintxt:post.maintxt,
         date:now,
@@ -52,7 +55,7 @@ router.get('/:postno',function(req,res){
         no:num,
         id:req.user.id,
     }).value();
-    var body=mod2.post(post.title,post.maintxt,num,'private');
+    var body=mod2.post(post,req.user.id,'private');
     var html=mod.HTML(`비밀글 보기-${post.title}`,'write',body);
 
     res.send(html);

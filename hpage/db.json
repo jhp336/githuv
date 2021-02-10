@@ -12,8 +12,8 @@
       "year": "",
       "month": "",
       "day": "",
-      "write": 3,
-      "prvwrite": 0
+      "write": 2,
+      "prvwrite": 1
     },
     {
       "key": "8rgAjEIZS",
@@ -27,44 +27,68 @@
       "year": "",
       "month": "",
       "day": "",
-      "write": 0,
-      "prvwrite": 1
+      "write": 4,
+      "prvwrite": 0
     }
   ],
   "post": [
     {
-      "no": 1,
-      "title": "안녕~~~~",
-      "maintxt": "난 홍대야\r\n",
-      "date": "02/10",
-      "author": "시시asda",
-      "id": "tltl1"
-    },
-    {
       "no": 2,
-      "title": "룰루~~~~",
-      "maintxt": "ㅋㅋ",
+      "title": "vvvx",
+      "maintxt": "vsad",
       "date": "02/10",
       "author": "시시asda",
       "id": "tltl1"
     },
     {
       "no": 3,
-      "title": "ㅋㅋㅊㄴㅁㅊ",
-      "maintxt": "ㅊㅋㅌㅊㅋㅌ",
+      "title": "안녕~~~~",
+      "maintxt": "난 홍대야",
       "date": "02/10",
       "author": "시시asda",
       "id": "tltl1"
+    },
+    {
+      "no": 4,
+      "title": "난 리리야",
+      "maintxt": "린이야\r\n\r\n\r\nㅇㅇㅇ",
+      "date": "02/10",
+      "author": "리리",
+      "id": "flfl1"
+    },
+    {
+      "no": 5,
+      "title": "루룰ㄹ루루",
+      "maintxt": "궁금해하지말ㅇ앙ㅅ 또내게묻지 말아요제발\r\n그사람의 얼굴 그사람의 이름",
+      "date": "02/10",
+      "author": "리리",
+      "id": "flfl1"
+    },
+    {
+      "no": 7,
+      "title": "ㅇㅂㅈㅇ",
+      "maintxt": "ㅊㅋㅊ",
+      "date": "02/10",
+      "author": "리리",
+      "id": "flfl1"
+    },
+    {
+      "no": 8,
+      "title": "ㅋㅋㅊㅁ",
+      "maintxt": "ㅁㅁ",
+      "date": "02/10",
+      "author": "리리",
+      "id": "flfl1"
     }
   ],
   "secret": [
     {
       "no": 1,
-      "title": "난리리야",
-      "maintxt": "린이야",
+      "title": "ㅋㅋ하이",
+      "maintxt": "바이바이",
       "date": "02/10",
-      "author": "리리",
-      "id": "flfl1"
+      "author": "시시asda",
+      "id": "tltl1"
     }
   ]
 }

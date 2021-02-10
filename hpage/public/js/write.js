@@ -22,3 +22,7 @@ Delete=function(form,opt){
     $(form).attr('onsubmit',true);
     $(form).submit();
 }
+Candelete=function(postid,id){
+    if(postid!=id)
+    $('.owneronly').hide();
+}

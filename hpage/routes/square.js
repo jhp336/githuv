@@ -26,8 +26,12 @@ router.post('/write',function(req,res){
     var day=dt.getDate();
     if (day < 10 && day[0] != '0' && day != '') day = '0' + day;
     var now = month+'/'+day;
+    var dbpost=db.get('post').value();
+    var num=1;
+    if(dbpost.length!=0)
+    num=dbpost[dbpost.length-1].no+1;
     db.get('post').push({
-        no:db.get('post').value().length+1,
+        no:num,
         title:post.title,
         maintxt:post.maintxt,
         date:now,
@@ -46,7 +50,7 @@ router.get('/:postno',function(req,res){
     var post=db.get('post').find({
         no:num
     }).value();
-    var body=mod2.post(post.title,post.maintxt,num,'square');
+    var body=mod2.post(post,req.user.id,'square');
     var html=mod.HTML(`글 보기-${post.title}`,'write',body);
 
     res.send(html);

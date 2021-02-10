@@ -155,7 +155,7 @@ module.exports = {
             }
             list=list+`</table></div>`;
         }    
-        var end=`<div style="text-align:left;margin-left:400px">    
+        var end=`<div style="text-align:left;margin-left:398px">    
         <input id="write" class="postbtn" type="button" value="글쓰기" onclick="
         location.href='/${opt}/write';
         "></div></div>`   
@@ -191,34 +191,34 @@ module.exports = {
         </form>
         `
     },
-    post:function(title,maintxt,num,opt){
+    post:function(post,id,opt){
         return`<body> 
         <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
         <table>
             <tr><td><div style="text-align:right">   
                 <input id="postlist" class="postbtn" type="button" value="글 목록" onclick="
                 location.href='/${opt}'">
-                <input class="postbtn" type="button" value="글 수정" onclick="
+                <input class="postbtn owneronly" type="button" value="글 수정" onclick="
                 form.submit();
                 ">
-                <input class="postbtn" type="button" value="글 삭제" onclick="
+                <input class="postbtn owneronly" type="button" value="글 삭제" onclick="
                 Delete('#post','${opt}')
                 ">
-                </div></td><tr>
+                </div></td>
             <tr>
                 <td>
-                <input class="inputbox" id="title" name="title" value="${title}" readonly></div>
-                <div id="date" style="font-size:10px; color:gray;"></div>
+                <input class="inputbox" id="title" name="title" value="${post.title}" readonly>
+                <span style="margin:0 auto;color:rgb(53, 53, 99)">&nbsp&nbsp&nbsp${post.author}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                <textarea id="maintxt" name="maintxt" style="font-size:30px;font-weight:bold" readonly>${maintxt}</textarea>
+                <textarea id="maintxt" name="maintxt" style="font-size:30px;font-weight:bold" readonly>${post.maintxt}</textarea>
                 </td>
             </tr>
-            <input type="hidden" name="num" value="${num}">  
+            <input type="hidden" name="num" value="${post.no}">  
         </table>    
-        </form>`
+        </form><script>Candelete('${post.id}','${id}')</script>`
     }
 
 }
