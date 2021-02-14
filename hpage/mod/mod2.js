@@ -1,5 +1,5 @@
 module.exports = {
-    userinfo: function (originnick, name, nick, id, email, quest, ans, year, month, day, pw) {
+    userinfo: function (originnick, name, nick, id, email, quest, ans, year, month, day) {
         return `<body>
         <header>
         <h1><span style="color:orange;">${originnick}</span> 님의 회원 정보</h1>
@@ -7,7 +7,7 @@ module.exports = {
         </header>
         <div style="text-align: center;">
         <input class="findbtn btncss" type="button" id="basicinf" value="기본 정보" style="background-color: rgb(241, 237, 237);" onclick="
-        clickbtn(this, '${id}', '${nick}', '${name}', '${email}', '${quest}', '${ans}', '${year}', '${month}', '${day}')
+        clickbtn(this, '${id}', '${originnick}', '${name}', '${email}', '${quest}', '${year}', '${month}', '${day}')
         ">
         <input class="findbtn btncss" id="pwinf" type="button" value="비밀번호 변경" style="background-color: rgb(176, 182, 182)" onclick="
         clickbtn(this, '${id}')     
@@ -16,7 +16,7 @@ module.exports = {
         <form id="new" method="post" action="/${id}/userinfo">
         <div style="text-align:center">
         <input style="border:2px double" class="inputbox3" value="ID: ${id}" disabled>
-        <input type="hidden" name="id" value="${id}" hidden>
+        <input type="hidden" id="id" name="id" value="${id}" hidden>
         </div>
         <br>
         <table>    
@@ -61,8 +61,9 @@ module.exports = {
         </table>
         <br>
         <div style="text-align: center;">      
-                <input class="click btncss" type="button" id="modify" value="수정" onclick="Modify('${ans}',1);">
-                <input class="inputbox2 modif" type="password" id="pw" name="pw" placeholder="비밀번호" value="${pw}" hidden>
+                <input class="click btncss" type="button" id="modify" value="수정" onclick="clickmodify();">
+                <input class="inputbox2 modif3" type="password" id="pw" name="pw" placeholder="비밀번호" hidden>
+                <p><input class="click modif3 btncss" type="button" value="확인" hidden onclick="pwcheck('#new')"></p>
                 <div style="text-align: center; color:red; font-size:14px;" id="msg"></div>
                 <p><input class="click modif btncss" type="button" value="완료" hidden onclick="Check('#new')">
                 <input class="click modif btncss" type="button" value="취소" hidden onclick="

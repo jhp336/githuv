@@ -1,3 +1,17 @@
+clickmodify=function(){
+    $('body').attr('onkeydown',"enterpress__()")
+    $('#modify').attr('hidden', true);
+    $('.modif3').attr('hidden',false);
+    $('#pw').focus();
+}//수정 버튼클릭
+pwcheck=function(form){
+    if ($('#pw').val() === '') {
+        $('#msg').html('계정의 비밀번호를 입력해주세요!');
+        $('#pw').focus();
+        return;
+    }
+    $(form).submit();
+}
 Modify = function (answer, dup) {//dup=1이면 중복확인 완료 0이면 확인 전
     $('.modif2').attr('disabled', false);
     if (dup === 1){
@@ -109,13 +123,8 @@ Check = function (form) {
             return;
         }
     }//생년월일 처리
-
-    if ($('#pw').val() === '') {
-        $('#msg').html('계정의 비밀번호를 입력해주세요!');
-        $('#pw').focus();
-        return;
-    }
-
+    var id=$('#id').val();
+    $(form).attr('action',`/${id}/userinfo/modify`)
     $(form).submit();
 }
 enterpress = function () {
@@ -128,7 +137,12 @@ enterpress_ = function () {
         pwchange('#new');
 }
 
-function clickbtn(but, id, nick, name, email, quest, ans, year, month, day) {
+enterpress__ = function () {
+    if (window.event.keyCode == 13)
+        pwcheck('#new');
+}
+
+function clickbtn(but, id, nick, name, email, quest, year, month, day) {
     var btn2, btn = $(but)
     if (btn.attr('id') === 'basicinf') {
         $('body').attr('onkeydown',"");
@@ -182,14 +196,15 @@ function clickbtn(but, id, nick, name, email, quest, ans, year, month, day) {
         </table>
         <br>
         <div style="text-align: center;">      
-                <input class="click btncss" type="button" id="modify" value="수정" onclick="Modify('${ans}',1);">
-                <input class="inputbox2 modif" type="password" id="pw" name="pw" placeholder="비밀번호" value="" hidden>
+                <input class="click btncss" type="button" id="modify" value="수정" onclick="clickmodify();">
+                <input class="inputbox2 modif3" type="password" id="pw" name="pw" placeholder="비밀번호" hidden>
+                <p><input class="click modif3 btncss" type="button" value="확인" hidden onclick="pwcheck('#new')"></p>
                 <div style="text-align: center; color:red; font-size:14px;" id="msg"></div>
                 <p><input class="click modif btncss" type="button" value="완료" hidden onclick="Check('#new')">
                 <input class="click modif btncss" type="button" value="취소" hidden onclick="
                 location.href='/${id}/userinfo'
                 "><p>
-        </div>`);
+        </div> `);
         $('.modif2').css('font-weight','bold');
     }
     else {

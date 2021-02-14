@@ -2,18 +2,18 @@
   "users": [
     {
       "key": "TyTF8lh6P",
-      "name": "시",
-      "nickname": "시시asda",
+      "name": "신",
+      "nickname": "시시as",
       "id": "tltl1",
       "password": "$2b$10$ZZod3UustyZfOQa9u6VWWeHKt7ydCnM9mIJuQALwqfo8gUErjgvay",
       "email": "tltl1@naver.com",
       "question": "키",
       "answer": "123",
-      "year": "",
-      "month": "",
-      "day": "",
+      "year": "1999",
+      "month": "04",
+      "day": "02",
       "write": 2,
-      "prvwrite": 1
+      "prvwrite": 3
     },
     {
       "key": "8rgAjEIZS",
@@ -43,7 +43,7 @@
     {
       "no": 3,
       "title": "안녕~~~~",
-      "maintxt": "난 홍대야",
+      "maintxt": "난 홍대야zz",
       "date": "02/10",
       "author": "시시asda",
       "id": "tltl1"
@@ -84,9 +84,25 @@
   "secret": [
     {
       "no": 1,
-      "title": "ㅋㅋ하이",
-      "maintxt": "바이바이",
-      "date": "02/10",
+      "title": "초패스트 군숙",
+      "maintxt": "앞마당-가스-풀 -> 오버로드 누르고 가스추가\r\n앞마당 완성후 번식지 -> 번식지 완성후 감염구덩이, 가스 추가(총 3)\r\n800/600 모았다가 군숙 8 -> 상대 본진/앞마당 터트리기 ->\r\n이후 히드라굴, 가스추가, 진화장 -> 히드라 뽑으면서 멀티추가 -> \r\n감염충 + 히드라 (+바퀴) 조합",
+      "date": "02/12",
+      "author": "시시asda",
+      "id": "tltl1"
+    },
+    {
+      "no": 2,
+      "title": "초패스트 울트라",
+      "maintxt": "앞마당-가스-풀 -> 본진여왕 니오면 번식지+가스 추가\r\n번식지 완성 후 감염구덩이 + 가스 2추가(총 4)\r\n울트라 뜨기 전 까지 바퀴링으로 수비,소모전\r\n땅굴 통해 공격",
+      "date": "02/12",
+      "author": "시시asda",
+      "id": "tltl1"
+    },
+    {
+      "no": 3,
+      "title": "땅굴 올인",
+      "maintxt": "앞마당-가스-풀 ->본진, 앞마당 여왕2기씩\r\n본진 2여왕째에 번식지, 2가스 (+트리플) -> 절반쯤 바퀴소굴\r\n번식지 완성후 땅굴망 -> 여왕 꾸준히 찍다가 여왕먼저 넣고 올인->수혈해주면서 교전",
+      "date": "02/12",
       "author": "시시asda",
       "id": "tltl1"
     }
