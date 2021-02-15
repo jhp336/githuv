@@ -226,9 +226,8 @@ function clickbtn(but, id, nick, name, email, quest, year, month, day) {
                     <td><label for="newerc">새 비밀번호 확인</label></td>
                     <td><input type="password" id="newerc" class="inputbox2" placeholder="새 비밀번호 확인"></td>
                 </tr>
-                <tr style="text-align: right; color:red;font-size:14px"><td></td><td id="msg"></td></tr>             
+                <tr style="text-align: right; color:red;font-size:14px"><td></td><td id="msg"><br></td></tr>             
             </table>
-            <br>
             <div style="text-align: center;">      
                 <input class="click btncss" type="button" value="완료" onclick="pwchange('#new')">
             </div>` )

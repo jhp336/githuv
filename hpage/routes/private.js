@@ -11,7 +11,7 @@ router.get('/',function(req,res){
         id:req.user.id
     }).value();
     var body=mod2.square(dbpost,req.user.nickname,req.user.id,'private')
-    var html=mod.HTML('비밀게시판','',body);
+    var html=mod.HTML('비밀게시판','write',body);
     res.send(html);
 })
 router.get('/write',function(req,res){

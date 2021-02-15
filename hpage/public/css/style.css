@@ -87,7 +87,7 @@ a{
     color: rgb(95, 95, 241) ;
 }
 a:hover{
-    text-decoration: underline;
+    font-weight: bold;
 }
 .star{
     font-size:xx-small;
@@ -149,3 +149,15 @@ thead{
     color:black;
     text-align: center;
 }
+.author:hover{
+    font-weight: bold;
+    cursor:pointer;
+}
+.arrow_box {
+    font-size: 14px;
+	position: relative;
+	background: #bbccd5;
+    margin: 0  auto;
+    width: 60%;
+}
+

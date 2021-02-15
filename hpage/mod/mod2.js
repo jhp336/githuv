@@ -151,7 +151,7 @@ module.exports = {
                 else var text=db[i].maintxt;
             var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+db[i].no+`'>${db[i].title}</a></div>
             <div>${text}</div></td>
-            <td style="font-size:15px;text-align:center">${db[i].author}</td>
+            <td style="font-size:15px;text-align:center"><span class="author" id="${i}">${db[i].author}</span><br><div id="author${i}" class="arrow_box" hidden></div></td>
             <td style="font-size:15px;text-align:center">${db[i].date}</td></tr>`+list;
             }
             list=list+`</table></div>`;
@@ -159,7 +159,7 @@ module.exports = {
         var end=`<div style="text-align:left;margin-left:398px">    
         <input id="write" class="postbtn" type="button" value="글쓰기" onclick="
         location.href='/${opt}/write';
-        "></div></div>`   
+        "></div></div><script>author()</script>`   
         return head+int+list+end
     },
     write:function(title,maintxt,num){

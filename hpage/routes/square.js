@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
 router.get('/',function(req,res){
     var dbpost=db.get('post').value();
     var body=mod2.square(dbpost,req.user.nickname,req.user.id,'square');
-    var html=mod.HTML('자유게시판','',body);
+    var html=mod.HTML('자유게시판','write',body);
     res.send(html);
 })
 
