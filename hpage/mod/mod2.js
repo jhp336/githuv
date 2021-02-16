@@ -1,5 +1,5 @@
 module.exports = {
-    userinfo: function (originnick, name, nick, id, email, quest, ans, year, month, day) {
+    userinfo: function (originnick, name, nick, id, email, quest, year, month, day) {
         return `<body>
         <header>
         <h1><span style="color:orange;">${originnick}</span> 님의 회원 정보</h1>
@@ -71,6 +71,50 @@ module.exports = {
                 "><p>
         </div> 
         </form>
+        <script>
+        $('.modif2').css('font-weight','bold')
+        </script>
+        `
+    },
+    openinfo:function(name, nick, id, email, year, month, day){
+        return `<body>
+        <header>
+        <h1><span style="color:orange;">${nick}</span> 님의 회원 정보</h1>
+        <p><a href="/">메인 페이지로</a></p>
+        </header>
+        <div style="text-align: center;">
+        <input class="findbtn btncss" type="button" id="basicinf" value="기본 정보" style="background-color: rgb(241, 237, 237);">
+        </div>
+        <form id="new">
+        <div style="text-align:center">
+        <input style="border:2px double" class="inputbox3" value="ID: ${id}" disabled>
+        </div>
+        <br>
+        <table>    
+        <tr>
+            <td>성명</td>
+            <td><input class="inputbox2 modif2" id="name" type="text" value="${name}" disabled></td>
+        </tr>
+        <tr>
+            <td>닉네임</td>
+            <td>
+                <input class="inputbox2 modif2" id="nickname" type="text" value="${nick}" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>이메일</td>
+            <td><input class="inputbox2 modif2" id="email" type="text" value="${email}" disabled></td>
+        </tr>
+        <tr>
+            <td>생년월일</td>
+            <td>
+                <input class="inputbox2 modif2" id="year" type="text" value="${year}" style="width: 67px;" disabled>
+                <input class="inputbox2 modif2" type="text" id="month" style="width:27px;" value="${month}"disabled>
+                <input class="inputbox2 modif2" type="text" id="day" value="${day}" style="width: 27px;" disabled>
+            </td>
+        </tr>
+        </table>
+        <br>
         <script>
         $('.modif2').css('font-weight','bold')
         </script>
@@ -151,7 +195,7 @@ module.exports = {
                 else var text=db[i].maintxt;
             var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+db[i].no+`'>${db[i].title}</a></div>
             <div>${text}</div></td>
-            <td style="font-size:15px;text-align:center"><span class="author" id="${i}">${db[i].author}</span><br><div id="author${i}" class="arrow_box" hidden></div></td>
+            <td style="font-size:15px;text-align:center"><span class="author" id="${i}" name="${db[i].id}">${db[i].author}</span><br><div id="author${i}" class="arrow_box" hidden></div></td>
             <td style="font-size:15px;text-align:center">${db[i].date}</td></tr>`+list;
             }
             list=list+`</table></div>`;

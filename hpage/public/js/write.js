@@ -31,7 +31,8 @@ author = function () {
         $('.arrow_box').attr('hidden', true);
         if($(e.target).attr('class') === 'author'){
             var id = $(e.target).attr('id');
-            $(`#author${id}`).html('<span>작성글 보기</span><br><span>회원 정보</span>')
+            var author=$(e.target).attr('name');
+            $(`#author${id}`).html(`<span>작성글 보기</span><br><a href="/${author}/userinfo"><span>회원 정보</span></a>`)
             $(`#author${id}`).attr('hidden', false);
         }
     });

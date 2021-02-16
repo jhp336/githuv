@@ -34,7 +34,7 @@ Modify = function (answer, dup) {//dup=1이면 중복확인 완료 0이면 확�
     $('.modif').attr('hidden', false);
     $('body').attr('onkeydown',"enterpress()")
     $('.modif2').css('font-weight','')
-}//수정 버튼 클릭
+}//수정창
 duplicheck = function (id) {
     var test = /^(?=.*[a-zA-Z]|.*[가-힣])[a-zA-Z0-9가-힣]{2,10}$/;
     if (!test.test($('#nickname').val())) {

@@ -28,13 +28,20 @@ router.get('/:userid/userinfo', function (req, res) {
         res.send("<script>alert('페이지가 존재하지 않습니다!');location.href='/';</script>");
         return;
     }
-    if (!post || post.key != user.key) {
+    if (!post) {
         res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
+    if(post.key != user.key){
+        var body=mod2.openinfo(user.name,user.nickname,user.id,user.email,
+            user.year,user.month,user.day);
+        var html=mod.HTML(`${user.nickname}님의 회원정보`,'userinfo',body);
+        res.send(html);
         return;
     }
 
     var body = mod2.userinfo(post.nickname, post.name, post.nickname, post.id,
-        post.email, post.question, post.answer, post.year, post.month, post.day);
+        post.email, post.question, post.year, post.month, post.day);
     var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
     res.send(html);
 })
@@ -53,7 +60,7 @@ router.post('/:userid/userinfo', function (req, res) {
     }
     bcrypt.compare(post.pw, user.password, function (err, result) {
         var body = mod2.userinfo(user.nickname, user.name, user.nickname, user.id,
-            user.email, user.question, user.answer, user.year, user.month, user.day);
+            user.email, user.question, user.year, user.month, user.day);
         var html = mod.HTML(`${user.nickname}님의 회원정보`, 'userinfo', body);
         if (!result) { //비번오류
             res.send(html + `<script>alert('비밀번호가 일치하지 않습니다!');clickmodify();</script>`)
@@ -113,7 +120,7 @@ router.post('/:userid/pwchange', function (req, res) {
         if (!result) {//비밀번호 틀림, 돌아갔을 때 비밀번호 변경 ui 보이게끔
             var own = req.user
             var body = mod2.userinfo(own.nickname, own.name, own.nickname, own.id,
-                own.email, own.question, own.answer, own.year, own.month, own.day);
+                own.email, own.question, own.year, own.month, own.day);
             body = body + `<script>clickbtn('#pwinf','${own.id}');
             alert('현재 비밀번호가 일치하지 않습니다!')</script>`;
             var html = mod.HTML(`${post.nickname}님의 회원정보`, 'userinfo', body);
