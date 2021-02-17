@@ -237,6 +237,12 @@ module.exports = {
         `
     },
     post:function(post,id,opt){
+        var comment='';
+        for(var i=0;i<post.comment.length;i++){
+            comment=comment+`<tr><td><div><span>${post.comment[i].nickname}</span>
+            <span>${post.comment[i].date}</span></div>
+            <div>${post.comment[i].comment}</div></td></tr>`
+        }
         return`<body> 
         <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
         <table>
@@ -258,11 +264,19 @@ module.exports = {
             </tr>
             <tr>
                 <td>
-                <textarea id="maintxt" name="maintxt" style="font-size:30px;font-weight:bold" readonly>${post.maintxt}</textarea>
+                <textarea id="maintxt" class="inputbox" name="maintxt" readonly>${post.maintxt}</textarea>
                 </td>
             </tr>
             <input type="hidden" name="num" value="${post.no}">  
-        </table>    
+            <tr><td>댓글</td></tr>
+            <tr>
+                <td>
+                <textarea id="comment" name="comment"></textarea>
+                <input type="button" id="commentsubmit" value="등록" onclick="cmnt('#post','${opt}')">
+                </td>
+            </tr>`
+            +comment+
+        `</table>   
         </form><script>Candelete('${post.id}','${id}')</script>`
     }
 

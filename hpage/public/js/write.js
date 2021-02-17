@@ -36,5 +36,11 @@ author = function () {
             $(`#author${id}`).attr('hidden', false);
         }
     });
-
+}
+cmnt=function(form,opt){
+    if($('#comment').val().trim()==='')
+    return;
+    $(form).attr('action',`/${opt}/comment`);    
+    $(form).attr('onsubmit', true);
+    $(form).submit();
 }

@@ -7,6 +7,10 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }))
 
 router.get('/',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var dbpost=db.get('post').value();
     var body=mod2.square(dbpost,req.user.nickname,req.user.id,'square');
     var html=mod.HTML('자유게시판','write',body);
@@ -14,11 +18,19 @@ router.get('/',function(req,res){
 })
 
 router.get('/write',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var body=mod2.write('','');
     var html=mod.HTML('글 쓰기','write',body);
     res.send(html);
 })
 router.post('/write',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var post=req.body;
     var dt= new Date;
     var month=(dt.getMonth()+1);
@@ -37,6 +49,7 @@ router.post('/write',function(req,res){
         date:now,
         author:req.user.nickname,
         id:req.user.id,
+        comment:[]
     }).write();
     db.get('users').find({
         key:req.user.key
@@ -46,16 +59,27 @@ router.post('/write',function(req,res){
     res.redirect('/square')
 })
 router.get('/:postno',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var num=Number(req.params.postno);
     var post=db.get('post').find({
         no:num
     }).value();
+    if(!post) 
+    res.status(404).send(`<script>alert('게시글이 존재하지 않습니다!');
+    window.history.back();</script>`);
     var body=mod2.post(post,req.user.id,'square');
     var html=mod.HTML(`글 보기-${post.title}`,'write',body);
 
     res.send(html);
 })
 router.post('/modify',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var post=req.body;
     var body=mod2.write(post.title,post.maintxt,post.num)+
     `<script>$('#post').attr('action','/square/modify_');</script>`;
@@ -63,6 +87,10 @@ router.post('/modify',function(req,res){
     res.send(html);
 })
 router.post('/modify_',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var post=req.body
     db.get('post').find({
         no:Number(post.num)
@@ -73,6 +101,10 @@ router.post('/modify_',function(req,res){
     res.redirect(`/square/${post.num}`);
 })
 router.post('/delete',function(req,res){
+    if(!req.user){
+        res.send(`<script>alert('권한이 없습니다!');location.href='/';</script>`)
+        return;
+    }
     var post=req.body;
     db.get('post').remove({
         no:Number(post.num)
@@ -83,5 +115,26 @@ router.post('/delete',function(req,res){
         write:req.user.write-1
     }).write();
     res.send(`<script>alert('삭제되었습니다!');location.href='/square'</script>`)
+})
+router.post('/comment',function(req,res){
+    var post = req.body;
+    var dt= new Date;
+    var month=(dt.getMonth()+1);
+    if (month < 10 && month[0] != '0' && month != '') month = '0' + month;
+    var day=dt.getDate();
+    if (day < 10 && day[0] != '0' && day != '') day = '0' + day;
+    var hour=dt.getHours();
+    var min=dt.getMinutes();
+    var now = month+'/'+day+' '+hour+':'+min;
+
+    db.get('post').find({
+        no:Number(post.num)
+    }).get('comment').push({
+        nickname:req.user.nickname,
+        date:now,
+        comment:post.comment
+    }).write();
+
+    res.redirect(`/square/${post.num}`);
 })
 module.exports=router;

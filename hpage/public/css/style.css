@@ -50,7 +50,9 @@ input,button,select,textarea{
     border:2px solid rgb(220, 224, 228);
     border-radius: 3px;
 }
-
+textarea{
+    resize: none;
+}
 .inputbox{
     width: 200px;
     height: 40px;
@@ -130,11 +132,29 @@ a:hover{
     margin: 20px 0 ;
 }
 #maintxt{
-    width:500px;
-    height:400px;
+    width:480px;
+    height:350px;
+    font-size:20px;
+    font-weight:bold;
 }
 #maintxt:focus,#title:focus{
     border:2px solid rgb(241, 237, 237);
+}
+#comment{
+    margin-bottom: -29px;
+    width:85%;
+    height:60px;
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+    outline: none;
+}
+#commentsubmit{
+    margin-left: -6.5px;
+    width:13.7%;
+    height:68px;
+    border-radius:  0 3px 3px 0;
+    outline: none;
+    cursor: pointer;
 }
 .postbtn{
     width: 60px;

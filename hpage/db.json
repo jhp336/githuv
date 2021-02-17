@@ -12,7 +12,7 @@
       "year": "1999",
       "month": "04",
       "day": "02",
-      "write": 2,
+      "write": 1,
       "prvwrite": 3
     },
     {
@@ -32,22 +32,6 @@
     }
   ],
   "post": [
-    {
-      "no": 2,
-      "title": "vvvx",
-      "maintxt": "vsad",
-      "date": "02/10",
-      "author": "시시asda",
-      "id": "tltl1"
-    },
-    {
-      "no": 3,
-      "title": "안녕~~~~",
-      "maintxt": "난 홍대야zz",
-      "date": "02/10",
-      "author": "시시asda",
-      "id": "tltl1"
-    },
     {
       "no": 4,
       "title": "난 리리야",
@@ -78,7 +62,33 @@
       "maintxt": "ㅁㅁ",
       "date": "02/10",
       "author": "리리",
-      "id": "flfl1"
+      "id": "flfl1",
+      "comment": [
+        {
+          "nickname": "시시as",
+          "date": "02/17 23:40",
+          "comment": "zz"
+        },
+        {
+          "nickname": "시시as",
+          "date": "02/17 23:40",
+          "comment": "cxc"
+        },
+        {
+          "nickname": "시시as",
+          "date": "02/17 23:52",
+          "comment": "zcx"
+        }
+      ]
+    },
+    {
+      "no": 9,
+      "title": "dsa",
+      "maintxt": "dsaaasd",
+      "date": "02/17",
+      "author": "시시as",
+      "id": "tltl1",
+      "comment": []
     }
   ],
   "secret": [
