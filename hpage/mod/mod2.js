@@ -153,7 +153,6 @@ module.exports = {
         </div>`
     },
     square:function(db,nick,id,opt){
-        var head= this.header(nick,id);
         var  int=`
         <div id="grid">
         <table class="boardcate">
@@ -190,13 +189,17 @@ module.exports = {
         else {
             var list='';
             for(var i=0;i<db.length;i++){
-                if(db[i].maintxt.length>15)
-                var text=db[i].maintxt.substr(0,14)+'...';
+                if(db[i].title.length>11)
+                var title=db[i].title.substr(0,10)+' ...';
+                else var title=db[i].title;
+                if(db[i].maintxt.length>20)
+                var text=db[i].maintxt.substr(0,19)+' ...';
                 else var text=db[i].maintxt;
-            var list= `<tr><td><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+db[i].no+`'>${db[i].title}</a></div>
+            var list= `<tr><td class="borderbtm"><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+db[i].no+`'>${title} 
+            <span style="font-size:20px;color:rgb(69, 53, 95);">(${db[i].comment.length})</span></a></div>
             <div>${text}</div></td>
-            <td style="font-size:15px;text-align:center"><span class="author" id="${i}" name="${db[i].id}">${db[i].author}</span><br><div id="author${i}" class="arrow_box" hidden></div></td>
-            <td style="font-size:15px;text-align:center">${db[i].date}</td></tr>`+list;
+            <td class="borderbtm" style="font-size:15px;text-align:center"><span class="author" id="${i}" name="${db[i].id}">${db[i].author}</span><br><div id="author${i}" class="arrow_box" hidden></div></td>
+            <td class="borderbtm" style="font-size:15px;text-align:center">${db[i].date}</td></tr>`+list;
             }
             list=list+`</table></div>`;
         }    
@@ -204,7 +207,7 @@ module.exports = {
         <input id="write" class="postbtn" type="button" value="글쓰기" onclick="
         location.href='/${opt}/write';
         "></div></div><script>author()</script>`   
-        return head+int+list+end
+        return int+list+end
     },
     write:function(title,maintxt,num){
         return `
@@ -239,9 +242,9 @@ module.exports = {
     post:function(post,id,opt){
         var comment='';
         for(var i=0;i<post.comment.length;i++){
-            comment=comment+`<tr><td><div><span>${post.comment[i].nickname}</span>
+            comment=comment+`<tr><td><div><span style="color:black">${post.comment[i].nickname}</span>
             <span>${post.comment[i].date}</span></div>
-            <div>${post.comment[i].comment}</div></td></tr>`
+            <div style="color:black;" class="borderbtm">${post.comment[i].comment}</div></td></tr>`
         }
         return`<body> 
         <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
@@ -268,7 +271,7 @@ module.exports = {
                 </td>
             </tr>
             <input type="hidden" name="num" value="${post.no}">  
-            <tr><td>댓글</td></tr>
+            <tr><td>댓글 <span style="color:black">${post.comment.length}</span</td></tr>
             <tr>
                 <td>
                 <textarea id="comment" name="comment"></textarea>
@@ -278,6 +281,21 @@ module.exports = {
             +comment+
         `</table>   
         </form><script>Candelete('${post.id}','${id}')</script>`
+    },
+    search:function(nick,id){
+        return`<body>
+        <header>
+            <h1><a href="/">NTBoard</a></h1>
+            <div>
+                <p style="font-size: 15px; font-weight: bold;">${nick}&nbsp님</p>
+                <span><button style="cursor:pointer;" onclick="
+                            location.href='/auth/logout'
+                            ">로그아웃</button></span>
+                <span><button style="cursor:pointer;" onclick="
+                            location.href='/${id}/userinfo'
+                            ">회원정보</button></span>
+            </div>
+            <br>
+        </header>`
     }
-
 }

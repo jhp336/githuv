@@ -107,7 +107,7 @@ Check = function (form) {
         $('#direct').focus();
         return;
     }
-    if($('#quest').val()!="질문 없음"&& $('#ans').val().trim()===''){
+    if($('#quest').val()!=""&& $('#ans').val().trim()===''){
         alert('질문에 답변을 해주세요!');
         $('#ans').focus();
         return;

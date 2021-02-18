@@ -20,14 +20,29 @@
       "name": "린",
       "nickname": "리리",
       "id": "flfl1",
-      "password": "$2b$10$g4aRfQ0rjlxaXaRw5qlvle6TscEnZvPTINa3kich0ASvdlDYmLu86",
+      "password": "$2b$10$r58NyPMyODVl9zIuXqtUve3vp3dwh10J2AUPzRkB1slmH76oekyK2",
       "email": "flfl1@naver.com",
-      "question": "질문 없음",
+      "question": "",
+      "answer": "",
+      "year": "1999",
+      "month": "03",
+      "day": "06",
+      "write": 4,
+      "prvwrite": 0
+    },
+    {
+      "key": "GCHGH8tWk",
+      "name": "김",
+      "nickname": "기기1",
+      "id": "rlrl1",
+      "password": "$2b$10$J3YBx5YxM48AeFnhxKcYj.5z2QK3aWouszWgdyD0zmjvBWXHjjoqK",
+      "email": "rlrl1@naver.com",
+      "question": "",
       "answer": "",
       "year": "",
       "month": "",
       "day": "",
-      "write": 4,
+      "write": 0,
       "prvwrite": 0
     }
   ],
@@ -38,7 +53,8 @@
       "maintxt": "린이야\r\n\r\n\r\nㅇㅇㅇ",
       "date": "02/10",
       "author": "리리",
-      "id": "flfl1"
+      "id": "flfl1",
+      "comment": []
     },
     {
       "no": 5,
@@ -46,7 +62,8 @@
       "maintxt": "궁금해하지말ㅇ앙ㅅ 또내게묻지 말아요제발\r\n그사람의 얼굴 그사람의 이름",
       "date": "02/10",
       "author": "리리",
-      "id": "flfl1"
+      "id": "flfl1",
+      "comment": []
     },
     {
       "no": 7,
@@ -54,7 +71,8 @@
       "maintxt": "ㅊㅋㅊ",
       "date": "02/10",
       "author": "리리",
-      "id": "flfl1"
+      "id": "flfl1",
+      "comment": []
     },
     {
       "no": 8,
@@ -78,14 +96,19 @@
           "nickname": "시시as",
           "date": "02/17 23:52",
           "comment": "zcx"
+        },
+        {
+          "nickname": "시시as",
+          "date": "02/18 18:10",
+          "comment": "ㅎㅇㅎㅇ"
         }
       ]
     },
     {
       "no": 9,
-      "title": "dsa",
-      "maintxt": "dsaaasd",
-      "date": "02/17",
+      "title": "아아아이이이우우우우우우",
+      "maintxt": "ㅏㅣㅜ",
+      "date": "02/18",
       "author": "시시as",
       "id": "tltl1",
       "comment": []
@@ -98,7 +121,14 @@
       "maintxt": "앞마당-가스-풀 -> 오버로드 누르고 가스추가\r\n앞마당 완성후 번식지 -> 번식지 완성후 감염구덩이, 가스 추가(총 3)\r\n800/600 모았다가 군숙 8 -> 상대 본진/앞마당 터트리기 ->\r\n이후 히드라굴, 가스추가, 진화장 -> 히드라 뽑으면서 멀티추가 -> \r\n감염충 + 히드라 (+바퀴) 조합",
       "date": "02/12",
       "author": "시시asda",
-      "id": "tltl1"
+      "id": "tltl1",
+      "comment": [
+        {
+          "nickname": "시시as",
+          "date": "02/18 17:34",
+          "comment": "굳 ㅋㅋㅋㅋ"
+        }
+      ]
     },
     {
       "no": 2,
@@ -106,7 +136,8 @@
       "maintxt": "앞마당-가스-풀 -> 본진여왕 니오면 번식지+가스 추가\r\n번식지 완성 후 감염구덩이 + 가스 2추가(총 4)\r\n울트라 뜨기 전 까지 바퀴링으로 수비,소모전\r\n땅굴 통해 공격",
       "date": "02/12",
       "author": "시시asda",
-      "id": "tltl1"
+      "id": "tltl1",
+      "comment": []
     },
     {
       "no": 3,
@@ -114,7 +145,8 @@
       "maintxt": "앞마당-가스-풀 ->본진, 앞마당 여왕2기씩\r\n본진 2여왕째에 번식지, 2가스 (+트리플) -> 절반쯤 바퀴소굴\r\n번식지 완성후 땅굴망 -> 여왕 꾸준히 찍다가 여왕먼저 넣고 올인->수혈해주면서 교전",
       "date": "02/12",
       "author": "시시asda",
-      "id": "tltl1"
+      "id": "tltl1",
+      "comment": []
     }
   ]
 }

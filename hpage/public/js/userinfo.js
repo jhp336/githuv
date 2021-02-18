@@ -85,7 +85,7 @@ Check = function (form) {
         return;
     }  //중복 확인 처리
 
-    if ($('#quest').val()!='질문 없음'&&$('#quest').val().trim() != '' && $('#ans').val().trim() === '') {
+    if ($('#quest').val().trim() != '' && $('#ans').val().trim() === '') {
         alert('질문에 답변을 해주세요!');
         $('#ans').focus();
         return;

@@ -12,7 +12,7 @@ router.get('/',function(req,res){
         return;
     }
     var dbpost=db.get('post').value();
-    var body=mod2.square(dbpost,req.user.nickname,req.user.id,'square');
+    var body=mod2.header(req.user.nickname,req.user.id)+mod2.square(dbpost,req.user.nickname,req.user.id,'square');
     var html=mod.HTML('자유게시판','write',body);
     res.send(html);
 })
@@ -136,5 +136,16 @@ router.post('/comment',function(req,res){
     }).write();
 
     res.redirect(`/square/${post.num}`);
+})
+router.get('/search/:type/:userid',function(req,res){
+    var dbpost=db.get('post').filter({
+        id:req.params.userid
+    }).value();
+    var body=mod2.header(req.user.nickname,req.user.id)+`
+    <div style="text-align:center;font-size:20px;">${req.params.userid}<span style="color:black">님의 작성글</span></div>
+    `+
+    mod2.square(dbpost,req.user.nickname,req.user.id,'square')
+    var html=mod.HTML(`${req.params.userid}님의 작성글`,'write',body);
+    res.send(html);
 })
 module.exports=router;

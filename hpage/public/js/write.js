@@ -32,7 +32,7 @@ author = function () {
         if($(e.target).attr('class') === 'author'){
             var id = $(e.target).attr('id');
             var author=$(e.target).attr('name');
-            $(`#author${id}`).html(`<span>작성글 보기</span><br><a href="/${author}/userinfo"><span>회원 정보</span></a>`)
+            $(`#author${id}`).html(`<span><a href="/square/search/id/${author}">작성글 보기</a></span><br><a href="/${author}/userinfo"><span>회원 정보</span></a>`)
             $(`#author${id}`).attr('hidden', false);
         }
     });

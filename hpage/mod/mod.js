@@ -96,7 +96,7 @@ module.exports = {
                     <td><label for="direct"><span>&nbsp&nbsp</span>분실 시 질문</label></td>
                     <td>
                         <select name="quest" id="quest" class="inputbox2" style="width:219px; height: 30px;"onchange="question(this)">
-                            <option value="질문 없음">::선택::</option>
+                            <option value="">::선택::</option>
                             <option value="별명은?">별명은?</option>
                             <option value="고향은?">고향은?</option>
                             <option value="dir">직접 입력</option>
