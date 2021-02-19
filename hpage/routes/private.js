@@ -14,7 +14,7 @@ router.get('/',function(req,res){
     var dbpost=db.get('secret').filter({
         id:req.user.id
     }).value();
-    var body=mod2.header(req.user.nickname,req.user.id)+mod2.square(dbpost,req.user.nickname,req.user.id,'private')
+    var body=mod2.header(req.user.nickname,req.user.id)+mod2.square(dbpost,'private')
     var html=mod.HTML('비밀게시판','write',body);
     res.send(html);
 })
@@ -53,11 +53,7 @@ router.post('/write',function(req,res){
         date:now,
         author:req.user.nickname,
         id:req.user.id,
-    }).write();
-    db.get('users').find({
-        key:req.user.key
-    }).assign({
-        prvwrite:req.user.prvwrite+1
+        comment:[]
     }).write();
     res.redirect('/private')
 })
@@ -115,11 +111,6 @@ router.post('/delete',function(req,res){
         no:Number(post.num),
         id:req.user.id
     }).write();
-    db.get('users').find({
-        key:req.user.key
-    }).assign({
-        prvwrite:req.user.prvwrite-1
-    }).write();
     res.send(`<script>alert('삭제되었습니다!');location.href='/private'</script>`)
 })
 router.post('/comment',function(req,res){
@@ -137,6 +128,7 @@ router.post('/comment',function(req,res){
         no:Number(post.num)
     }).get('comment').push({
         nickname:req.user.nickname,
+        id:req.user.id,
         date:now,
         comment:post.comment
     }).write();

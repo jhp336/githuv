@@ -152,7 +152,7 @@ module.exports = {
             </table>
         </div>`
     },
-    square:function(db,nick,id,opt){
+    square:function(db,opt){
         var  int=`
         <div id="grid">
         <table class="boardcate">
@@ -242,9 +242,18 @@ module.exports = {
     post:function(post,id,opt){
         var comment='';
         for(var i=0;i<post.comment.length;i++){
-            comment=comment+`<tr><td><div><span style="color:black">${post.comment[i].nickname}</span>
-            <span>${post.comment[i].date}</span></div>
-            <div style="color:black;" class="borderbtm">${post.comment[i].comment}</div></td></tr>`
+            comment=comment+`<tr><td id="${i}" onmouseover="hoverin('${i}','${post.comment[i].id}','${id}')" onmouseout="hoverout('${i}')">
+            <div style="display:flex;justify-content:space-between">
+                <div><span style="color:rgb(53, 53, 99);">${post.comment[i].nickname}</span>
+                    <span style="color:rgb(133, 145, 151);">${post.comment[i].date}</span>
+                </div>
+                <div id="author${i}" style="font-size:smaller;" hidden>
+                    <span style="cursor:pointer">답글 </span>
+                    <span style="cursor:pointer" class="notauthor${i}">수정 </span>
+                    <span style="cursor:pointer" class="notauthor${i}">삭제</span>
+                </div>
+            </div>
+            <div class="borderbtm cmntdiv" id="cmnt${i}">${post.comment[i].comment}</div></td></tr>`
         }
         return`<body> 
         <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
@@ -262,7 +271,7 @@ module.exports = {
             <tr>
                 <td>
                 <input class="inputbox" id="title" name="title" value="${post.title}" readonly>
-                <span style="margin:0 auto;color:rgb(53, 53, 99)">&nbsp&nbsp&nbsp${post.author}</span>
+                <span style="margin:0 auto;color:rgb(53, 53, 99);font-weight:bold;">&nbsp&nbsp&nbsp${post.author}</span>
                 </td>
             </tr>
             <tr>
@@ -280,22 +289,6 @@ module.exports = {
             </tr>`
             +comment+
         `</table>   
-        </form><script>Candelete('${post.id}','${id}')</script>`
-    },
-    search:function(nick,id){
-        return`<body>
-        <header>
-            <h1><a href="/">NTBoard</a></h1>
-            <div>
-                <p style="font-size: 15px; font-weight: bold;">${nick}&nbsp님</p>
-                <span><button style="cursor:pointer;" onclick="
-                            location.href='/auth/logout'
-                            ">로그아웃</button></span>
-                <span><button style="cursor:pointer;" onclick="
-                            location.href='/${id}/userinfo'
-                            ">회원정보</button></span>
-            </div>
-            <br>
-        </header>`
+        </form><script>Candelete('${post.id}','${id}');</script>`
     }
 }

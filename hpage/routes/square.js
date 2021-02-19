@@ -12,7 +12,7 @@ router.get('/',function(req,res){
         return;
     }
     var dbpost=db.get('post').value();
-    var body=mod2.header(req.user.nickname,req.user.id)+mod2.square(dbpost,req.user.nickname,req.user.id,'square');
+    var body=mod2.header(req.user.nickname,req.user.id)+mod2.square(dbpost,'square');
     var html=mod.HTML('자유게시판','write',body);
     res.send(html);
 })
@@ -131,8 +131,14 @@ router.post('/comment',function(req,res){
         no:Number(post.num)
     }).get('comment').push({
         nickname:req.user.nickname,
+        id:req.user.id,
         date:now,
         comment:post.comment
+    }).write();
+    db.get('users').find({
+        key:req.user.key
+    }).assign({
+        comment:req.user.comment+1
     }).write();
 
     res.redirect(`/square/${post.num}`);
@@ -144,7 +150,7 @@ router.get('/search/:type/:userid',function(req,res){
     var body=mod2.header(req.user.nickname,req.user.id)+`
     <div style="text-align:center;font-size:20px;">${req.params.userid}<span style="color:black">님의 작성글</span></div>
     `+
-    mod2.square(dbpost,req.user.nickname,req.user.id,'square')
+    mod2.square(dbpost,'square')
     var html=mod.HTML(`${req.params.userid}님의 작성글`,'write',body);
     res.send(html);
 })

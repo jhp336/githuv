@@ -179,8 +179,11 @@ thead{
 .arrow_box {
     font-size: 14px;
 	position: relative;
-	background: #bbccd5;
+	background: rgb(187, 204, 213);
     margin: 0  auto;
     width: 60%;
 }
-
+.cmntdiv{
+    overflow: visible;
+    color: black;
+}

@@ -12,8 +12,8 @@
       "year": "1999",
       "month": "04",
       "day": "02",
-      "write": 1,
-      "prvwrite": 3
+      "write": 2,
+      "comment": 2
     },
     {
       "key": "8rgAjEIZS",
@@ -28,7 +28,7 @@
       "month": "03",
       "day": "06",
       "write": 4,
-      "prvwrite": 0
+      "comment": 0
     },
     {
       "key": "GCHGH8tWk",
@@ -43,7 +43,7 @@
       "month": "",
       "day": "",
       "write": 0,
-      "prvwrite": 0
+      "comment": 0
     }
   ],
   "post": [
@@ -81,34 +81,35 @@
       "date": "02/10",
       "author": "리리",
       "id": "flfl1",
-      "comment": [
-        {
-          "nickname": "시시as",
-          "date": "02/17 23:40",
-          "comment": "zz"
-        },
-        {
-          "nickname": "시시as",
-          "date": "02/17 23:40",
-          "comment": "cxc"
-        },
-        {
-          "nickname": "시시as",
-          "date": "02/17 23:52",
-          "comment": "zcx"
-        },
-        {
-          "nickname": "시시as",
-          "date": "02/18 18:10",
-          "comment": "ㅎㅇㅎㅇ"
-        }
-      ]
+      "comment": []
     },
     {
       "no": 9,
       "title": "아아아이이이우우우우우우",
       "maintxt": "ㅏㅣㅜ",
       "date": "02/18",
+      "author": "시시as",
+      "id": "tltl1",
+      "comment": [
+        {
+          "nickname": "시시as",
+          "id": "tltl1",
+          "date": "02/19 22:37",
+          "comment": "안녕 ㅋㅋ\r\n"
+        },
+        {
+          "nickname": "시시as",
+          "id": "tltl1",
+          "date": "02/19 22:37",
+          "comment": "\r\n\r\n\r\nㄴㄴ\r\nㄴ\r\nㄴ\r\nㅁ"
+        }
+      ]
+    },
+    {
+      "no": 10,
+      "title": "ㅇㅇ",
+      "maintxt": "\r\nㅇ\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nㅇ\r\nㅇㅇㅇㅇ\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nㅇ\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nㅇ\r\n\r\nㅇ",
+      "date": "02/19",
       "author": "시시as",
       "id": "tltl1",
       "comment": []
@@ -142,10 +143,19 @@
     {
       "no": 3,
       "title": "땅굴 올인",
-      "maintxt": "앞마당-가스-풀 ->본진, 앞마당 여왕2기씩\r\n본진 2여왕째에 번식지, 2가스 (+트리플) -> 절반쯤 바퀴소굴\r\n번식지 완성후 땅굴망 -> 여왕 꾸준히 찍다가 여왕먼저 넣고 올인->수혈해주면서 교전",
+      "maintxt": "앞마당-가스-풀 ->본진, 앞마당 여왕2기씩\r\n본진 2여왕째에 번식지, 2가스(총3) (+트리플) -> 절반쯤 바퀴소굴\r\n번식지 완성후 땅굴망 -> 여왕 꾸준히 찍다가 여왕먼저 넣고 올인->수혈해주면서 교전",
       "date": "02/12",
       "author": "시시asda",
       "id": "tltl1",
+      "comment": []
+    },
+    {
+      "no": 1,
+      "title": "asd",
+      "maintxt": "as",
+      "date": "02/19",
+      "author": "기기1",
+      "id": "rlrl1",
       "comment": []
     }
   ]

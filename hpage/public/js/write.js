@@ -44,3 +44,11 @@ cmnt=function(form,opt){
     $(form).attr('onsubmit', true);
     $(form).submit();
 }
+hoverin=function(i,cmntid,userid){
+    $(`#author${i}`).show();
+    if(cmntid!=userid)
+    $(`.notauthor${i}`).hide();
+}
+hoverout=function(i){
+    $(`#author${i}`).hide();
+}
