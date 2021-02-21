@@ -5,6 +5,7 @@ var mod = require('../mod/mod.js');
 var mod2 = require('../mod/mod2.js');
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }))
+var shortid = require('shortid');
 
 router.get('/',function(req,res){
     if(!req.user){
@@ -127,12 +128,24 @@ router.post('/comment',function(req,res){
     db.get('secret').find({
         no:Number(post.num)
     }).get('comment').push({
+        no:shortid.generate(),
         nickname:req.user.nickname,
         id:req.user.id,
         date:now,
         comment:post.comment
     }).write();
 
+    res.redirect(`/private/${post.num}`);
+})
+router.post('/cmnt_mod',function(req,res){
+    var post=req.body;
+    db.get('secret').find({
+        no:Number(post.num)
+    }).get('comment').find({
+        no:post.cmntnum
+    }).assign({
+        comment:post.cmnt_mod
+    }).write();
     res.redirect(`/private/${post.num}`);
 })
 module.exports=router;

@@ -242,6 +242,7 @@ module.exports = {
     post:function(post,id,opt){
         var comment='';
         for(var i=0;i<post.comment.length;i++){
+            var cmt = post.comment[i].comment.replace(/(?:\r\n|\r|\n)/g, '<br>');
             comment=comment+`<tr><td id="${i}" onmouseover="hoverin('${i}','${post.comment[i].id}','${id}')" onmouseout="hoverout('${i}')">
             <div style="display:flex;justify-content:space-between">
                 <div><span style="color:rgb(53, 53, 99);">${post.comment[i].nickname}</span>
@@ -249,15 +250,16 @@ module.exports = {
                 </div>
                 <div id="author${i}" style="font-size:smaller;" hidden>
                     <span style="cursor:pointer">답글 </span>
-                    <span style="cursor:pointer" class="notauthor${i}">수정 </span>
+                    <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${post.no}','${post.comment[i].no}');">수정 </span>
                     <span style="cursor:pointer" class="notauthor${i}">삭제</span>
                 </div>
             </div>
-            <div class="borderbtm cmntdiv" id="cmnt${i}">${post.comment[i].comment}</div></td></tr>`
+            <div class="borderbtm cmntdiv" id="cmnt${i}">${cmt}</div>
+            </td></tr>`    
         }
         return`<body> 
-        <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
         <table>
+        <form id="post" onsubmit="return false;"  method="post" action='/${opt}/modify'>
             <tr><td><div style="text-align:right">   
                 <input id="postlist" class="postbtn" type="button" value="글 목록" onclick="
                 location.href='/${opt}'">
@@ -286,9 +288,10 @@ module.exports = {
                 <textarea id="comment" name="comment"></textarea>
                 <input type="button" id="commentsubmit" value="등록" onclick="cmnt('#post','${opt}')">
                 </td>
-            </tr>`
-            +comment+
-        `</table>   
-        </form><script>Candelete('${post.id}','${id}');</script>`
+            </tr>
+        </form>`
+        +comment+
+        `</table>
+        <script>Candelete('${post.id}','${id}');</script>`
     }
 }

@@ -52,3 +52,29 @@ hoverin=function(i,cmntid,userid){
 hoverout=function(i){
     $(`#author${i}`).hide();
 }
+cmntmodify=function(i,opt,postno,cmntno){
+    var cmnt=$(`#cmnt${i}`).html().replace(/(?:<br>)/g, '\r\n');
+    $(`#cmnt${i}`).html(`
+    <form method="post" action="/${opt}/cmnt_mod">
+        <textarea name="cmnt_mod">\r\n${cmnt}</textarea>
+        <input type="hidden" name="num" value="${postno}"> 
+        <input type="hidden" name="cmntnum" value="${cmntno}">
+    </form>
+    `);
+    cmnt=cmnt.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    $(`#author${i}`).html(`
+    <span style="cursor:pointer" onclick="modok('form')">확인 </span>
+    <span style="cursor:pointer" onclick="modcancel('${i}','${cmnt}','${opt}','${postno}','${cmntno}')">취소</span>
+    `);
+}
+modok=function(form){
+    $(form).submit();
+}
+modcancel=function(i,cmnt,opt,postno,cmntno){
+    $(`#cmnt${i}`).html(`${cmnt}`);
+    $(`#author${i}`).html(`
+    <span style="cursor:pointer">답글 </span>
+    <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${postno}','${cmntno}');">수정 </span>
+    <span style="cursor:pointer" class="notauthor${i}">삭제</span>
+    `)
+}
