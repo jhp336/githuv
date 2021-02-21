@@ -13,7 +13,7 @@
       "month": "04",
       "day": "02",
       "write": 2,
-      "comment": 7
+      "comment": 0
     },
     {
       "key": "8rgAjEIZS",
@@ -90,15 +90,7 @@
       "date": "02/18",
       "author": "시시as",
       "id": "tltl1",
-      "comment": [
-        {
-          "no": "kOcQuN4vE",
-          "nickname": "시시as",
-          "id": "tltl1",
-          "date": "02/21 21:33",
-          "comment": "zxczzzzz"
-        }
-      ]
+      "comment": []
     },
     {
       "no": 10,
@@ -118,15 +110,7 @@
       "date": "02/12",
       "author": "시시asda",
       "id": "tltl1",
-      "comment": [
-        {
-          "no": "g4mvscbYB",
-          "nickname": "시시as",
-          "id": "tltl1",
-          "date": "02/21 21:54",
-          "comment": "굳ㅋㅋ\r\nㅋㅋ\r\nㅋㅋ\r\n"
-        }
-      ]
+      "comment": []
     },
     {
       "no": 2,

@@ -251,7 +251,7 @@ module.exports = {
                 <div id="author${i}" style="font-size:smaller;" hidden>
                     <span style="cursor:pointer">답글 </span>
                     <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${post.no}','${post.comment[i].no}');">수정 </span>
-                    <span style="cursor:pointer" class="notauthor${i}">삭제</span>
+                    <span style="cursor:pointer" class="notauthor${i}" onclick="cmntdelete('${i}','${opt}','${post.no}','${post.comment[i].no}')">삭제</span>
                 </div>
             </div>
             <div class="borderbtm cmntdiv" id="cmnt${i}">${cmt}</div>

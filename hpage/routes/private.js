@@ -148,4 +148,14 @@ router.post('/cmnt_mod',function(req,res){
     }).write();
     res.redirect(`/private/${post.num}`);
 })
+router.post('/cmnt_del',function(req,res){
+    var post=req.body;
+    db.get('secret').find({
+        no:Number(post.num)
+    }).get('comment').remove({
+        no:post.cmntnum
+    }).write();
+    
+    res.redirect(`/private/${post.num}`);
+})
 module.exports=router;

@@ -167,4 +167,18 @@ router.post('/cmnt_mod',function(req,res){
     }).write();
     res.redirect(`/square/${post.num}`);
 })
+router.post('/cmnt_del',function(req,res){
+    var post=req.body;
+    db.get('post').find({
+        no:Number(post.num)
+    }).get('comment').remove({
+        no:post.cmntnum
+    }).write();
+    db.get('users').find({
+        key:req.user.key
+    }).assign({
+        comment:req.user.comment-1
+    }).write();
+    res.redirect(`/square/${post.num}`);
+})
 module.exports=router;

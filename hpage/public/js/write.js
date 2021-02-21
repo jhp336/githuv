@@ -63,13 +63,13 @@ cmntmodify=function(i,opt,postno,cmntno){
     `);
     cmnt=cmnt.replace(/(?:\r\n|\r|\n)/g, '<br>');
     $(`#author${i}`).html(`
-    <span style="cursor:pointer" onclick="modok('form')">확인 </span>
+    <span style="cursor:pointer" onclick="modok()">확인 </span>
     <span style="cursor:pointer" onclick="modcancel('${i}','${cmnt}','${opt}','${postno}','${cmntno}')">취소</span>
     `);
-}
-modok=function(form){
-    $(form).submit();
-}
+}//댓글 수정
+modok=function(){
+    $('form').submit();
+}//수정 확인
 modcancel=function(i,cmnt,opt,postno,cmntno){
     $(`#cmnt${i}`).html(`${cmnt}`);
     $(`#author${i}`).html(`
@@ -77,4 +77,12 @@ modcancel=function(i,cmnt,opt,postno,cmntno){
     <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${postno}','${cmntno}');">수정 </span>
     <span style="cursor:pointer" class="notauthor${i}">삭제</span>
     `)
+}//수정 취소
+cmntdelete=function(i,opt,postno,cmntno){
+    $(`#cmnt${i}`).html(`
+    <form method="post" action="/${opt}/cmnt_del">
+        <input type="hidden" name="num" value="${postno}"> 
+        <input type="hidden" name="cmntnum" value="${cmntno}">
+    </form>`)
+    $('form').submit();
 }
