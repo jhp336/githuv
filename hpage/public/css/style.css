@@ -1,6 +1,7 @@
 body{
     margin-top: 30px;
     color: rgb(95, 95, 241);
+    overflow-y: scroll;
 }
 header{
     text-align: center;
@@ -149,6 +150,22 @@ a:hover{
     outline: none;
 }
 #commentsubmit{
+    margin-left: -6.5px;
+    width:13.7%;
+    height:68px;
+    border-radius:  0 3px 3px 0;
+    outline: none;
+    cursor: pointer;
+}
+#reply{
+    margin-bottom: -29px;
+    width:82%;
+    height:60px;
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+    outline: none;
+}
+#replysubmit{
     margin-left: -6.5px;
     width:13.7%;
     height:68px;

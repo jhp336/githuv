@@ -249,7 +249,7 @@ module.exports = {
                     <span style="color:rgb(133, 145, 151);">${post.comment[i].date}</span>
                 </div>
                 <div id="author${i}" style="font-size:smaller;" hidden>
-                    <span style="cursor:pointer">답글 </span>
+                    <span style="cursor:pointer" id="reply${i}" onclick="cmntreply('${i}','${opt}','${post.no}','${post.comment[i].no}')">답글 </span>
                     <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${post.no}','${post.comment[i].no}');">수정 </span>
                     <span style="cursor:pointer" class="notauthor${i}" onclick="cmntdelete('${i}','${opt}','${post.no}','${post.comment[i].no}')">삭제</span>
                 </div>

@@ -73,9 +73,9 @@ modok=function(){
 modcancel=function(i,cmnt,opt,postno,cmntno){
     $(`#cmnt${i}`).html(`${cmnt}`);
     $(`#author${i}`).html(`
-    <span style="cursor:pointer">답글 </span>
+    <span style="cursor:pointer" id="reply${i}" onclick="cmntreply('${i}','${opt}')">답글 </span>
     <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${postno}','${cmntno}');">수정 </span>
-    <span style="cursor:pointer" class="notauthor${i}">삭제</span>
+    <span style="cursor:pointer" class="notauthor${i}" onclick="cmntdelete('${i}','${opt}','${postno}','${cmntno}')">삭제</span>
     `)
 }//수정 취소
 cmntdelete=function(i,opt,postno,cmntno){
@@ -85,4 +85,24 @@ cmntdelete=function(i,opt,postno,cmntno){
         <input type="hidden" name="cmntnum" value="${cmntno}">
     </form>`)
     $('form').submit();
+}//댓글 삭제
+cmntreply=function(i,opt,postno,cmntno){
+    $(`#reply${i}`).hide();
+    $(`#${i}`).append(`
+    <div id="cmntreply${i}">
+        <form method="post" action="/${opt}/cmnt_reply">
+        <div style="margin-left:20px;margin-top:10px;">
+        ↳   <textarea id="reply" name="reply"></textarea>
+            <input type="hidden" name="postno" value="${postno}">
+            <input type="hidden" name="cmntno" value="${cmntno}">
+            <input type="button" id="replysubmit" value="등록" onclick="$('form').submit()">
+        </div>
+        </form>
+        <div style="cursor:pointer;text-align:right;font-size:smaller;" onclick="replycancel(${i})">취소</div>
+    </div>
+    `)
+}
+replycancel=function(i){
+    $(`#reply${i}`).show();
+    $(`#cmntreply${i}`).remove();
 }

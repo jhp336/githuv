@@ -135,7 +135,8 @@ router.post('/comment',function(req,res){
         nickname:req.user.nickname,
         id:req.user.id,
         date:now,
-        comment:post.comment
+        comment:post.comment,
+        reply:[]
     }).write();
     db.get('users').find({
         key:req.user.key
@@ -180,5 +181,34 @@ router.post('/cmnt_del',function(req,res){
         comment:req.user.comment-1
     }).write();
     res.redirect(`/square/${post.num}`);
+})
+router.post('/cmnt_reply',function(req,res){
+    var post=req.body;
+    var dt= new Date;
+    var month=(dt.getMonth()+1);
+    if (month < 10 && month[0] != '0' && month != '') month = '0' + month;
+    var day=dt.getDate();
+    if (day < 10 && day[0] != '0' && day != '') day = '0' + day;
+    var hour=dt.getHours();
+    var min=dt.getMinutes();
+    var now = month+'/'+day+' '+hour+':'+min;
+    db.get('post').find({
+        no:Number(post.postno)
+    }).get('comment').find({
+        no:post.cmntno
+    }).get('reply').push({
+        no:shortid.generate(),
+        nickname:req.user.nickname,
+        id:req.user.id,
+        date:now,
+        comment:post.reply
+    }).write();
+    db.get('users').find({
+        key:req.user.key
+    }).assign({
+        comment:req.user.comment+1
+    }).write();
+
+    res.redirect(`/square/${post.postno}`);
 })
 module.exports=router;
