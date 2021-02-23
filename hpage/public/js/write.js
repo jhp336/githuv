@@ -44,13 +44,13 @@ cmnt=function(form,opt){
     $(form).attr('onsubmit', true);
     $(form).submit();
 }
-hoverin=function(i,cmntid,userid){
-    $(`#author${i}`).show();
+hoverin=function(i,cmntid,userid,r){
+    $(`#author${i}${r}`).show();
     if(cmntid!=userid)
     $(`.notauthor${i}`).hide();
 }
-hoverout=function(i){
-    $(`#author${i}`).hide();
+hoverout=function(i,r){
+    $(`#author${i}${r}`).hide();
 }
 cmntmodify=function(i,opt,postno,cmntno){
     var cmnt=$(`#cmnt${i}`).html().replace(/(?:<br>)/g, '\r\n');
@@ -101,6 +101,7 @@ cmntreply=function(i,opt,postno,cmntno){
         <div style="cursor:pointer;text-align:right;font-size:smaller;" onclick="replycancel(${i})">취소</div>
     </div>
     `)
+    $('#reply').focus();
 }
 replycancel=function(i){
     $(`#reply${i}`).show();

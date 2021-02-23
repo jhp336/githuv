@@ -196,7 +196,7 @@ module.exports = {
                 var text=db[i].maintxt.substr(0,19)+' ...';
                 else var text=db[i].maintxt;
             var list= `<tr><td class="borderbtm"><div style="font-size:25px;font-weight:bold"><a href='/${opt}/`+db[i].no+`'>${title} 
-            <span style="font-size:20px;color:rgb(69, 53, 95);">(${db[i].comment.length})</span></a></div>
+            <span style="font-size:20px;color:rgb(69, 53, 95);">(${db[i].cmntcount})</span></a></div>
             <div>${text}</div></td>
             <td class="borderbtm" style="font-size:15px;text-align:center"><span class="author" id="${i}" name="${db[i].id}">${db[i].author}</span><br><div id="author${i}" class="arrow_box" hidden></div></td>
             <td class="borderbtm" style="font-size:15px;text-align:center">${db[i].date}</td></tr>`+list;
@@ -242,8 +242,27 @@ module.exports = {
     post:function(post,id,opt){
         var comment='';
         for(var i=0;i<post.comment.length;i++){
+            var reply='';
+            for(var j=0;j<post.comment[i].reply.length;j++){
+                var rcmt = post.comment[i].reply[j].comment.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                reply=reply+`
+                ↳<div style="margin-left:20px;margin-top:-20px;"onmouseover="hoverin('${i}','${post.comment[i].reply[j].id}','${id}','r${j}')" onmouseout="hoverout('${i}','r${j}')">
+                    <div style="display:flex;justify-content:space-between">
+                        <div><span style="color:rgb(53, 53, 99);">${post.comment[i].reply[j].nickname}</span>
+                            <span style="color:rgb(133, 145, 151);">${post.comment[i].reply[j].date}</span>
+                        </div>
+                        <div id="author${i}r${j}" style="font-size:smaller;" hidden>
+                            <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${post.no}','${post.comment[i].no}');">수정 </span>
+                            <span style="cursor:pointer" class="notauthor${i}" onclick="cmntdelete('${i}','${opt}','${post.no}','${post.comment[i].no}')">삭제</span>
+                        </div>
+                    </div>
+                    <div class="borderbtm cmntdiv" id="cmnt${i}">${rcmt}</div>
+                </div>
+                `
+            }
             var cmt = post.comment[i].comment.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            comment=comment+`<tr><td id="${i}" onmouseover="hoverin('${i}','${post.comment[i].id}','${id}')" onmouseout="hoverout('${i}')">
+            comment=comment+`<tr><td id="${i}">
+            <div onmouseover="hoverin('${i}','${post.comment[i].id}','${id}','')" onmouseout="hoverout('${i}','')">
             <div style="display:flex;justify-content:space-between">
                 <div><span style="color:rgb(53, 53, 99);">${post.comment[i].nickname}</span>
                     <span style="color:rgb(133, 145, 151);">${post.comment[i].date}</span>
@@ -255,7 +274,8 @@ module.exports = {
                 </div>
             </div>
             <div class="borderbtm cmntdiv" id="cmnt${i}">${cmt}</div>
-            </td></tr>`    
+            </div>`
+            +reply+`</td></tr>`    
         }
         return`<body> 
         <table>
@@ -282,7 +302,7 @@ module.exports = {
                 </td>
             </tr>
             <input type="hidden" name="num" value="${post.no}">  
-            <tr><td>댓글 <span style="color:black">${post.comment.length}</span</td></tr>
+            <tr><td>댓글 <span style="color:black">${post.cmntcount}</span</td></tr>
             <tr>
                 <td>
                 <textarea id="comment" name="comment"></textarea>

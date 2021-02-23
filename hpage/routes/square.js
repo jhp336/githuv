@@ -50,6 +50,7 @@ router.post('/write',function(req,res){
         date:now,
         author:req.user.nickname,
         id:req.user.id,
+        cmntcount:0,
         comment:[]
     }).write();
     db.get('users').find({
@@ -138,6 +139,13 @@ router.post('/comment',function(req,res){
         comment:post.comment,
         reply:[]
     }).write();
+    db.get('post').find({
+        no:Number(post.num)
+    }).assign({
+        cmntcount:db.get('post').find({
+            no:Number(post.num)
+        }).get('cmntcount').value()+1
+    }).write();
     db.get('users').find({
         key:req.user.key
     }).assign({
@@ -175,6 +183,13 @@ router.post('/cmnt_del',function(req,res){
     }).get('comment').remove({
         no:post.cmntnum
     }).write();
+    db.get('post').find({
+        no:Number(post.num)
+    }).assign({
+        cmntcount:db.get('post').find({
+            no:Number(post.num)
+        }).get('cmntcount').value()-1
+    }).write();
     db.get('users').find({
         key:req.user.key
     }).assign({
@@ -202,6 +217,13 @@ router.post('/cmnt_reply',function(req,res){
         id:req.user.id,
         date:now,
         comment:post.reply
+    }).write();
+    db.get('post').find({
+        no:Number(post.postno)
+    }).assign({
+        cmntcount:db.get('post').find({
+            no:Number(post.postno)
+        }).get('cmntcount').value()+1
     }).write();
     db.get('users').find({
         key:req.user.key
