@@ -47,42 +47,48 @@ cmnt=function(form,opt){
 hoverin=function(i,cmntid,userid,r){
     $(`#author${i}${r}`).show();
     if(cmntid!=userid)
-    $(`.notauthor${i}`).hide();
+    $(`.notauthor${i}${r}`).hide();
 }
 hoverout=function(i,r){
     $(`#author${i}${r}`).hide();
 }
-cmntmodify=function(i,opt,postno,cmntno){
+cmntmodify=function(i,opt,postno,cmntno,reply){
     var cmnt=$(`#cmnt${i}`).html().replace(/(?:<br>)/g, '\r\n');
     $(`#cmnt${i}`).html(`
     <form method="post" action="/${opt}/cmnt_mod">
         <textarea name="cmnt_mod">\r\n${cmnt}</textarea>
         <input type="hidden" name="num" value="${postno}"> 
         <input type="hidden" name="cmntnum" value="${cmntno}">
+        <input type="hidden" name="reply" value="${reply}">
     </form>
     `);
     cmnt=cmnt.replace(/(?:\r\n|\r|\n)/g, '<br>');
     $(`#author${i}`).html(`
     <span style="cursor:pointer" onclick="modok()">확인 </span>
-    <span style="cursor:pointer" onclick="modcancel('${i}','${cmnt}','${opt}','${postno}','${cmntno}')">취소</span>
+    <span style="cursor:pointer" onclick="modcancel('${i}','${cmnt}','${opt}','${postno}','${cmntno}','${reply}')">취소</span>
     `);
 }//댓글 수정
 modok=function(){
     $('form').submit();
 }//수정 확인
-modcancel=function(i,cmnt,opt,postno,cmntno){
+modcancel=function(i,cmnt,opt,postno,cmntno,reply){
     $(`#cmnt${i}`).html(`${cmnt}`);
+    if(reply==='undefined')
     $(`#author${i}`).html(`
     <span style="cursor:pointer" id="reply${i}" onclick="cmntreply('${i}','${opt}')">답글 </span>
-    <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${postno}','${cmntno}');">수정 </span>
-    <span style="cursor:pointer" class="notauthor${i}" onclick="cmntdelete('${i}','${opt}','${postno}','${cmntno}')">삭제</span>
+    `);
+    else $(`#author${i}`).html(``);
+    $(`#author${i}`).append(
+    `<span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${postno}','${cmntno}','${reply}');">수정 </span>
+    <span style="cursor:pointer" class="notauthor${i}" onclick="cmntdelete('${i}','${opt}','${postno}','${cmntno}','${reply}')">삭제</span>
     `)
 }//수정 취소
-cmntdelete=function(i,opt,postno,cmntno){
+cmntdelete=function(i,opt,postno,cmntno,reply){
     $(`#cmnt${i}`).html(`
     <form method="post" action="/${opt}/cmnt_del">
         <input type="hidden" name="num" value="${postno}"> 
         <input type="hidden" name="cmntnum" value="${cmntno}">
+        <input type="hidden" name="reply" value="${reply}">
     </form>`)
     $('form').submit();
 }//댓글 삭제
@@ -91,7 +97,7 @@ cmntreply=function(i,opt,postno,cmntno){
     $(`#${i}`).append(`
     <div id="cmntreply${i}">
         <form method="post" action="/${opt}/cmnt_reply">
-        <div style="margin-left:20px;margin-top:10px;">
+        <div style="margin-top:10px;">
         ↳   <textarea id="reply" name="reply"></textarea>
             <input type="hidden" name="postno" value="${postno}">
             <input type="hidden" name="cmntno" value="${cmntno}">

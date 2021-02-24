@@ -252,15 +252,16 @@ module.exports = {
                             <span style="color:rgb(133, 145, 151);">${post.comment[i].reply[j].date}</span>
                         </div>
                         <div id="author${i}r${j}" style="font-size:smaller;" hidden>
-                            <span style="cursor:pointer" class="notauthor${i}" onclick="cmntmodify('${i}','${opt}','${post.no}','${post.comment[i].no}');">수정 </span>
-                            <span style="cursor:pointer" class="notauthor${i}" onclick="cmntdelete('${i}','${opt}','${post.no}','${post.comment[i].no}')">삭제</span>
+                            <span style="cursor:pointer" class="notauthor${i}r${j}" onclick="cmntmodify('${i}r${j}','${opt}','${post.no}','${post.comment[i].no}','${post.comment[i].reply[j].no}');">수정 </span>
+                            <span style="cursor:pointer" class="notauthor${i}r${j}" onclick="cmntdelete('${i}r${j}','${opt}','${post.no}','${post.comment[i].no}','${post.comment[i].reply[j].no}')">삭제</span>
                         </div>
                     </div>
-                    <div class="borderbtm cmntdiv" id="cmnt${i}">${rcmt}</div>
+                    <div class="borderbtm cmntdiv" id="cmnt${i}r${j}">${rcmt}</div>
                 </div>
                 `
             }
             var cmt = post.comment[i].comment.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            if(post.comment[i].id!='')
             comment=comment+`<tr><td id="${i}">
             <div onmouseover="hoverin('${i}','${post.comment[i].id}','${id}','')" onmouseout="hoverout('${i}','')">
             <div style="display:flex;justify-content:space-between">
@@ -275,7 +276,10 @@ module.exports = {
             </div>
             <div class="borderbtm cmntdiv" id="cmnt${i}">${cmt}</div>
             </div>`
-            +reply+`</td></tr>`    
+            +reply+`</td></tr>`;
+            else comment=comment+`
+            <tr><td><div class="borderbtm cmntdiv">${cmt}</div>
+            `+reply+`</td></tr>`;
         }
         return`<body> 
         <table>

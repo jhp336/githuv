@@ -54,6 +54,7 @@ router.post('/write',function(req,res){
         date:now,
         author:req.user.nickname,
         id:req.user.id,
+        cmntcount:0,
         comment:[]
     }).write();
     res.redirect('/private')
@@ -121,8 +122,10 @@ router.post('/comment',function(req,res){
     if (month < 10 && month[0] != '0' && month != '') month = '0' + month;
     var day=dt.getDate();
     if (day < 10 && day[0] != '0' && day != '') day = '0' + day;
-    var hour=dt.getHours();
-    var min=dt.getMinutes();
+    var hour = dt.getHours();
+    if (hour < 10) hour = '0' + hour;
+    var min = dt.getMinutes();
+    if (min < 10) min = '0' + min;
     var now = month+'/'+day+' '+hour+':'+min;
 
     db.get('secret').find({
@@ -132,30 +135,117 @@ router.post('/comment',function(req,res){
         nickname:req.user.nickname,
         id:req.user.id,
         date:now,
-        comment:post.comment
+        comment:post.comment,
+        reply:[]
+    }).write();
+    db.get('secret').find({
+        no:Number(post.num)
+    }).assign({
+        cmntcount:db.get('secret').find({
+            no:Number(post.num)
+        }).get('cmntcount').value()+1
     }).write();
 
     res.redirect(`/private/${post.num}`);
 })
 router.post('/cmnt_mod',function(req,res){
     var post=req.body;
-    db.get('secret').find({
-        no:Number(post.num)
-    }).get('comment').find({
-        no:post.cmntnum
-    }).assign({
-        comment:post.cmnt_mod
-    }).write();
+    if (post.reply === 'undefined') {
+        db.get('secret').find({
+            no:Number(post.num)
+        }).get('comment').find({
+            no:post.cmntnum
+        }).assign({
+            comment:post.cmnt_mod
+        }).write();
+    }   
+    else{
+        db.get('secret').find({
+            no:Number(post.num)
+        }).get('comment').find({
+            no:post.cmntnum
+        }).get('reply').find({
+            no:post.reply
+        }).assign({
+            comment:post.cmnt_mod
+        }).write();
+    }
     res.redirect(`/private/${post.num}`);
 })
 router.post('/cmnt_del',function(req,res){
     var post=req.body;
+    var targetreply=db.get('secret').find({
+        no: Number(post.num)
+    }).get('comment').find({
+        no: post.cmntnum
+    });
+    if (post.reply === 'undefined') { //댓글삭제
+        if(targetreply.get('reply').value().length)//답글이 있을시 삭제된 댓글임을 표시
+        targetreply.assign({
+            nickname: "",
+            id: "",
+            date: "",
+            comment: "삭제된 댓글입니다",
+        }).write();
+        else db.get('secret').find({//답글 없으면 그냥 삭제
+            no: Number(post.num)
+        }).get('comment').remove({
+            no:post.cmntnum
+        }).write();
+    }
+    else { //답글삭제
+        targetreply.get('reply').remove({
+            no:post.reply
+        }).write();
+        if(targetreply.get('id').value()===''&&(!targetreply.get('reply').value().length)){
+            //삭제된 댓글의 유일한 답글일시 댓글도 삭제
+            db.get('secret').find({
+                no: Number(post.num)
+            }).get('comment').remove({
+                no:post.cmntnum
+            }).write();
+        }
+    }
     db.get('secret').find({
         no:Number(post.num)
-    }).get('comment').remove({
-        no:post.cmntnum
+    }).assign({
+        cmntcount:db.get('secret').find({
+            no:Number(post.num)
+        }).get('cmntcount').value()-1
     }).write();
-    
     res.redirect(`/private/${post.num}`);
+})
+router.post('/cmnt_reply', function (req, res) {
+    var post = req.body;
+    var dt = new Date;
+    var month = (dt.getMonth() + 1);
+    if (month < 10 && month[0] != '0' && month != '') month = '0' + month;
+    var day = dt.getDate();
+    if (day < 10 && day[0] != '0' && day != '') day = '0' + day;
+    var hour = dt.getHours();
+    if (hour < 10) hour = '0' + hour;
+    var min = dt.getMinutes();
+    if (min < 10) min = '0' + min;
+    var now = month + '/' + day + ' ' + hour + ':' + min;
+    db.get('secret').find({
+        no: Number(post.postno)
+    }).get('comment').find({
+        no: post.cmntno
+    }).get('reply').push({
+        no: shortid.generate(),
+        nickname: req.user.nickname,
+        id: req.user.id,
+        date: now,
+        comment: post.reply
+    }).write();
+    db.get('secret').find({
+        no: Number(post.postno)
+    }).assign({
+        cmntcount: db.get('secret').find({
+            no: Number(post.postno)
+        }).get('cmntcount').value() + 1
+    }).write();
+
+    res.redirect(`/private/${post.postno}`);
 })
 module.exports=router;

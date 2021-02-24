@@ -13,7 +13,7 @@
       "month": "04",
       "day": "02",
       "write": 2,
-      "comment": 15
+      "comment": 4
     },
     {
       "key": "8rgAjEIZS",
@@ -128,8 +128,17 @@
       "date": "02/23",
       "author": "시시as",
       "id": "tltl1",
-      "cmntcount": 3,
-      "comment": []
+      "cmntcount": 1,
+      "comment": [
+        {
+          "no": "6lS5M9lB6",
+          "nickname": "시시as",
+          "id": "tltl1",
+          "date": "02/25 00:46",
+          "comment": "asd",
+          "reply": []
+        }
+      ]
     }
   ],
   "secret": [
@@ -140,6 +149,7 @@
       "date": "02/12",
       "author": "시시asda",
       "id": "tltl1",
+      "cmntcount": 0,
       "comment": []
     },
     {
@@ -149,6 +159,7 @@
       "date": "02/12",
       "author": "시시asda",
       "id": "tltl1",
+      "cmntcount": 0,
       "comment": []
     },
     {
@@ -158,6 +169,7 @@
       "date": "02/12",
       "author": "시시asda",
       "id": "tltl1",
+      "cmntcount": 0,
       "comment": []
     },
     {
@@ -167,6 +179,7 @@
       "date": "02/19",
       "author": "기기1",
       "id": "rlrl1",
+      "cmntcount": 0,
       "comment": []
     }
   ]
