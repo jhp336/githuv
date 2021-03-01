@@ -71,7 +71,7 @@ module.exports = {
     dupli_mod: function (req,originnick,err) {
         var post = req.body;
         var body = mod2.userinfo(originnick, post.name, post.nickname, post.id,
-        post.email, post.quest, post.ans, post.year, post.month, post.day);
+        post.email, post.quest, post.year, post.month, post.day);
         var html = mod.HTML(`${originnick}님의 회원정보`, 'userinfo', body);
         var user = db.get('users').find({
             nickname: post.nickname

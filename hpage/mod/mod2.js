@@ -154,24 +154,6 @@ module.exports = {
     },
     square:function(db,opt){
         var  int=`
-        <div id="grid">
-        <table class="boardcate">
-            <tr>
-                <td>전체 글보기</td>
-            </tr>
-            <tr>
-                <td>--드라마</td>
-            </tr>
-            <tr>
-                <td>--영화</td>
-            </tr>
-            <tr>
-                <td>--애니메이션</td>
-            </tr>
-            <tr>
-                <td>--도서</td>
-            </tr>
-        </table>
         <div class="postlist">
             <table class="board">
             <colgroup>
@@ -203,16 +185,16 @@ module.exports = {
             }
             list=list+`</table></div>`;
         }    
-        var end=`<div style="text-align:left;margin-left:398px">    
+        var end=`<div style="text-align:left;margin-left:220px">    
         <input id="write" class="postbtn" type="button" value="글쓰기" onclick="
         location.href='/${opt}/write';
-        "></div></div><script>author()</script>`   
+        "></div><script>author()</script>`   
         return int+list+end
     },
     write:function(title,maintxt,num){
         return `
         <body>
-        <form id="post" onsubmit="return false;"  method="post" action='/square/write'>
+        <form id="post" onsubmit="return false;" enctype="multipart/form-data"  method="post" action='/square/write'>
         <table>
             <tr>
                 <td>

@@ -115,7 +115,7 @@ a:hover{
     border-radius: 3px 0 0 3px;
 }
 .postlist{
-    margin-right: 220px ;
+    margin: 0 220px ;
     background-color: rgb(241, 237, 237);
     border-radius: 3px;
 }
