@@ -5,9 +5,9 @@ var db = require('../mod/db.js');
 var dup = require('../mod/dupli.js');
 var shortid = require('shortid');
 var bcrypt = require('bcrypt');
-const bodyParser = require('body-parser')
-router.use(bodyParser.urlencoded({ extended: false }))
-
+/*const bodyParser = require('body-parser')
+router.use(bodyParser.urlencoded({ extended: false }))*/
+router.use(express.urlencoded({extended:false}))
 
 router.get('/login', function (req, res) {
     var flash = req.flash();
@@ -91,5 +91,10 @@ router.post('/findidpw', function (req, res) {
     html = mod.HTML('아이디/비번 찾기', 'findidpw', body);
     res.send(html);
 })
-
+router.get('/readMovieList', function(req,res){
+    if(req.params.type==1)
+        res.send({
+            "message":"movie readMovieList 성공","code":200,"resultType":"list","result":[{"id":1,"title":"진격의 거인","title_eng":"The Swindlers","date":"2017-11-22","user_rating":3.9,"audience_rating":8.36,"reviewer_rating":4.33,"reservation_rate":61.69,"reservation_grade":1,"grade":15,"thumb":"http://movie2.phinf.naver.net/20171107_251/1510033896133nWqxG_JPEG/movie_image.jpg?type=m99_141_2","image":"http://movie.phinf.naver.net/20171107_251/1510033896133nWqxG_JPEG/movie_image.jpg"},{"id":2,"title":"저스티스 리그","title_eng":"Justice League","date":"2017-11-15","user_rating":3.9,"audience_rating":7.99,"reviewer_rating":5.83,"reservation_rate":12.63,"reservation_grade":2,"grade":12,"thumb":"http://movie2.phinf.naver.net/20170925_296/150631600340898aUX_JPEG/movie_image.jpg?type=m99_141_2","image":"http://movie.phinf.naver.net/20170925_296/150631600340898aUX_JPEG/movie_image.jpg"},{"id":3,"title":"토르:라그나로크","title_eng":"Thor: Ragnarok","date":"2017-10-25","user_rating":3.7,"audience_rating":9.03,"reviewer_rating":6.13,"reservation_rate":6.73,"reservation_grade":3,"grade":12,"thumb":"http://movie2.phinf.naver.net/20170928_85/1506564710105ua5fS_PNG/movie_image.jpg?type=m99_141_2","image":"http://movie.phinf.naver.net/20170928_85/1506564710105ua5fS_PNG/movie_image.jpg"},{"id":4,"title":"러빙 빈센트","title_eng":"Loving Vincent","date":"2017-11-09","user_rating":3.8,"audience_rating":9.19,"reviewer_rating":7.5,"reservation_rate":3.82,"reservation_grade":4,"grade":15,"thumb":"http://movie2.phinf.naver.net/20171013_210/1507861351048TMJcR_JPEG/movie_image.jpg?type=m99_141_2","image":"http://movie.phinf.naver.net/20171013_210/1507861351048TMJcR_JPEG/movie_image.jpg"},{"id":5,"title":"범죄도시","title_eng":"The Outlaws","date":"2017-10-03","user_rating":3.7,"audience_rating":9.27,"reviewer_rating":6.12,"reservation_rate":2.37,"reservation_grade":5,"grade":19,"thumb":"http://movie2.phinf.naver.net/20170915_299/1505458505658vbKcN_JPEG/movie_image.jpg?type=m99_141_2","image":"http://movie.phinf.naver.net/20170915_299/1505458505658vbKcN_JPEG/movie_image.jpg"}]}
+        );
+})
 module.exports = router;
