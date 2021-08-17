@@ -1,7 +1,6 @@
 #include "mstree.h"
 
 priority_queue< Edge, vector<Edge>, Compare > PQ;
-
 void kruskal() {
     Sets sets(NNODES);
     int nedges = 0; // #edges found up to now.

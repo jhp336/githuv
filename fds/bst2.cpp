@@ -4,7 +4,6 @@ int main()
 {
    BST<string, double> tree;
    string command, str; double dval;
-
    while (cin >> command)
       if (command == "insert") {
          cin >> str >> dval; tree.Insert(str, dval); }

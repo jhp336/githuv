@@ -26,8 +26,8 @@ void prim() {
         nedges++;
         cout<<e;
     // 트리에 연결 처리된 e의 두 점에 연결된 edge들을 PQ로 옮긴다.
-        MoveIntoPQ_EdgesOfNodes(e.v1);
-        MoveIntoPQ_EdgesOfNodes(e.v2);
+        MoveIntoPQ_EdgesOfNodes(s1);
+        MoveIntoPQ_EdgesOfNodes(s2);
     }
   }
 }
